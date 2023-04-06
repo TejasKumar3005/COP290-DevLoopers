@@ -269,4 +269,16 @@ def create():
 
 @app.route("/store",methods=["GET","POST"])
 def store():
-    return render_template("store-page.html")
+        with connection.cursor() as cursor:
+            sql = """SELECT * FROM `product`"""
+            cursor.execute(sql)
+            rows = cursor.fetchall()
+
+        print(rows)
+
+        return render_template("store-page.html",products=[rows])
+
+@app.route("/product/<productid>",methods=["GET","POST"])
+@login_required
+def product(productid):
+    

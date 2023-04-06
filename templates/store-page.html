@@ -120,20 +120,14 @@
               <div class="categories">Categories</div>
               <div class="component-59-parent">
                 <div class="component-59">
-                  <div class="category-name">Category name</div>
-                  <div class="tags6"><div class="div63">320</div></div>
+                  <div class="category-name"><input type="radio" id="1" name="category" value="1">Category name</div>
                 </div>
                 <div class="component-59">
-                  <div class="category-name">Category name</div>
-                  <div class="tags6"><div class="div63">112</div></div>
+                  <div class="category-name"><input type="radio" id="2" name="category" value="2">Category name</div>
                 </div>
                 <div class="component-59">
-                  <div class="category-name">Category name</div>
-                  <div class="tags6"><div class="div63">32</div></div>
-                </div>
-                <div class="component-59">
-                  <div class="category-name">Category name</div>
-                  <div class="tags6"><div class="div63">48</div></div>
+                  
+                  <div class="category-name"><input type="radio" id="3" name="category" value="3">Category name</div>
                 </div>
               </div>
             </div>
@@ -142,7 +136,7 @@
                 <div class="div63">Rating</div>
                 <div class="component-63-parent">
                   <div class="component-63">
-                    <input class="ic-actions-multi" type="checkbox" />
+                    <input class="ic-actions-multi" type="radio" name="rating" />
                     <div class="best-sellers-parent">
                       <img
                         class="ic-actions-star-icon24"
@@ -168,7 +162,7 @@
                     </div>
                   </div>
                   <div class="component-63">
-                    <input class="ic-actions-multi" type="checkbox" />
+                    <input class="ic-actions-multi" type="radio" name="rating" />
                     <div class="best-sellers-parent">
                       <img
                         class="ic-actions-star-icon24"
@@ -194,11 +188,7 @@
                     </div>
                   </div>
                   <div class="component-63">
-                    <img
-                      class="ic-actions-multi-icon"
-                      alt=""
-                      src="{{ url_for('static', filename='public/checkboxes.svg') }}"
-                    />
+                    <input class="ic-actions-multi" type="radio" name="rating" />
                     <div class="best-sellers-parent">
                       <img
                         class="ic-actions-star-icon24"
@@ -224,11 +214,7 @@
                     </div>
                   </div>
                   <div class="component-63">
-                    <img
-                      class="ic-actions-multi-icon"
-                      alt=""
-                      src="{{ url_for('static', filename='public/checkboxes.svg') }}"
-                    />
+                    <input class="ic-actions-multi" type="radio" name="rating" />
                     <div class="best-sellers-parent">
                       <img
                         class="ic-actions-star-icon24"
@@ -254,11 +240,7 @@
                     </div>
                   </div>
                   <div class="component-63">
-                    <img
-                      class="ic-actions-multi-icon"
-                      alt=""
-                      src="{{ url_for('static', filename='public/checkboxes.svg') }}"
-                    />
+                    <input class="ic-actions-multi" type="radio" name="rating" />
                     <div class="best-sellers-parent">
                       <img
                         class="ic-actions-star-icon24"
@@ -287,14 +269,6 @@
               </div>
             </div>
             <div class="component-64">
-              <div class="inputs-and-selects-parent2">
-                <textarea class="inputs-and-selects18"></textarea
-                ><button class="inputs-and-selects19">
-                  <div class="max">Max</div>
-                  <textarea class="group-textarea"></textarea>
-                </button>
-                <div class="div67">-</div>
-              </div>
               <button class="buttons8"><b class="apply">Apply</b></button
               ><button class="buttons9">
                 <img
@@ -312,22 +286,24 @@
           </div>
         </div>
         <div class="product-list">
+        {% for four_products in products %}
           <div class="card-container">
-            <a class="card9" href="./product-page.html" id="card"
+          {% for product in four_products %}
+            <a class="card9" href="/product/{{ product.id }}" id="card"
               ><div class="card-image8">
                 <div class="rating9">
                   <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star5.svg') }}" />
-                  <div class="best-sellers">4.8</div>
+                  <div class="best-sellers">{{ product.rating }}</div>
                 </div>
                 <div class="button11">
                   <div class="exclusive8">EXCLUSIVE</div>
                 </div>
               </div>
               <div class="card-body10">
-                <div class="nike-infinity-react2">Nike Infinity React 3</div>
+                <div class="nike-infinity-react2">{{ product.product_name }}</div>
               </div>
               <div class="card-footer9">
-                <div class="best-sellers">$180</div>
+                <div class="best-sellers">{{ product.product_price }}</div>
                 <div class="icons20">
                   <img
                     class="vector-icon17"
@@ -335,348 +311,12 @@
                     src="{{ url_for('static', filename='public/vector11.svg') }}"
                   />
                 </div></div></a
-            ><a class="card9" href="./product-page.html" id="card1"
-              ><div class="card-image9">
-                <div class="rating9">
-                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star6.svg') }}" />
-                  <div class="best-sellers">4.8</div>
-                </div>
-                <div class="button11">
-                  <div class="exclusive8">EXCLUSIVE</div>
-                </div>
-              </div>
-              <div class="card-body10">
-                <div class="nike-infinity-react2">Nike Infinity React 3</div>
-              </div>
-              <div class="card-footer9">
-                <div class="best-sellers">$180</div>
-                <div class="icons20">
-                  <img
-                    class="vector-icon17"
-                    alt=""
-                    src="{{ url_for('static', filename='public/vector12.svg') }}"
-                  />
-                </div></div></a
-            ><a class="card11" href="./product-page.html" id="card2"
-              ><div class="card-image10">
-                <div class="rating9">
-                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star7.svg') }}" />
-                  <div class="best-sellers">4.8</div>
-                </div>
-                <div class="button11">
-                  <div class="exclusive8">EXCLUSIVE</div>
-                </div>
-              </div>
-              <div class="card-body10">
-                <div class="nike-infinity-react2">Nike Infinity React 3</div>
-              </div>
-              <div class="card-footer9">
-                <div class="best-sellers">$180</div>
-                <div class="icons20">
-                  <img
-                    class="vector-icon17"
-                    alt=""
-                    src="{{ url_for('static', filename='public/vector13.svg') }}"
-                  />
-                </div></div></a
-            ><a class="card9" href="./product-page.html" id="card3"
-              ><div class="card-image8">
-                <div class="rating9">
-                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star5.svg') }}" />
-                  <div class="best-sellers">4.8</div>
-                </div>
-                <div class="button11">
-                  <div class="exclusive8">EXCLUSIVE</div>
-                </div>
-              </div>
-              <div class="card-body10">
-                <div class="nike-infinity-react2">Nike Infinity React 3</div>
-              </div>
-              <div class="card-footer9">
-                <div class="best-sellers">$180</div>
-                <div class="icons20">
-                  <img
-                    class="vector-icon17"
-                    alt=""
-                    src="{{ url_for('static', filename='public/vector11.svg') }}"
-                  />
-                </div></div
-            ></a>
+            >
+            {% endfor %}
           </div>
-          <div class="card-container">
-            <a class="card9" href="./product-page.html" id="card4"
-              ><div class="card-image12">
-                <div class="rating9">
-                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star61.svg') }}" />
-                  <div class="best-sellers">4.8</div>
-                </div>
-                <div class="button11">
-                  <div class="exclusive8">EXCLUSIVE</div>
-                </div>
-              </div>
-              <div class="card-body10">
-                <div class="nike-infinity-react2">Nike Infinity React 3</div>
-              </div>
-              <div class="card-footer9">
-                <div class="best-sellers">$180</div>
-                <div class="icons20">
-                  <img
-                    class="vector-icon17"
-                    alt=""
-                    src="{{ url_for('static', filename='public/vector14.svg') }}"
-                  />
-                </div></div></a
-            ><a class="card9" href="./product-page.html" id="card5"
-              ><div class="card-image13">
-                <div class="rating9">
-                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star8.svg') }}" />
-                  <div class="best-sellers">4.8</div>
-                </div>
-                <div class="button11">
-                  <div class="exclusive8">EXCLUSIVE</div>
-                </div>
-              </div>
-              <div class="card-body10">
-                <div class="nike-infinity-react2">Nike Infinity React 3</div>
-              </div>
-              <div class="card-footer9">
-                <div class="best-sellers">$180</div>
-                <div class="icons20">
-                  <img
-                    class="vector-icon17"
-                    alt=""
-                    src="{{ url_for('static', filename='public/vector15.svg') }}"
-                  />
-                </div></div></a
-            ><a class="card11" href="./product-page.html" id="card6"
-              ><div class="card-image14">
-                <div class="rating9">
-                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star9.svg') }}" />
-                  <div class="best-sellers">4.8</div>
-                </div>
-                <div class="button11">
-                  <div class="exclusive8">EXCLUSIVE</div>
-                </div>
-              </div>
-              <div class="card-body10">
-                <div class="nike-infinity-react2">Nike Infinity React 3</div>
-              </div>
-              <div class="card-footer9">
-                <div class="best-sellers">$180</div>
-                <div class="icons20">
-                  <img
-                    class="vector-icon17"
-                    alt=""
-                    src="{{ url_for('static', filename='public/vector16.svg') }}"
-                  />
-                </div></div></a
-            ><a class="card9" href="./product-page.html" id="card7"
-              ><div class="card-image12">
-                <div class="rating9">
-                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star61.svg') }}" />
-                  <div class="best-sellers">4.8</div>
-                </div>
-                <div class="button11">
-                  <div class="exclusive8">EXCLUSIVE</div>
-                </div>
-              </div>
-              <div class="card-body10">
-                <div class="nike-infinity-react2">Nike Infinity React 3</div>
-              </div>
-              <div class="card-footer9">
-                <div class="best-sellers">$180</div>
-                <div class="icons20">
-                  <img
-                    class="vector-icon17"
-                    alt=""
-                    src="{{ url_for('static', filename='public/vector14.svg') }}"
-                  />
-                </div></div
-            ></a>
-          </div>
-          <div class="card-parent2">
-            <a class="card9" href="./product-page.html" id="card8"
-              ><div class="card-image8">
-                <div class="rating9">
-                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star5.svg') }}" />
-                  <div class="best-sellers">4.8</div>
-                </div>
-                <div class="button11">
-                  <div class="exclusive8">EXCLUSIVE</div>
-                </div>
-              </div>
-              <div class="card-body10">
-                <div class="nike-infinity-react2">Nike Infinity React 3</div>
-              </div>
-              <div class="card-footer9">
-                <div class="best-sellers">$180</div>
-                <div class="icons20">
-                  <img
-                    class="vector-icon17"
-                    alt=""
-                    src="{{ url_for('static', filename='public/vector11.svg') }}"
-                  />
-                </div></div></a
-            ><a class="card9" href="./product-page.html" id="card9"
-              ><div class="card-image17">
-                <div class="rating9">
-                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star91.svg') }}" />
-                  <div class="best-sellers">4.8</div>
-                </div>
-                <div class="button11">
-                  <div class="exclusive8">EXCLUSIVE</div>
-                </div>
-              </div>
-              <div class="card-body10">
-                <div class="nike-infinity-react2">Nike Infinity React 3</div>
-              </div>
-              <div class="card-footer9">
-                <div class="best-sellers">$180</div>
-                <div class="icons20">
-                  <img
-                    class="vector-icon17"
-                    alt=""
-                    src="{{ url_for('static', filename='public/vector17.svg') }}"
-                  />
-                </div></div></a
-            ><a class="card9" href="./product-page.html" id="card10"
-              ><div class="card-image18">
-                <div class="rating9">
-                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star10.svg') }}" />
-                  <div class="best-sellers">4.8</div>
-                </div>
-                <div class="button11">
-                  <div class="exclusive8">EXCLUSIVE</div>
-                </div>
-              </div>
-              <div class="card-body10">
-                <div class="nike-infinity-react2">Nike Infinity React 3</div>
-              </div>
-              <div class="card-footer9">
-                <div class="best-sellers">$180</div>
-                <div class="icons20">
-                  <img
-                    class="vector-icon17"
-                    alt=""
-                    src="{{ url_for('static', filename='public/vector18.svg') }}"
-                  />
-                </div></div></a
-            ><a class="card9" href="./product-page.html" id="card11"
-              ><div class="card-image8">
-                <div class="rating9">
-                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star5.svg') }}" />
-                  <div class="best-sellers">4.8</div>
-                </div>
-                <div class="button11">
-                  <div class="exclusive8">EXCLUSIVE</div>
-                </div>
-              </div>
-              <div class="card-body10">
-                <div class="nike-infinity-react2">Nike Infinity React 3</div>
-              </div>
-              <div class="card-footer9">
-                <div class="best-sellers">$180</div>
-                <div class="icons20">
-                  <img
-                    class="vector-icon17"
-                    alt=""
-                    src="{{ url_for('static', filename='public/vector11.svg') }}"
-                  />
-                </div></div
-            ></a>
-          </div>
-          <div class="card-parent3">
-            <a class="card9" href="./product-page.html" id="card12"
-              ><div class="card-image12">
-                <div class="rating9">
-                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star61.svg') }}" />
-                  <div class="best-sellers">4.8</div>
-                </div>
-                <div class="button11">
-                  <div class="exclusive8">EXCLUSIVE</div>
-                </div>
-              </div>
-              <div class="card-body10">
-                <div class="nike-infinity-react2">Nike Infinity React 3</div>
-              </div>
-              <div class="card-footer9">
-                <div class="best-sellers">$180</div>
-                <div class="icons20">
-                  <img
-                    class="vector-icon17"
-                    alt=""
-                    src="{{ url_for('static', filename='public/vector14.svg') }}"
-                  />
-                </div></div></a
-            ><a class="card9" href="./product-page.html" id="card13"
-              ><div class="card-image21">
-                <div class="rating9">
-                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star71.svg') }}" />
-                  <div class="best-sellers">4.8</div>
-                </div>
-                <div class="button11">
-                  <div class="exclusive8">EXCLUSIVE</div>
-                </div>
-              </div>
-              <div class="card-body10">
-                <div class="nike-infinity-react2">Nike Infinity React 3</div>
-              </div>
-              <div class="card-footer9">
-                <div class="best-sellers">$180</div>
-                <div class="icons20">
-                  <img
-                    class="vector-icon17"
-                    alt=""
-                    src="{{ url_for('static', filename='public/vector19.svg') }}"
-                  />
-                </div></div></a
-            ><a class="card9" href="./product-page.html" id="card14"
-              ><div class="card-image22">
-                <div class="rating9">
-                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star81.svg') }}" />
-                  <div class="best-sellers">4.8</div>
-                </div>
-                <div class="button11">
-                  <div class="exclusive8">EXCLUSIVE</div>
-                </div>
-              </div>
-              <div class="card-body10">
-                <div class="nike-infinity-react2">Nike Infinity React 3</div>
-              </div>
-              <div class="card-footer9">
-                <div class="best-sellers">$180</div>
-                <div class="icons20">
-                  <img
-                    class="vector-icon17"
-                    alt=""
-                    src="{{ url_for('static', filename='public/vector20.svg') }}"
-                  />
-                </div></div></a
-            ><a class="card9" href="./product-page.html" id="card15"
-              ><div class="card-image12">
-                <div class="rating9">
-                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star61.svg') }}" />
-                  <div class="best-sellers">4.8</div>
-                </div>
-                <div class="button11">
-                  <div class="exclusive8">EXCLUSIVE</div>
-                </div>
-              </div>
-              <div class="card-body10">
-                <div class="nike-infinity-react2">Nike Infinity React 3</div>
-              </div>
-              <div class="card-footer9">
-                <div class="best-sellers">$180</div>
-                <div class="icons20">
-                  <img
-                    class="vector-icon17"
-                    alt=""
-                    src="{{ url_for('static', filename='public/vector14.svg') }}"
-                  />
-                </div></div
-            ></a>
-          </div>
+          {% endfor %}
         </div>
+
       </div>
       <div class="navigationspaginations">
         <div class="frame-parent54">
@@ -686,18 +326,6 @@
             <div class="category-name">2</div>
             <div class="shoes1">3</div>
             <div class="category-name">4</div>
-          </div>
-          <div class="buttons10">
-            <b class="category-name">Show more products</b
-            ><img
-              class="ic-actions-star-icon24"
-              alt=""
-              src="{{ url_for('static', filename='public/icchevrondown8.svg') }}"
-            />
-          </div>
-          <div class="tags-container">
-            <div class="tags10"><div class="div63">336</div></div>
-            <div class="products">Products</div>
           </div>
         </div>
       </div>
