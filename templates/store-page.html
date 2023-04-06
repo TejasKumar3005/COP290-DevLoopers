@@ -59,9 +59,9 @@
           </div>
         </div>
         <div class="frame-parent51">
-          <button class="store-wrapper4" id="frameButton">
+          <a href="/store" style="text-decoration:none"></a><button class="store-wrapper4" id="frameButton">
             <div class="store6">Store</div>
-          </button>
+          </button></a>
           <div class="comunity-wrapper3" id="frameContainer3">
             <div class="comunity5">Zen AI</div>
           </div>
@@ -99,24 +99,18 @@
       </div>
       <div class="navigationsbreadcrumbs1">
         <div class="search1">
-          <div class="search-inner"></div>
+          <div class="search-inner">
           <div class="all-categories-group">
-            <b class="all-categories1">All categories</b
-            ><img
-              class="ic-chevron-down-icon27"
-              alt=""
-              src="{{ url_for('static', filename='public/icchevrondown71.svg') }}"
-            />
+            <b class="all-categories1">Search for Items</b
+            >
           </div>
-          <div class="search-child1"></div>
-          <div class="search-products-categories1">
-            Search Products, categories ...
-          </div>
+          <div class="search-child1"><input type="text"></div>
           <img
             class="ic-actions-search-icon"
             alt=""
             src="{{ url_for('static', filename='public/icactionssearch.svg') }}"
           />
+          </div>
         </div>
       </div>
       <div class="filter-parent">
@@ -140,39 +134,6 @@
                 <div class="component-59">
                   <div class="category-name">Category name</div>
                   <div class="tags6"><div class="div63">48</div></div>
-                </div>
-              </div>
-            </div>
-            <div class="component-591">
-              <div class="brands-parent">
-                <div class="categories">Brands</div>
-                <div class="component-52-parent">
-                  <div class="component-52">
-                    <img
-                      class="checkboxes-icon"
-                      alt=""
-                      src="{{ url_for('static', filename='public/checkboxes.svg') }}"
-                    />
-                    <div class="category-name">Filtre by brand item</div>
-                  </div>
-                  <div class="component-52">
-                    <div class="checkboxes-icon">
-                      <input class="ic-actions-multi-success" type="checkbox" />
-                    </div>
-                    <div class="category-name">Filtre by brand item</div>
-                  </div>
-                  <div class="component-52">
-                    <input class="checkboxes1" type="checkbox" />
-                    <div class="category-name">Filtre by brand item</div>
-                  </div>
-                  <div class="component-52">
-                    <input class="checkboxes1" type="checkbox" />
-                    <div class="category-name">Filtre by brand item</div>
-                  </div>
-                  <div class="component-52">
-                    <input class="checkboxes1" type="checkbox" />
-                    <div class="category-name">Filtre by brand item</div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -1000,12 +961,6 @@
     </div>
 
     <script>
-      var popupbuttons = document.getElementById("popupbuttons");
-      if (popupbuttons) {
-        popupbuttons.addEventListener("click", function (e) {
-          window.location.href = "store-page.html";
-        });
-      }
       
       var popupbuttons1 = document.getElementById("popupbuttons1");
       if (popupbuttons1) {
@@ -1020,13 +975,7 @@
           window.location.href = "/";
         });
       }
-      
-      var frameButton = document.getElementById("frameButton");
-      if (frameButton) {
-        frameButton.addEventListener("click", function (e) {
-          window.location.href = "store-page.html";
-        });
-      }
+    
       
       var frameContainer3 = document.getElementById("frameContainer3");
       if (frameContainer3) {
