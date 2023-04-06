@@ -1,0 +1,261 @@
+.register-now12,
+.register13 {
+  position: relative;
+  font-size: var(--font-size-29xl);
+  font-family: var(--font-itim);
+  color: var(--c1-j);
+  text-align: left;
+}
+.register13 {
+  font-size: var(--font-size-xl);
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+.solid-button13 {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-7xs) var(--padding-2xl);
+  background-color: var(--actionable-item);
+  flex: 1;
+  border-radius: var(--br-7xs);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.log-in12 {
+  position: relative;
+  font-size: var(--font-size-xl);
+  letter-spacing: -0.01em;
+  font-family: var(--font-itim);
+  color: var(--actionable-item);
+  text-align: center;
+}
+.button33 {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-7xs) var(--padding-2xl);
+  background-color: var(--c1-j);
+  flex: 1;
+  border-radius: var(--br-7xs);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.registration-option6 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-9xl);
+}
+.full-name6,
+.tejas-kumar2 {
+  position: relative;
+  font-size: var(--font-size-5xl);
+  font-family: var(--font-itim);
+  color: var(--c1-j);
+  text-align: left;
+}
+.tejas-kumar2 {
+  border: 0;
+  background-color: transparent;
+  flex: 1;
+}
+.input-field33,
+.name-field6 {
+  align-self: stretch;
+  display: flex;
+}
+.input-field33 {
+  border-radius: var(--br-mini);
+  background-color: var(--dark-background-paper);
+  border: 4px solid var(--c1-j);
+  flex-direction: row;
+  padding: var(--padding-smi) var(--padding-lg);
+  align-items: center;
+  justify-content: flex-start;
+}
+.name-field6 {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--gap-5xs);
+}
+.age11 {
+  margin: 0;
+  position: relative;
+  font-size: var(--font-size-5xl);
+  font-family: var(--font-itim);
+  color: var(--c1-j);
+  text-align: left;
+}
+.age-field6,
+.details-feild6 {
+  display: flex;
+  justify-content: center;
+}
+.age-field6 {
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gap-5xs);
+}
+.details-feild6 {
+  align-self: stretch;
+  flex-direction: row;
+  align-items: center;
+}
+.email-icon8 {
+  position: relative;
+  width: 2.38rem;
+  height: 1.88rem;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.input-field-child15 {
+  position: relative;
+  border-right: 2px solid var(--c1-j);
+  box-sizing: border-box;
+  width: 0.13rem;
+  height: 2.38rem;
+  flex-shrink: 0;
+}
+.examplegmailcom8 {
+  border: 0;
+  font-family: var(--font-itim);
+  font-size: var(--font-size-5xl);
+  background-color: transparent;
+  position: relative;
+  color: var(--c1-j);
+  text-align: left;
+}
+.input-field35 {
+  align-self: stretch;
+  border-radius: var(--br-mini);
+  background-color: var(--dark-background-paper);
+  border: 4px solid var(--c1-j);
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-smi) 0 var(--padding-smi) var(--padding-lg);
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-mini);
+}
+.password-icon8 {
+  position: relative;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.input14 {
+  border: 0;
+  font-family: var(--font-itim);
+  font-size: var(--font-size-5xl);
+  background-color: transparent;
+  flex: 1;
+  position: relative;
+  color: var(--c1-j);
+  text-align: left;
+  display: inline-block;
+  height: 1.44rem;
+}
+.input-field36,
+.password-field9 {
+  align-self: stretch;
+  display: flex;
+  justify-content: flex-start;
+}
+.input-field36 {
+  border-radius: var(--br-mini);
+  background-color: var(--dark-background-paper);
+  border: 4px solid var(--c1-j);
+  flex-direction: row;
+  padding: var(--padding-smi) var(--padding-lg);
+  align-items: center;
+  gap: var(--gap-mini);
+}
+.password-field9 {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gap-5xs);
+}
+.register-now13 {
+  position: relative;
+  font-size: 1.96rem;
+  font-family: var(--font-itim);
+  color: var(--c1-j);
+  text-align: left;
+}
+.log-in-button8 {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-mini) var(--padding-81xl);
+  background-color: var(--actionable-item);
+  border-radius: var(--br-mini);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.register-member10,
+.register-member11 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.register-member11 {
+  align-self: stretch;
+  gap: var(--gap-9xl);
+}
+.register-member10 {
+  position: relative;
+  border-radius: var(--br-xl);
+  background: linear-gradient(70.98deg, #30cfd0, #325690 75.83%, #330867);
+  width: 100%;
+  padding: var(--padding-6xl) var(--padding-231xl);
+  box-sizing: border-box;
+}
+@media screen and (max-width: 960px) {
+  .register-now12 {
+    font-size: var(--font-size-9xl);
+  }
+  .log-in12,
+  .register13 {
+    font-size: var(--body-default-size);
+  }
+  .registration-option6 {
+    gap: var(--gap-lg);
+  }
+  .age-field6 {
+    flex: unset;
+    align-self: stretch;
+  }
+  .details-feild6 {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .register-member10 {
+    padding-left: var(--padding-131xl);
+    padding-right: var(--padding-131xl);
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 420px) {
+  .register-now12 {
+    font-size: var(--font-size-9xl);
+  }
+  .registration-option6 {
+    gap: var(--gap-3xs);
+  }
+  .register-member10 {
+    padding-left: var(--padding-31xl);
+    padding-right: var(--padding-31xl);
+    box-sizing: border-box;
+  }
+}

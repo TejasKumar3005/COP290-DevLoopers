@@ -1,0 +1,196 @@
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root {
+  /* fonts */
+  --font-montserrat: Montserrat;
+  --dark-typography-body-1: Roboto;
+  --font-inter: Inter;
+  --caption-default: "Open Sans";
+  --s6-default: Poppins;
+  --font-manrope: Manrope;
+  --other-15-18-2-b: "DM Sans";
+  --font-itim: Itim;
+  --font-ubuntu: Ubuntu;
+
+  /* font sizes */
+  --button-default-size: 0.94rem;
+  --font-size-xs-9: 0.74rem;
+  --s1-default-size: 2rem;
+  --font-size-5xl: 1.5rem;
+  --lead-default-size: 1.06rem;
+  --font-size-9xl: 1.75rem;
+  --s3-default-size: 1.38rem;
+  --font-size-17xl: 2.25rem;
+  --caption-default-size: 0.75rem;
+  --s4-default-size: 1.13rem;
+  --font-size-xl: 1.25rem;
+  --font-size-3xl-4: 1.4rem;
+  --font-size-xs-2: 0.7rem;
+  --font-size-smi-8: 0.8rem;
+  --font-size-21xl: 2.5rem;
+  --font-size-41xl: 3.75rem;
+  --body-default-size: 0.88rem;
+  --dark-typography-body-1-size: 1rem;
+  --s2-default-size: 1.63rem;
+  --font-size-3xs: 0.63rem;
+  --font-size-12xl-4: 1.96rem;
+  --font-size-29xl: 3rem;
+  --font-size-5xl-4: 1.53rem;
+  --font-size-7xs: 0.38rem;
+  --font-size-5xs: 0.5rem;
+
+  /* Colors */
+  --color-gray-100: #fcfcfc;
+  --color-gray-200: #232433;
+  --color-gray-300: #232333;
+  --color-gray-400: #1f2027;
+  --c1-a: #151515;
+  --color-gray-500: rgba(255, 255, 255, 0.6);
+  --color-gray-600: rgba(255, 255, 255, 0.7);
+  --color-gray-700: rgba(255, 255, 255, 0);
+  --dark-background-paper: #2b2c40;
+  --color-darkslategray-100: rgba(45, 45, 58, 0);
+  --actionable-item: #18a0fb;
+  --color-black: #000;
+  --c1-j: #fff;
+  --color-crimson: #ed4c5c;
+  --color-peachpuff: #dfc2ac;
+  --color-dimgray: #717171;
+  --c1-c: #a9a9a9;
+  --color-darkgray-100: #a5a5a5;
+  --c1-h: #f9f9f9;
+  --c1-f: #f5f5f5;
+  --color-whitesmoke-100: #f2f2f2;
+  --c1-e: #ebebeb;
+  --c2-e: #f4f8ec;
+  --c2-a: #6a983c;
+  --c2-b: #46760a;
+  --dark-light-text: #e5e7eb;
+  --color-gainsboro-100: #e2e2e2;
+  --color-mediumslateblue: #5566f3;
+  --color-darkslateblue: #363a63;
+  --color-steelblue-100: #1a7fc1;
+  --neutral-10: #486284;
+  --color-steelblue-200: #325690;
+  --color-lightgray-100: #d7d7d7;
+  --c1-d: #d1d1d1;
+  --neutral-800: #170f49;
+  --neutral-600: #6f6c90;
+  --color-lightskyblue-100: rgba(135, 193, 232, 0);
+  --color-darkturquoise: #69edff;
+  --color-lavender-100: #d0ecff;
+  --dark-text-secondary: rgba(219, 219, 235, 0.6);
+  --dark-other-menu-link: rgba(219, 219, 235, 0.68);
+
+  /* Gaps */
+  --gap-8xs: 0.31rem;
+  --gap-3xs: 0.63rem;
+  --gap-lgi: 1.19rem;
+  --gap-base: 1rem;
+  --gap-10xs-6: 0.16rem;
+  --gap-41xl: 3.75rem;
+  --gap-xl: 1.25rem;
+  --gap-11xl: 1.88rem;
+  --gap-13xl: 2rem;
+  --gap-5xl: 1.5rem;
+  --gap-5xs: 0.5rem;
+  --gap-7xs: 0.38rem;
+  --gap-31xl: 3.13rem;
+  --gap-23xl: 2.63rem;
+  --gap-16xl: 2.19rem;
+  --gap-4xs: 0.56rem;
+  --gap-33xl: 3.25rem;
+  --gap-smi: 0.81rem;
+  --gap-21xl: 2.5rem;
+  --gap-9xs: 0.25rem;
+  --gap-xs: 0.75rem;
+  --gap-11xs: 0.13rem;
+  --gap-58xl: 4.81rem;
+  --gap-lg: 1.13rem;
+  --gap-9xl: 1.75rem;
+  --gap-mini: 0.94rem;
+  --gap-7xl: 1.63rem;
+  --gap-90xl: 6.81rem;
+  --gap-sm: 0.88rem;
+  --gap-10xl: 1.81rem;
+
+  /* Paddings */
+  --padding-2xl: 1.31rem;
+  --padding-51xl: 4.38rem;
+  --padding-30xl: 3.06rem;
+  --padding-31xl: 3.13rem;
+  --padding-17xl: 2.25rem;
+  --padding-7xs-1: 0.32rem;
+  --padding-6xs-8: 0.43rem;
+  --padding-3xs-9: 0.62rem;
+  --padding-9xs: 0.25rem;
+  --padding-sm-8: 0.86rem;
+  --padding-7xs-9: 0.37rem;
+  --padding-base: 1rem;
+  --padding-45xl: 4rem;
+  --padding-26xl: 2.81rem;
+  --padding-3xs: 0.63rem;
+  --padding-xs: 0.75rem;
+  --padding-4xs: 0.56rem;
+  --padding-5xs: 0.5rem;
+  --padding-7xs: 0.38rem;
+  --padding-13xl: 2rem;
+  --padding-xl: 1.25rem;
+  --padding-11xl-4: 1.9rem;
+  --padding-xl-8: 1.3rem;
+  --padding-smi-8: 0.8rem;
+  --padding-6xl: 1.56rem;
+  --padding-lg: 1.13rem;
+  --padding-28xl: 2.94rem;
+  --padding-mini: 0.94rem;
+  --padding-10xl: 1.81rem;
+  --padding-56xl: 4.69rem;
+  --padding-6xs: 0.44rem;
+  --padding-sm: 0.88rem;
+  --padding-25xl: 2.75rem;
+  --padding-5xl: 1.5rem;
+  --padding-81xl: 6.25rem;
+  --padding-12xs: 0.06rem;
+  --padding-161xl: 11.25rem;
+  --padding-131xl: 9.38rem;
+  --padding-smi: 0.81rem;
+  --padding-231xl: 15.63rem;
+  --padding-8xl: 1.69rem;
+  --padding-12xl: 1.94rem;
+  --padding-7xl: 1.63rem;
+  --padding-186xl: 12.81rem;
+  --padding-11xs: 0.13rem;
+  --padding-8xs: 0.31rem;
+  --padding-lgi: 1.19rem;
+  --padding-10xs: 0.19rem;
+
+  /* border radiuses */
+  --br-4xs-5: 8.5px;
+  --br-11xs-7: 1.7px;
+  --br-5xs-9: 7.9px;
+  --br-60xl-1: 79.1px;
+  --br-lgi-8: 19.8px;
+  --br-11xl: 30px;
+  --br-3xs: 10px;
+  --br-xs: 12px;
+  --br-base: 16px;
+  --br-21xl: 40px;
+  --br-base-8: 16.8px;
+  --br-131xl: 150px;
+  --br-7xs: 6px;
+  --br-4xs: 9px;
+  --br-6xl: 25px;
+  --br-mini: 15px;
+  --br-31xl: 50px;
+  --br-xl: 20px;
+  --br-8xs: 5px;
+  --br-5xs: 8px;
+  --br-12xs-9: 0.9px;
+  --br-12xs: 1px;
+
+  /* Effects */
+  --modals-1: 0px 2px 32px rgba(0, 0, 0, 0.15);
+}

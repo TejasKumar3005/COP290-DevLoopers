@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/global.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/index.css') }}" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Open Sans:wght@400&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM Sans:wght@400;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Itim:wght@400&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400&display=swap"
+    />
+  </head>
+  <body>
+    <div class="home-screen-desktop-main">
+      <div class="navigation-a">
+        <div class="logo-wrapper">
+          <div class="logo">
+            <div class="logo-inner">
+              <div class="logo-zenfit-1-wrapper">
+                <img
+                  class="image-36-icon"
+                  alt=""
+                  src="{{ url_for('static', filename='public/logo-zenfit-1@2x.png') }}"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="frame-parent">
+          <a href="/store" style="text-decoration:none"><button class="store-wrapper" id="frameButton">
+            <div class="store" >Store</div></button
+          ></a>
+          <button class="zen-ai-wrapper" id="frameButton1">
+            <div class="store">Zen AI</div></button
+          ><button class="about-wrapper"><div class="store">About</div></button
+          ><button class="prozen-parent">
+            <div class="prozen">ProZen</div>
+            <img class="vector-icon" alt="" src="{{ url_for('static', filename='public/vector10.svg') }}" />
+          </button>
+        </div>
+        {% if logged == 0 %}
+        <div class="solid-button-parent">
+          <button class="solid-button" id="solidButton">
+            <div class="prozen">Register</div></button
+          ><button class="button" id="button">
+            <div class="store">Log In</div>
+          </button>
+        </div>
+        {% else %}
+        <div class="navigation-a-inner4">
+          <div class="icons-parent3">
+            <img
+              class="icons18"
+              alt=""
+              src="{{ url_for('static', filename='public/icons6.svg') }}"
+              id="icons"
+            /><img
+              class="icons19"
+              alt=""
+              src="{{ url_for('static', filename='public/icons5.svg') }}"
+              id="icons1"
+            />
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      <div class="frame-group">
+        <div class="image-36-wrapper">
+          <img class="image-36-icon" alt="" src="{{ url_for('static', filename='public/image-36@2x.png') }}" />
+        </div>
+        <img class="image-1-icon" alt="" src="{{ url_for('static', filename='public/image-1@2x.png') }}" />
+      </div>
+      <div class="frame-container">
+        <div class="frame-div">
+          <div class="mizuno-1-parent">
+            <img class="mizuno-1-icon" alt="" src="{{ url_for('static', filename='public/mizuno-1.svg') }}" /><img
+              class="puma-logo-icon-1"
+              alt=""
+              src="{{ url_for('static', filename='public/pumalogoicon-1.svg') }}"
+            /><img
+              class="adidas-icon-1"
+              alt=""
+              src="{{ url_for('static', filename='public/adidasicon-1.svg') }}"
+            /><img class="vector-icon1" alt="" src="{{ url_for('static', filename='public/vector.svg') }}" /><img
+              class="icon"
+              alt=""
+              src="{{ url_for('static', filename='public/1-10.svg') }}"
+            />
+          </div>
+          <div class="frame-parent1">
+            <div class="image-33-parent">
+              <img
+                class="image-33-icon"
+                alt=""
+                src="{{ url_for('static', filename='public/image-33@2x.png') }}"
+              />
+              <div class="get-fit-in-style-with-athletic-parent">
+                <div class="get-fit-in">
+                  Get fit in style with athletic wear!
+                </div>
+                <div class="lorem-ipsum-dolor-container">
+                  <p class="lorem-ipsum-dolor">
+                    Lorem ipsum dolor sit amet consectetur. Sed tincidunt eget
+                    morbi congue nunc enim. Venenatis sapien sit eget urna.
+                    Egestas
+                  </p>
+                  <p class="lorem-ipsum-dolor">
+                    volutpat purus scelerisque at. Quis in quis consectetur leo
+                    scelerisque quis viverra sagittis.
+                  </p>
+                </div>
+                <div class="buy-now-parent">
+                  <div class="get-fit-in">BUY NOW</div>
+                  <img
+                    class="right-arrow-svgrepo-com-1-icon"
+                    alt=""
+                    src="{{ url_for('static', filename='public/rightarrowsvgrepocom-1.svg') }}"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="frame-parent2">
+              <div class="frame-parent3">
+                <div class="best-nike-deals-wrapper">
+                  <div class="get-fit-in">Best nike deals!</div>
+                </div>
+                <div class="card-parent">
+                  <a class="card" href="./product-page.html"
+                    ><div class="card-image">
+                      <div class="rating">
+                        <img class="star-icon" alt="" src="{{ url_for('static', filename='public/star.svg') }}" />
+                        <div class="div">4.8</div>
+                      </div>
+                      <div class="button1">
+                        <div class="exclusive">EXCLUSIVE</div>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="nike-infinity-react">
+                        Nike Infinity React 3
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <div class="div">$180</div>
+                      <div class="icons">
+                        <img
+                          class="vector-icon2"
+                          alt=""
+                          src="{{ url_for('static', filename='public/vector1.svg') }}"
+                        />
+                      </div></div></a
+                  ><a class="card1" href="./product-page.html"
+                    ><div class="card-image1">
+                      <div class="rating">
+                        <img
+                          class="star-icon"
+                          alt=""
+                          src="{{ url_for('static', filename='public/star1.svg') }}"
+                        />
+                        <div class="div">4.8</div>
+                      </div>
+                      <div class="button1">
+                        <div class="exclusive">EXCLUSIVE</div>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="nike-infinity-react">Nike Pegasus 39</div>
+                    </div>
+                    <div class="card-footer">
+                      <div class="div">$180</div>
+                      <div class="icons1">
+                        <input class="vector" type="checkbox" />
+                      </div></div></a
+                  ><a class="card2" href="./product-page.html"
+                    ><div class="card-image2">
+                      <div class="rating">
+                        <img
+                          class="star-icon"
+                          alt=""
+                          src="{{ url_for('static', filename='public/star2.svg') }}"
+                        />
+                        <div class="div">4.8</div>
+                      </div>
+                      <div class="button1">
+                        <div class="exclusive">EXCLUSIVE</div>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="nike-infinity-react">Nike 121 Shoes</div>
+                    </div>
+                    <div class="card-footer">
+                      <div class="div">$180</div>
+                      <div class="icons">
+                        <img
+                          class="vector-icon2"
+                          alt=""
+                          src="{{ url_for('static', filename='public/vector2.svg') }}"
+                        />
+                      </div></div></a
+                  ><a class="card" href="./product-page.html"
+                    ><div class="card-image3">
+                      <div class="rating">
+                        <img
+                          class="star-icon"
+                          alt=""
+                          src="{{ url_for('static', filename='public/star3.svg') }}"
+                        />
+                        <div class="div">4.8</div>
+                      </div>
+                      <div class="button1">
+                        <div class="exclusive">EXCLUSIVE</div>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="nike-infinity-react">Nike Runners</div>
+                    </div>
+                    <div class="card-footer">
+                      <div class="div">$180</div>
+                      <div class="icons3">
+                        <img
+                          class="vector-icon2"
+                          alt=""
+                          src="{{ url_for('static', filename='public/vector3.svg') }}"
+                        />
+                      </div></div
+                  ></a>
+                </div>
+              </div>
+              <div class="view-more-parent" id="frameContainer14">
+                <div class="get-fit-in">VIEW MORE</div>
+                <img
+                  class="right-arrow-svgrepo-com-1-icon1"
+                  alt=""
+                  src="{{ url_for('static', filename='public/rightarrowsvgrepocom-11.svg') }}"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="blogsection">
+          <div class="read-our-community-posts-parent">
+            <div class="get-fit-in">Read our Community posts</div>
+            <button class="buttons" id="go_to_blg">
+              <b class="go-to-blog">Go to Blog</b
+              ><img
+                class="ic-chevron-right-icon"
+                alt=""
+                src="{{ url_for('static', filename='public/icchevronright.svg') }}"
+              />
+            </button>
+          </div>
+          <div class="component-42-parent">
+            <div class="component-42">
+              <div class="basics">
+                <img
+                  class="basics-child"
+                  alt=""
+                  src="{{ url_for('static', filename='public/rectangle-26@2x.png') }}"
+                />
+              </div>
+              <img
+                class="component-42-child"
+                alt=""
+                src="{{ url_for('static', filename='public/rectangle-34.svg') }}"
+              />
+              <div class="our-chef-tips-for-a-great-and-parent">
+                <div class="our-chef-tips">
+                  Our chef tips for a great and tasty dinner ready in 20 minutes
+                </div>
+                <div class="frame-wrapper">
+                  <div class="frame-parent4">
+                    <div class="avatars-parent">
+                      <img
+                        class="avatars-icon"
+                        alt=""
+                        src="{{ url_for('static', filename='public/avatars.svg') }}"
+                      />
+                      <div class="author">Author</div>
+                    </div>
+                    <div class="author">17. 6. 2020</div>
+                  </div>
+                </div>
+              </div>
+              <div class="tags"><div class="get-fit-in">Dinner tips</div></div>
+            </div>
+            <a class="basics-parent" href="./community-page.html"
+              ><div class="basics1">
+                <img
+                  class="basics-item"
+                  alt=""
+                  src="{{ url_for('static', filename='public/rectangle-27@2x.png') }}"
+                />
+              </div>
+              <div class="tags-parent">
+                <div class="tags1"><div class="get-fit-in">Vegetable</div></div>
+                <div class="which-vegetable-your-family-wi-parent">
+                  <div class="which-vegetable-your">
+                    Which vegetable your family will love and want’s eat each
+                    day
+                  </div>
+                  <div class="author-parent">
+                    <div class="author">Author</div>
+                    <div class="author">15. 6. 2020</div>
+                  </div>
+                </div>
+              </div></a
+            >
+            <section
+              class="frame-section"
+              id="blog_posts"
+              blog_posts="blog_posts"
+            >
+              <div class="group-div">
+                <div class="salat-is-kinda-good-start-to-y-parent">
+                  <div class="salat-is-kinda">
+                    Salat is kinda good start to your morning routines
+                  </div>
+                  <div class="author-parent">
+                    <div class="author">Author</div>
+                    <div class="author">14.1.2020</div>
+                  </div>
+                </div>
+                <div class="basics2">
+                  <img
+                    class="basics-inner"
+                    alt=""
+                    src="{{ url_for('static', filename='public/rectangle-271@2x.png') }}"
+                  />
+                </div>
+              </div>
+              <div class="group-div">
+                <div class="salat-is-kinda-good-start-to-y-parent">
+                  <div class="salat-is-kinda">
+                    Our chef tips for a great and healthy breakfast
+                  </div>
+                  <div class="author-parent">
+                    <div class="author">Author</div>
+                    <div class="author">14.1.2020</div>
+                  </div>
+                </div>
+                <div class="basics3">
+                  <img
+                    class="rectangle-icon"
+                    alt=""
+                    src="{{ url_for('static', filename='public/rectangle-272@2x.png') }}"
+                  />
+                </div>
+              </div>
+              <div class="group-div">
+                <div class="salat-is-kinda-good-start-to-y-parent">
+                  <div class="salat-is-kinda">
+                    Prepare a simple and delicious breads
+                  </div>
+                  <div class="author-parent">
+                    <div class="author">Author</div>
+                    <div class="author">14.1.2020</div>
+                  </div>
+                </div>
+                <div class="basics3">
+                  <img
+                    class="rectangle-icon"
+                    alt=""
+                    src="{{ url_for('static', filename='public/rectangle-271@2x.png') }}"
+                  />
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+        <div class="frame-95default-parent">
+          <div class="frame-95default">
+            <div class="sports-bundle-deal-parent">
+              <div class="sports-bundle-deal">Sports bundle deal!</div>
+              <div class="upgrade-your-workout-wardrobe-parent">
+                <div class="upgrade-your-workout">
+                  Upgrade your workout wardrobe.
+                </div>
+                <div class="lorem-ipsum-dolor-container1">
+                  <p class="lorem-ipsum-dolor">
+                    Lorem ipsum dolor sit amet consectetur. Massa quis natoque
+                    sit quam.
+                  </p>
+                  <p class="lorem-ipsum-dolor">
+                    Eros non pellentesque elit tortor id euismod habitant cras
+                    neque. Sed
+                  </p>
+                  <p class="lorem-ipsum-dolor">
+                    suspendisse id in ultrices adipiscing id adipiscing.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <button class="explore-more-parent" id="frameButton4">
+              <div class="explore-more">Explore More</div>
+              <img
+                class="right-svgrepo-com-1-icon"
+                alt=""
+                src="{{ url_for('static', filename='public/rightsvgrepocom-1.svg') }}"
+              />
+            </button>
+          </div>
+          <img class="subtract-icon" alt="" src="{{ url_for('static', filename='public/subtract.svg') }}" /><img
+            class="mask-group-icon"
+            alt=""
+            src="{{ url_for('static', filename='public/mask-group@2x.png') }}"
+          />
+          <div class="card4">
+            <div class="card-header">
+              <div class="nike-air-max-parent">
+                <b class="nike-air-max">Nike Air Max</b>
+                <div class="running-shoes">Running shoes</div>
+              </div>
+              <div class="simple-iconsnike">
+                <img class="vector-icon5" alt="" src="{{ url_for('static', filename='public/vector4.svg') }}" />
+              </div>
+            </div>
+            <div class="card-body4">
+              <div class="card-body-inner">
+                <div class="frame-parent7">
+                  <div class="frame-child"></div>
+                  <img
+                    class="mss-ct1265300-1-500x-1-icon"
+                    alt=""
+                    src="{{ url_for('static', filename='public/001mssct12653001-500x-1@2x.png') }}"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="card-footer4">
+              <div class="wrapper"><b class="b">$95.99</b></div>
+              <div class="vector-wrapper">
+                <img class="vector-icon6" alt="" src="{{ url_for('static', filename='public/vector5.svg') }}" />
+              </div>
+            </div>
+          </div>
+          <div class="unsplashsd9jyl1xnq4">
+            <div class="card-body5">
+              <div class="nike-shoes-parent">
+                <div class="nike-infinity-react">Nike shoes</div>
+                <div class="nike-infinity-react">$97.70</div>
+              </div>
+              <div class="button-wrapper">
+                <div class="button5"><b class="outline">OUTLINE</b></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-a">
+        <div class="logo-parent">
+          <div class="logo">
+            <div class="logo-inner">
+              <div class="logo-zenfit-1-wrapper">
+                <img
+                  class="image-36-icon"
+                  alt=""
+                  src="{{ url_for('static', filename='public/logo-zenfit-11@2x.png') }}"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="frame-parent8">
+            <div class="mobile-app-parent">
+              <b class="mobile-app">Mobile app</b>
+              <div class="features-live-share-container">
+                <p class="lorem-ipsum-dolor">Features</p>
+                <p class="lorem-ipsum-dolor">Live share</p>
+                <p class="lorem-ipsum-dolor">Video record</p>
+              </div>
+            </div>
+            <div class="mobile-app-parent">
+              <b class="mobile-app">Community</b>
+              <div class="features-live-share-container">
+                <p class="lorem-ipsum-dolor">Featured artists</p>
+                <p class="lorem-ipsum-dolor">The Portal</p>
+                <p class="lorem-ipsum-dolor">Live events</p>
+              </div>
+            </div>
+            <div class="mobile-app-parent">
+              <b class="mobile-app">Company</b>
+              <div class="features-live-share-container">
+                <p class="lorem-ipsum-dolor">About us</p>
+                <p class="lorem-ipsum-dolor">Contact us</p>
+                <p class="lorem-ipsum-dolor">History</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-a-child"></div>
+        <div class="photo-inc-2019-we-love-our-parent">
+          <div class="photo-inc-2019">
+            © ZenFit, Inc. 2023 made by DevLoopers
+          </div>
+          <div class="follow-us-parent">
+            <div class="follow-us">Follow us:</div>
+            <img class="ellipse-icon" alt="" src="{{ url_for('static', filename='public/ellipse.svg') }}" /><img
+              class="ellipse-icon"
+              alt=""
+              src="{{ url_for('static', filename='public/ellipse.svg') }}"
+            /><img class="ellipse-icon" alt="" src="{{ url_for('static', filename='public/ellipse.svg') }}" /><img
+              class="ellipse-icon"
+              alt=""
+              src="{{ url_for('static', filename='public/ellipse.svg') }}"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="registerMember" class="popup-overlay" style="display: none">
+      <div class="register-member2">
+        <form class="register-member3" action="/register" method="post">
+          <div class="register-now4">Register Now</div>
+          <div class="registration-option2">
+            <div class="log-in3">Member</div>
+          </div>
+          <div class="name-field2">
+            <div class="full-name2">Username</div>
+            <div class="input-field9">
+              <input class="tejas-kumar1" type="text" name="username" />
+            </div>
+            <div class="full-name2" >Name</div>
+            <div class="input-field9">
+              <input class="tejas-kumar1" type="text" name="name" />
+            </div>
+          </div>
+          <div class="details-feild2">
+            <div class="age-field2">
+              <p class="age4">Age</p>
+              <input class="input-field10" type="number" name="age" />
+            </div>
+            <div class="height-field2">
+              <div class="full-name2">Height</div>
+              <div class="input-height-field-parent">
+                <input class="input-height-field2" type="number" name="height" style="color: white;"/>
+                <div class="full-name2">cm</div>
+              </div>
+            </div>
+            <div class="weight-field">
+              <div class="full-name2">Weight</div>
+              <div class="input-height-field-group">
+                <input class="input-height-field2" type="number" name="weight" style="color: white;"/>
+                <div class="full-name2">kg</div>
+              </div>
+            </div>
+          </div>
+          <div class="name-field2">
+            <div class="full-name2">Email</div>
+            <div class="input-field11">
+              <img class="email-icon2" alt="" src="{{ url_for('static', filename='public/email2.svg') }}" />
+              <div class="input-field-child2"></div>
+              <input class="tejas-kumar1" type="email" name="email" style="color: white;"/>
+            </div>
+          </div>
+          <div class="password-field3">
+            <div class="full-name2">Password</div>
+            <div class="input-field11">
+              <img class="password-icon2" alt="" src="{{ url_for('static', filename='public/password2.svg') }}" />
+              <div class="input-field-child2"></div>
+              <input class="input2" type="password" name="password" style="color: white;"/>
+            </div>
+          </div>
+          <div class="password-field3">
+            <div class="full-name2">Password Confirmation</div>
+            <div class="input-field11">
+              <img class="password-icon2" alt="" src="{{ url_for('static', filename='public/password2.svg') }}" />
+              <div class="input-field-child2"></div>
+              <input class="input2" type="password" name="confirmation" style="color: white;"/>
+            </div>
+          </div>
+          <button class="log-in-button2" type="submit">
+            <div class="register-now5">Register Now</div>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div id="logInContainer" class="popup-overlay" style="display: none">
+      <div class="log-in4">
+        <form class="sign-in" method="post" action="/login">
+          <div class="log-in5">Log In</div>
+          <div class="email-field3">
+            <div class="email3">Username</div>
+            <div class="input-field13">
+              <img class="email-icon3" alt="" src="{{ url_for('static', filename='public/email3.svg') }}" />
+              <div class="input-field-child4"></div>
+              <input class="examplegmailcom3" type="text" name="username" style="color: white;" />
+            </div>
+          </div>
+          <div class="password-field4">
+            <div class="email3">Password</div>
+            <div class="input-field13">
+              <img class="password-icon3" alt="" src="{{ url_for('static', filename='public/password3.svg') }}" />
+              <div class="input-field-child4"></div>
+              <input class="input3" type="password" name="password" style="color: white;"/>
+            </div>
+          </div>
+          <button class="forget-password">Forget password?</button
+          ><button class="log-in-button3" type="submit">
+            <div class="log-in6">Log In</div>
+          </button>
+          <div class="or">
+            <img class="or-child" alt="" src="{{ url_for('static', filename='public/line-11.svg') }}" />
+            <div class="or1">Or</div>
+            <img class="or-item" alt="" src="{{ url_for('static', filename='public/line-11.svg') }}" />
+          </div>
+          <button class="social-icons">
+            <div class="google">
+              <img class="google-icon" alt="" src="{{ url_for('static', filename='public/google.svg') }}" />
+            </div></button
+          ><button class="dont-have-an-container">
+            <span class="dont-have-an">Don’t have an account? </span
+            ><span class="sign">Sign</span><span class="span"> </span
+            ><span class="sign">Up</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      var frameButton = document.getElementById("frameButton");
+      if (frameButton) {
+        frameButton.addEventListener("click", function (e) {
+          window.location.href = "./store-page.html";
+        });
+      }
+      
+      var frameButton1 = document.getElementById("frameButton1");
+      if (frameButton1) {
+        frameButton1.addEventListener("click", function (e) {
+          window.location.href = "./zen-ai-page.html";
+        });
+      }
+      
+      var solidButton = document.getElementById("solidButton");
+      if (solidButton) {
+        solidButton.addEventListener("click", function () {
+          var popup = document.getElementById("registerMember");
+          if (!popup) return;
+          var popupStyle = popup.style;
+          if (popupStyle) {
+            popupStyle.display = "flex";
+            popupStyle.zIndex = 100;
+            popupStyle.backgroundColor = "rgba(113, 113, 113, 0.3)";
+            popupStyle.alignItems = "center";
+            popupStyle.justifyContent = "center";
+          }
+          popup.setAttribute("closable", "");
+      
+          var onClick =
+            popup.onClick ||
+            function (e) {
+              if (e.target === popup && popup.hasAttribute("closable")) {
+                popupStyle.display = "none";
+              }
+            };
+          popup.addEventListener("click", onClick);
+        });
+      }
+      
+      var button = document.getElementById("button");
+      if (button) {
+        button.addEventListener("click", function () {
+          var popup = document.getElementById("logInContainer");
+          if (!popup) return;
+          var popupStyle = popup.style;
+          if (popupStyle) {
+            popupStyle.display = "flex";
+            popupStyle.zIndex = 100;
+            popupStyle.backgroundColor = "rgba(113, 113, 113, 0.3)";
+            popupStyle.alignItems = "center";
+            popupStyle.justifyContent = "center";
+          }
+          popup.setAttribute("closable", "");
+      
+          var onClick =
+            popup.onClick ||
+            function (e) {
+              if (e.target === popup && popup.hasAttribute("closable")) {
+                popupStyle.display = "none";
+              }
+            };
+          popup.addEventListener("click", onClick);
+        });
+      }
+      </script>
+  </body>
+</html>

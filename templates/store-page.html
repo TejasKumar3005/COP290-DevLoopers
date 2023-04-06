@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/global.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/store-page.css') }}" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Open Sans:wght@400&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM Sans:wght@400;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Itim:wght@400&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400&display=swap"
+    />
+  </head>
+  <body>
+    <div class="store-page">
+      <div class="navigation-a6">
+        <div class="logo-wrapper4">
+          <div class="logo10" id="logoContainer">
+            <div class="logo-inner9">
+              <div class="logo-zenfit-1-wrapper8">
+                <img
+                  class="logo-zenfit-110"
+                  alt=""
+                  src="{{ url_for('static', filename='public/logo-zenfit-1@2x.png') }}"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="frame-parent51">
+          <button class="store-wrapper4" id="frameButton">
+            <div class="store6">Store</div>
+          </button>
+          <div class="comunity-wrapper3" id="frameContainer3">
+            <div class="comunity5">Zen AI</div>
+          </div>
+          <div class="about-wrapper4"><div class="comunity5">About</div></div>
+          <button class="prozen-parent4">
+            <div class="prozen6">ProZen</div>
+            <img class="vector-icon16" alt="" src="{{ url_for('static', filename='public/vector10.svg') }}" />
+          </button>
+        </div>
+        {% if logged == 0 %}
+        <div class="solid-button-parent">
+          <button class="solid-button" id="solidButton">
+            <div class="prozen">Register</div></button
+          ><button class="button" id="button">
+            <div class="store">Log In</div>
+          </button>
+        </div>
+        {% else %}
+        <div class="navigation-a-inner4">
+          <div class="icons-parent3">
+            <img
+              class="icons18"
+              alt=""
+              src="{{ url_for('static', filename='public/icons6.svg') }}"
+              id="icons"
+            /><img
+              class="icons19"
+              alt=""
+              src="{{ url_for('static', filename='public/icons5.svg') }}"
+              id="icons1"
+            />
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      <div class="navigationsbreadcrumbs1">
+        <div class="search1">
+          <div class="search-inner"></div>
+          <div class="all-categories-group">
+            <b class="all-categories1">All categories</b
+            ><img
+              class="ic-chevron-down-icon27"
+              alt=""
+              src="{{ url_for('static', filename='public/icchevrondown71.svg') }}"
+            />
+          </div>
+          <div class="search-child1"></div>
+          <div class="search-products-categories1">
+            Search Products, categories ...
+          </div>
+          <img
+            class="ic-actions-search-icon"
+            alt=""
+            src="{{ url_for('static', filename='public/icactionssearch.svg') }}"
+          />
+        </div>
+      </div>
+      <div class="filter-parent">
+        <div class="filter">
+          <div class="frame-parent53">
+            <div class="categories-parent">
+              <div class="categories">Categories</div>
+              <div class="component-59-parent">
+                <div class="component-59">
+                  <div class="category-name">Category name</div>
+                  <div class="tags6"><div class="div63">320</div></div>
+                </div>
+                <div class="component-59">
+                  <div class="category-name">Category name</div>
+                  <div class="tags6"><div class="div63">112</div></div>
+                </div>
+                <div class="component-59">
+                  <div class="category-name">Category name</div>
+                  <div class="tags6"><div class="div63">32</div></div>
+                </div>
+                <div class="component-59">
+                  <div class="category-name">Category name</div>
+                  <div class="tags6"><div class="div63">48</div></div>
+                </div>
+              </div>
+            </div>
+            <div class="component-591">
+              <div class="brands-parent">
+                <div class="categories">Brands</div>
+                <div class="component-52-parent">
+                  <div class="component-52">
+                    <img
+                      class="checkboxes-icon"
+                      alt=""
+                      src="{{ url_for('static', filename='public/checkboxes.svg') }}"
+                    />
+                    <div class="category-name">Filtre by brand item</div>
+                  </div>
+                  <div class="component-52">
+                    <div class="checkboxes-icon">
+                      <input class="ic-actions-multi-success" type="checkbox" />
+                    </div>
+                    <div class="category-name">Filtre by brand item</div>
+                  </div>
+                  <div class="component-52">
+                    <input class="checkboxes1" type="checkbox" />
+                    <div class="category-name">Filtre by brand item</div>
+                  </div>
+                  <div class="component-52">
+                    <input class="checkboxes1" type="checkbox" />
+                    <div class="category-name">Filtre by brand item</div>
+                  </div>
+                  <div class="component-52">
+                    <input class="checkboxes1" type="checkbox" />
+                    <div class="category-name">Filtre by brand item</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="auto-added-frame">
+              <div class="rating-parent">
+                <div class="div63">Rating</div>
+                <div class="component-63-parent">
+                  <div class="component-63">
+                    <input class="ic-actions-multi" type="checkbox" />
+                    <div class="best-sellers-parent">
+                      <img
+                        class="ic-actions-star-icon24"
+                        alt=""
+                        src="{{ url_for('static', filename='public/icactionsstar4.svg') }}"
+                      /><img
+                        class="ic-actions-star-icon24"
+                        alt=""
+                        src="{{ url_for('static', filename='public/icactionsstar4.svg') }}"
+                      /><img
+                        class="ic-actions-star-icon24"
+                        alt=""
+                        src="{{ url_for('static', filename='public/icactionsstar4.svg') }}"
+                      /><img
+                        class="ic-actions-star-icon24"
+                        alt=""
+                        src="{{ url_for('static', filename='public/icactionsstar4.svg') }}"
+                      /><img
+                        class="ic-actions-star-icon24"
+                        alt=""
+                        src="{{ url_for('static', filename='public/icactionsstar4.svg') }}"
+                      />
+                    </div>
+                  </div>
+                  <div class="component-63">
+                    <input class="ic-actions-multi" type="checkbox" />
+                    <div class="best-sellers-parent">
+                      <img
+                        class="ic-actions-star-icon24"
+                        alt=""
+                        src="{{ url_for('static', filename='public/icactionsstar4.svg') }}"
+                      /><img
+                        class="ic-actions-star-icon24"
+                        alt=""
+                        src="{{ url_for('static', filename='public/icactionsstar4.svg') }}"
+                      /><img
+                        class="ic-actions-star-icon24"
+                        alt=""
+                        src="{{ url_for('static', filename='public/icactionsstar4.svg') }}"
+                      /><img
+                        class="ic-actions-star-icon24"
+                        alt=""
+                        src="{{ url_for('static', filename='public/icactionsstar4.svg') }}"
+                      /><img
+                        class="ic-actions-star-icon24"
+                        alt=""
+                        src="{{ url_for('static', filename='public/icactionsstar9.svg') }}"
+                      />
+                    </div>
+                  </div>
+                  <div class="component-63">
+                    <img
+                      class="ic-actions-multi-icon"
+                      alt=""
+                      src="{{ url_for('static', filename='public/checkboxes.svg') }}"
+                    />
+                    <div class="best-sellers-parent">
+                      <img
+                        class="ic-actions-star-icon24"
+                        alt=""
+                        src="{{ url_for('static', filename='public/icactionsstar4.svg') }}"
+                      /><img
+                        class="ic-actions-star-icon24"
+                        alt=""
+                        src="{{ url_for('static', filename='public/icactionsstar4.svg') }}"
+                      /><img
+                        class="ic-actions-star-icon24"
+                        alt=""
+                        src="{{ url_for('static', filename='public/icactionsstar4.svg') }}"
+                      /><img
+                        class="ic-actions-star-icon24"
+                        alt=""
+                        src="{{ url_for('static', filename='public/icactionsstar9.svg') }}"
+                      /><img
+                        class="ic-actions-star-icon24"
+                        alt=""
+                        src="{{ url_for('static', filename='public/icactionsstar9.svg') }}"
+                      />
+                    </div>
+                  </div>
+                  <div class="component-63">
+                    <img
+                      class="ic-actions-multi-icon"
+                      alt=""
+                      src="{{ url_for('static', filename='public/checkboxes.svg') }}"
+                    />
+                    <div class="best-sellers-parent">
+                      <img
+                        class="ic-actions-star-icon24"
+                        alt=""
+                        src="{{ url_for('static', filename='public/icactionsstar4.svg') }}"
+                      /><img
+                        class="ic-actions-star-icon24"
+                        alt=""
+                        src="{{ url_for('static', filename='public/icactionsstar4.svg') }}"
+                      /><img
+                        class="ic-actions-star-icon24"
+                        alt=""
+                        src="{{ url_for('static', filename='public/icactionsstar9.svg') }}"
+                      /><img
+                        class="ic-actions-star-icon24"
+                        alt=""
+                        src="{{ url_for('static', filename='public/icactionsstar9.svg') }}"
+                      /><img
+                        class="ic-actions-star-icon24"
+                        alt=""
+                        src="{{ url_for('static', filename='public/icactionsstar9.svg') }}"
+                      />
+                    </div>
+                  </div>
+                  <div class="component-63">
+                    <img
+                      class="ic-actions-multi-icon"
+                      alt=""
+                      src="{{ url_for('static', filename='public/checkboxes.svg') }}"
+                    />
+                    <div class="best-sellers-parent">
+                      <img
+                        class="ic-actions-star-icon24"
+                        alt=""
+                        src="{{ url_for('static', filename='public/icactionsstar4.svg') }}"
+                      /><img
+                        class="ic-actions-star-icon24"
+                        alt=""
+                        src="{{ url_for('static', filename='public/icactionsstar9.svg') }}"
+                      /><img
+                        class="ic-actions-star-icon24"
+                        alt=""
+                        src="{{ url_for('static', filename='public/icactionsstar9.svg') }}"
+                      /><img
+                        class="ic-actions-star-icon24"
+                        alt=""
+                        src="{{ url_for('static', filename='public/icactionsstar9.svg') }}"
+                      /><img
+                        class="ic-actions-star-icon24"
+                        alt=""
+                        src="{{ url_for('static', filename='public/icactionsstar9.svg') }}"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="component-64">
+              <div class="inputs-and-selects-parent2">
+                <textarea class="inputs-and-selects18"></textarea
+                ><button class="inputs-and-selects19">
+                  <div class="max">Max</div>
+                  <textarea class="group-textarea"></textarea>
+                </button>
+                <div class="div67">-</div>
+              </div>
+              <button class="buttons8"><b class="apply">Apply</b></button
+              ><button class="buttons9">
+                <img
+                  class="ic-chevron-left-icon1"
+                  alt=""
+                  src="{{ url_for('static', filename='public/icchevronleft.svg') }}"
+                /><b class="reset">Reset</b></button
+              ><img
+                class="component-64-child"
+                alt=""
+                src="{{ url_for('static', filename='public/group-78.svg') }}"
+              />
+              <div class="price">Price</div>
+            </div>
+          </div>
+        </div>
+        <div class="product-list">
+          <div class="card-container">
+            <a class="card9" href="./product-page.html" id="card"
+              ><div class="card-image8">
+                <div class="rating9">
+                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star5.svg') }}" />
+                  <div class="best-sellers">4.8</div>
+                </div>
+                <div class="button11">
+                  <div class="exclusive8">EXCLUSIVE</div>
+                </div>
+              </div>
+              <div class="card-body10">
+                <div class="nike-infinity-react2">Nike Infinity React 3</div>
+              </div>
+              <div class="card-footer9">
+                <div class="best-sellers">$180</div>
+                <div class="icons20">
+                  <img
+                    class="vector-icon17"
+                    alt=""
+                    src="{{ url_for('static', filename='public/vector11.svg') }}"
+                  />
+                </div></div></a
+            ><a class="card9" href="./product-page.html" id="card1"
+              ><div class="card-image9">
+                <div class="rating9">
+                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star6.svg') }}" />
+                  <div class="best-sellers">4.8</div>
+                </div>
+                <div class="button11">
+                  <div class="exclusive8">EXCLUSIVE</div>
+                </div>
+              </div>
+              <div class="card-body10">
+                <div class="nike-infinity-react2">Nike Infinity React 3</div>
+              </div>
+              <div class="card-footer9">
+                <div class="best-sellers">$180</div>
+                <div class="icons20">
+                  <img
+                    class="vector-icon17"
+                    alt=""
+                    src="{{ url_for('static', filename='public/vector12.svg') }}"
+                  />
+                </div></div></a
+            ><a class="card11" href="./product-page.html" id="card2"
+              ><div class="card-image10">
+                <div class="rating9">
+                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star7.svg') }}" />
+                  <div class="best-sellers">4.8</div>
+                </div>
+                <div class="button11">
+                  <div class="exclusive8">EXCLUSIVE</div>
+                </div>
+              </div>
+              <div class="card-body10">
+                <div class="nike-infinity-react2">Nike Infinity React 3</div>
+              </div>
+              <div class="card-footer9">
+                <div class="best-sellers">$180</div>
+                <div class="icons20">
+                  <img
+                    class="vector-icon17"
+                    alt=""
+                    src="{{ url_for('static', filename='public/vector13.svg') }}"
+                  />
+                </div></div></a
+            ><a class="card9" href="./product-page.html" id="card3"
+              ><div class="card-image8">
+                <div class="rating9">
+                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star5.svg') }}" />
+                  <div class="best-sellers">4.8</div>
+                </div>
+                <div class="button11">
+                  <div class="exclusive8">EXCLUSIVE</div>
+                </div>
+              </div>
+              <div class="card-body10">
+                <div class="nike-infinity-react2">Nike Infinity React 3</div>
+              </div>
+              <div class="card-footer9">
+                <div class="best-sellers">$180</div>
+                <div class="icons20">
+                  <img
+                    class="vector-icon17"
+                    alt=""
+                    src="{{ url_for('static', filename='public/vector11.svg') }}"
+                  />
+                </div></div
+            ></a>
+          </div>
+          <div class="card-container">
+            <a class="card9" href="./product-page.html" id="card4"
+              ><div class="card-image12">
+                <div class="rating9">
+                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star61.svg') }}" />
+                  <div class="best-sellers">4.8</div>
+                </div>
+                <div class="button11">
+                  <div class="exclusive8">EXCLUSIVE</div>
+                </div>
+              </div>
+              <div class="card-body10">
+                <div class="nike-infinity-react2">Nike Infinity React 3</div>
+              </div>
+              <div class="card-footer9">
+                <div class="best-sellers">$180</div>
+                <div class="icons20">
+                  <img
+                    class="vector-icon17"
+                    alt=""
+                    src="{{ url_for('static', filename='public/vector14.svg') }}"
+                  />
+                </div></div></a
+            ><a class="card9" href="./product-page.html" id="card5"
+              ><div class="card-image13">
+                <div class="rating9">
+                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star8.svg') }}" />
+                  <div class="best-sellers">4.8</div>
+                </div>
+                <div class="button11">
+                  <div class="exclusive8">EXCLUSIVE</div>
+                </div>
+              </div>
+              <div class="card-body10">
+                <div class="nike-infinity-react2">Nike Infinity React 3</div>
+              </div>
+              <div class="card-footer9">
+                <div class="best-sellers">$180</div>
+                <div class="icons20">
+                  <img
+                    class="vector-icon17"
+                    alt=""
+                    src="{{ url_for('static', filename='public/vector15.svg') }}"
+                  />
+                </div></div></a
+            ><a class="card11" href="./product-page.html" id="card6"
+              ><div class="card-image14">
+                <div class="rating9">
+                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star9.svg') }}" />
+                  <div class="best-sellers">4.8</div>
+                </div>
+                <div class="button11">
+                  <div class="exclusive8">EXCLUSIVE</div>
+                </div>
+              </div>
+              <div class="card-body10">
+                <div class="nike-infinity-react2">Nike Infinity React 3</div>
+              </div>
+              <div class="card-footer9">
+                <div class="best-sellers">$180</div>
+                <div class="icons20">
+                  <img
+                    class="vector-icon17"
+                    alt=""
+                    src="{{ url_for('static', filename='public/vector16.svg') }}"
+                  />
+                </div></div></a
+            ><a class="card9" href="./product-page.html" id="card7"
+              ><div class="card-image12">
+                <div class="rating9">
+                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star61.svg') }}" />
+                  <div class="best-sellers">4.8</div>
+                </div>
+                <div class="button11">
+                  <div class="exclusive8">EXCLUSIVE</div>
+                </div>
+              </div>
+              <div class="card-body10">
+                <div class="nike-infinity-react2">Nike Infinity React 3</div>
+              </div>
+              <div class="card-footer9">
+                <div class="best-sellers">$180</div>
+                <div class="icons20">
+                  <img
+                    class="vector-icon17"
+                    alt=""
+                    src="{{ url_for('static', filename='public/vector14.svg') }}"
+                  />
+                </div></div
+            ></a>
+          </div>
+          <div class="card-parent2">
+            <a class="card9" href="./product-page.html" id="card8"
+              ><div class="card-image8">
+                <div class="rating9">
+                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star5.svg') }}" />
+                  <div class="best-sellers">4.8</div>
+                </div>
+                <div class="button11">
+                  <div class="exclusive8">EXCLUSIVE</div>
+                </div>
+              </div>
+              <div class="card-body10">
+                <div class="nike-infinity-react2">Nike Infinity React 3</div>
+              </div>
+              <div class="card-footer9">
+                <div class="best-sellers">$180</div>
+                <div class="icons20">
+                  <img
+                    class="vector-icon17"
+                    alt=""
+                    src="{{ url_for('static', filename='public/vector11.svg') }}"
+                  />
+                </div></div></a
+            ><a class="card9" href="./product-page.html" id="card9"
+              ><div class="card-image17">
+                <div class="rating9">
+                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star91.svg') }}" />
+                  <div class="best-sellers">4.8</div>
+                </div>
+                <div class="button11">
+                  <div class="exclusive8">EXCLUSIVE</div>
+                </div>
+              </div>
+              <div class="card-body10">
+                <div class="nike-infinity-react2">Nike Infinity React 3</div>
+              </div>
+              <div class="card-footer9">
+                <div class="best-sellers">$180</div>
+                <div class="icons20">
+                  <img
+                    class="vector-icon17"
+                    alt=""
+                    src="{{ url_for('static', filename='public/vector17.svg') }}"
+                  />
+                </div></div></a
+            ><a class="card9" href="./product-page.html" id="card10"
+              ><div class="card-image18">
+                <div class="rating9">
+                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star10.svg') }}" />
+                  <div class="best-sellers">4.8</div>
+                </div>
+                <div class="button11">
+                  <div class="exclusive8">EXCLUSIVE</div>
+                </div>
+              </div>
+              <div class="card-body10">
+                <div class="nike-infinity-react2">Nike Infinity React 3</div>
+              </div>
+              <div class="card-footer9">
+                <div class="best-sellers">$180</div>
+                <div class="icons20">
+                  <img
+                    class="vector-icon17"
+                    alt=""
+                    src="{{ url_for('static', filename='public/vector18.svg') }}"
+                  />
+                </div></div></a
+            ><a class="card9" href="./product-page.html" id="card11"
+              ><div class="card-image8">
+                <div class="rating9">
+                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star5.svg') }}" />
+                  <div class="best-sellers">4.8</div>
+                </div>
+                <div class="button11">
+                  <div class="exclusive8">EXCLUSIVE</div>
+                </div>
+              </div>
+              <div class="card-body10">
+                <div class="nike-infinity-react2">Nike Infinity React 3</div>
+              </div>
+              <div class="card-footer9">
+                <div class="best-sellers">$180</div>
+                <div class="icons20">
+                  <img
+                    class="vector-icon17"
+                    alt=""
+                    src="{{ url_for('static', filename='public/vector11.svg') }}"
+                  />
+                </div></div
+            ></a>
+          </div>
+          <div class="card-parent3">
+            <a class="card9" href="./product-page.html" id="card12"
+              ><div class="card-image12">
+                <div class="rating9">
+                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star61.svg') }}" />
+                  <div class="best-sellers">4.8</div>
+                </div>
+                <div class="button11">
+                  <div class="exclusive8">EXCLUSIVE</div>
+                </div>
+              </div>
+              <div class="card-body10">
+                <div class="nike-infinity-react2">Nike Infinity React 3</div>
+              </div>
+              <div class="card-footer9">
+                <div class="best-sellers">$180</div>
+                <div class="icons20">
+                  <img
+                    class="vector-icon17"
+                    alt=""
+                    src="{{ url_for('static', filename='public/vector14.svg') }}"
+                  />
+                </div></div></a
+            ><a class="card9" href="./product-page.html" id="card13"
+              ><div class="card-image21">
+                <div class="rating9">
+                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star71.svg') }}" />
+                  <div class="best-sellers">4.8</div>
+                </div>
+                <div class="button11">
+                  <div class="exclusive8">EXCLUSIVE</div>
+                </div>
+              </div>
+              <div class="card-body10">
+                <div class="nike-infinity-react2">Nike Infinity React 3</div>
+              </div>
+              <div class="card-footer9">
+                <div class="best-sellers">$180</div>
+                <div class="icons20">
+                  <img
+                    class="vector-icon17"
+                    alt=""
+                    src="{{ url_for('static', filename='public/vector19.svg') }}"
+                  />
+                </div></div></a
+            ><a class="card9" href="./product-page.html" id="card14"
+              ><div class="card-image22">
+                <div class="rating9">
+                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star81.svg') }}" />
+                  <div class="best-sellers">4.8</div>
+                </div>
+                <div class="button11">
+                  <div class="exclusive8">EXCLUSIVE</div>
+                </div>
+              </div>
+              <div class="card-body10">
+                <div class="nike-infinity-react2">Nike Infinity React 3</div>
+              </div>
+              <div class="card-footer9">
+                <div class="best-sellers">$180</div>
+                <div class="icons20">
+                  <img
+                    class="vector-icon17"
+                    alt=""
+                    src="{{ url_for('static', filename='public/vector20.svg') }}"
+                  />
+                </div></div></a
+            ><a class="card9" href="./product-page.html" id="card15"
+              ><div class="card-image12">
+                <div class="rating9">
+                  <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star61.svg') }}" />
+                  <div class="best-sellers">4.8</div>
+                </div>
+                <div class="button11">
+                  <div class="exclusive8">EXCLUSIVE</div>
+                </div>
+              </div>
+              <div class="card-body10">
+                <div class="nike-infinity-react2">Nike Infinity React 3</div>
+              </div>
+              <div class="card-footer9">
+                <div class="best-sellers">$180</div>
+                <div class="icons20">
+                  <img
+                    class="vector-icon17"
+                    alt=""
+                    src="{{ url_for('static', filename='public/vector14.svg') }}"
+                  />
+                </div></div
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="navigationspaginations">
+        <div class="frame-parent54">
+          <div class="page-parent">
+            <div class="category-name">Page:</div>
+            <div class="category-name">1</div>
+            <div class="category-name">2</div>
+            <div class="shoes1">3</div>
+            <div class="category-name">4</div>
+          </div>
+          <div class="buttons10">
+            <b class="category-name">Show more products</b
+            ><img
+              class="ic-actions-star-icon24"
+              alt=""
+              src="{{ url_for('static', filename='public/icchevrondown8.svg') }}"
+            />
+          </div>
+          <div class="tags-container">
+            <div class="tags10"><div class="div63">336</div></div>
+            <div class="products">Products</div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-a4">
+        <div class="logo-parent3">
+          <div class="logo11">
+            <div class="logo-inner9">
+              <div class="logo-zenfit-1-wrapper8">
+                <img
+                  class="logo-zenfit-110"
+                  alt=""
+                  src="{{ url_for('static', filename='public/logo-zenfit-12@2x.png') }}"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="frame-parent55">
+            <div class="mobile-app-parent2">
+              <b class="mobile-app4">Mobile app</b>
+              <div class="features-live-share-container4">
+                <p class="features4">Features</p>
+                <p class="features4">Live share</p>
+                <p class="features4">Video record</p>
+              </div>
+            </div>
+            <div class="mobile-app-parent2">
+              <b class="mobile-app4">Community</b>
+              <div class="features-live-share-container4">
+                <p class="features4">Featured artists</p>
+                <p class="features4">The Portal</p>
+                <p class="features4">Live events</p>
+              </div>
+            </div>
+            <div class="mobile-app-parent2">
+              <b class="mobile-app4">Company</b>
+              <div class="features-live-share-container4">
+                <p class="features4">About us</p>
+                <p class="features4">Contact us</p>
+                <p class="features4">History</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-a-child2"></div>
+        <div class="photo-inc-2019-we-love-our-parent2">
+          <div class="photo-inc-20194">
+            © ZenFit, Inc. 2023 made by DevLoopers
+          </div>
+          <div class="follow-us-parent2">
+            <div class="follow-us4">Follow us:</div>
+            <img
+              class="ellipse-icon16"
+              alt=""
+              src="{{ url_for('static', filename='public/ellipse1.svg') }}"
+            /><img
+              class="ellipse-icon16"
+              alt=""
+              src="{{ url_for('static', filename='public/ellipse1.svg') }}"
+            /><img
+              class="ellipse-icon16"
+              alt=""
+              src="{{ url_for('static', filename='public/ellipse1.svg') }}"
+            /><img class="ellipse-icon16" alt="" src="{{ url_for('static', filename='public/ellipse1.svg') }}" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="cartContainer" class="popup-overlay" style="display: none">
+      <div class="cart1">
+        <div class="modalsshoping-cart">
+          <div class="group-parent6">
+            <div class="shopping-cart-parent">
+              <div class="shopping-cart">Shopping cart</div>
+              <button class="close-parent">
+                <div class="close">Close</div>
+                <img
+                  class="ic-actions-close-simple-icon"
+                  alt=""
+                  src="{{ url_for('static', filename='public/icactionsclosesimple.svg') }}"
+                />
+              </button>
+            </div>
+            <article class="component-84-group">
+              <article class="component-841">
+                <div class="frame-parent45">
+                  <div class="basics-wrapper1">
+                    <div class="basics11">
+                      <img
+                        class="basics-child8"
+                        alt=""
+                        src="{{ url_for('static', filename='public/rectangle-261@2x.png') }}"
+                      />
+                    </div>
+                  </div>
+                  <div class="content-button2">
+                    <div class="content-button-inner1">
+                      <div class="frame-wrapper12">
+                        <div class="frame-parent46">
+                          <div class="product-title-container">
+                            <div class="product-title2">Product title</div>
+                            <div class="frame-parent47">
+                              <div class="brand-container">
+                                <div class="brand2">Brand</div>
+                                <div class="nike6">Nike</div>
+                              </div>
+                              <div class="size-container">
+                                <div class="brand2">Size</div>
+                                <div class="div59">9</div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="ic-actions-star-parent1">
+                            <img
+                              class="ic-actions-star-icon14"
+                              alt=""
+                              src="{{ url_for('static', filename='public/icactionsstar2.svg') }}"
+                            /><img
+                              class="ic-actions-star-icon14"
+                              alt=""
+                              src="{{ url_for('static', filename='public/icactionsstar2.svg') }}"
+                            /><img
+                              class="ic-actions-star-icon14"
+                              alt=""
+                              src="{{ url_for('static', filename='public/icactionsstar2.svg') }}"
+                            /><img
+                              class="ic-actions-star-icon14"
+                              alt=""
+                              src="{{ url_for('static', filename='public/icactionsstar2.svg') }}"
+                            /><img
+                              class="ic-actions-star-icon14"
+                              alt=""
+                              src="{{ url_for('static', filename='public/icactionsstar11.svg') }}"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="price-button2">
+                      <div class="price-button-inner"></div>
+                      <div class="price-discount-price2">
+                        <div class="usd10">36.99 USD</div>
+                        <div class="usd11">48.56 USD</div>
+                      </div>
+                      <div class="inputs-and-selects16">
+                        <div class="pcs5">1 pcs</div>
+                        <div class="line-div"></div>
+                        <div class="pcs-parent1">
+                          <div class="pcs6">Pcs</div>
+                          <img
+                            class="ic-chevron-down-icon15"
+                            alt=""
+                            src="{{ url_for('static', filename='public/icchevrondown.svg') }}"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="component-84-item"></div>
+              </article>
+              <article class="component-841">
+                <div class="frame-parent45">
+                  <div class="basics-wrapper1">
+                    <div class="basics11">
+                      <img
+                        class="basics-child8"
+                        alt=""
+                        src="{{ url_for('static', filename='public/rectangle-261@2x.png') }}"
+                      />
+                    </div>
+                  </div>
+                  <div class="content-button2">
+                    <div class="content-button-inner1">
+                      <div class="frame-wrapper12">
+                        <div class="frame-parent46">
+                          <div class="product-title-container">
+                            <div class="product-title2">Product title</div>
+                            <div class="frame-parent47">
+                              <div class="brand-container">
+                                <div class="brand2">Brand</div>
+                                <div class="nike6">Nike</div>
+                              </div>
+                              <div class="size-container">
+                                <div class="brand2">Size</div>
+                                <div class="div59">9</div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="ic-actions-star-parent1">
+                            <img
+                              class="ic-actions-star-icon14"
+                              alt=""
+                              src="{{ url_for('static', filename='public/icactionsstar3.svg') }}"
+                            /><img
+                              class="ic-actions-star-icon14"
+                              alt=""
+                              src="{{ url_for('static', filename='public/icactionsstar3.svg') }}"
+                            /><img
+                              class="ic-actions-star-icon14"
+                              alt=""
+                              src="{{ url_for('static', filename='public/icactionsstar3.svg') }}"
+                            /><img
+                              class="ic-actions-star-icon14"
+                              alt=""
+                              src="{{ url_for('static', filename='public/icactionsstar3.svg') }}"
+                            /><img
+                              class="ic-actions-star-icon14"
+                              alt=""
+                              src="{{ url_for('static', filename='public/icactionsstar31.svg') }}"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="price-button2">
+                      <div class="price-button-inner"></div>
+                      <div class="price-discount-price2">
+                        <div class="usd10">36.99 USD</div>
+                        <div class="usd11">48.56 USD</div>
+                      </div>
+                      <div class="inputs-and-selects16">
+                        <div class="pcs5">1 pcs</div>
+                        <div class="line-div"></div>
+                        <div class="pcs-parent1">
+                          <div class="pcs6">Pcs</div>
+                          <img
+                            class="ic-chevron-down-icon15"
+                            alt=""
+                            src="{{ url_for('static', filename='public/icchevrondown1.svg') }}"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="component-84-item"></div>
+              </article>
+            </article>
+          </div>
+          <div class="group-parent7">
+            <div class="buttons-group">
+              <button class="buttons6" id="popupbuttons">
+                <img
+                  class="ic-chevron-left-icon"
+                  alt=""
+                  src="{{ url_for('static', filename='public/icchevronleft.svg') }}"
+                /><b class="button10">Continue shopping</b></button
+              ><button class="buttons7" id="popupbuttons1">
+                <b class="go-to-checkout">Go to Checkout</b>
+              </button>
+            </div>
+            <div class="subtotal-group">
+              <div class="subtotal1">Subtotal</div>
+              <div class="usd14">73.98 USD</div>
+            </div>
+            <div class="group-child12"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var popupbuttons = document.getElementById("popupbuttons");
+      if (popupbuttons) {
+        popupbuttons.addEventListener("click", function (e) {
+          window.location.href = "store-page.html";
+        });
+      }
+      
+      var popupbuttons1 = document.getElementById("popupbuttons1");
+      if (popupbuttons1) {
+        popupbuttons1.addEventListener("click", function (e) {
+          window.location.href = "./check-out-page.html";
+        });
+      }
+      
+      var logoContainer = document.getElementById("logoContainer");
+      if (logoContainer) {
+        logoContainer.addEventListener("click", function (e) {
+          window.location.href = "/";
+        });
+      }
+      
+      var frameButton = document.getElementById("frameButton");
+      if (frameButton) {
+        frameButton.addEventListener("click", function (e) {
+          window.location.href = "store-page.html";
+        });
+      }
+      
+      var frameContainer3 = document.getElementById("frameContainer3");
+      if (frameContainer3) {
+        frameContainer3.addEventListener("click", function (e) {
+          window.location.href = "./zen-ai-page.html";
+        });
+      }
+      
+      var icons = document.getElementById("icons");
+      if (icons) {
+        icons.addEventListener("click", function (e) {
+          window.location.href = "./profile-page.html";
+        });
+      }
+      
+      var icons1 = document.getElementById("icons1");
+      if (icons1) {
+        icons1.addEventListener("click", function () {
+          var popup = document.getElementById("cartContainer");
+          if (!popup) return;
+          var popupStyle = popup.style;
+          if (popupStyle) {
+            popupStyle.display = "flex";
+            popupStyle.zIndex = 100;
+            popupStyle.backgroundColor = "rgba(113, 113, 113, 0.3)";
+            popupStyle.alignItems = "center";
+            popupStyle.justifyContent = "center";
+          }
+          popup.setAttribute("closable", "");
+      
+          var onClick =
+            popup.onClick ||
+            function (e) {
+              if (e.target === popup && popup.hasAttribute("closable")) {
+                popupStyle.display = "none";
+              }
+            };
+          popup.addEventListener("click", onClick);
+        });
+      }
+      
+      var card = document.getElementById("card");
+      if (card) {
+        card.addEventListener("click", function (e) {
+          window.location.href = "./product-page.html";
+        });
+      }
+      
+      var card1 = document.getElementById("card1");
+      if (card1) {
+        card1.addEventListener("click", function (e) {
+          window.location.href = "./product-page.html";
+        });
+      }
+      
+      var card2 = document.getElementById("card2");
+      if (card2) {
+        card2.addEventListener("click", function (e) {
+          window.location.href = "./product-page.html";
+        });
+      }
+      
+      var card3 = document.getElementById("card3");
+      if (card3) {
+        card3.addEventListener("click", function (e) {
+          window.location.href = "./product-page.html";
+        });
+      }
+      
+      var card4 = document.getElementById("card4");
+      if (card4) {
+        card4.addEventListener("click", function (e) {
+          window.location.href = "./product-page.html";
+        });
+      }
+      
+      var card5 = document.getElementById("card5");
+      if (card5) {
+        card5.addEventListener("click", function (e) {
+          window.location.href = "./product-page.html";
+        });
+      }
+      
+      var card6 = document.getElementById("card6");
+      if (card6) {
+        card6.addEventListener("click", function (e) {
+          window.location.href = "./product-page.html";
+        });
+      }
+      
+      var card7 = document.getElementById("card7");
+      if (card7) {
+        card7.addEventListener("click", function (e) {
+          window.location.href = "./product-page.html";
+        });
+      }
+      
+      var card8 = document.getElementById("card8");
+      if (card8) {
+        card8.addEventListener("click", function (e) {
+          window.location.href = "./product-page.html";
+        });
+      }
+      
+      var card9 = document.getElementById("card9");
+      if (card9) {
+        card9.addEventListener("click", function (e) {
+          window.location.href = "./product-page.html";
+        });
+      }
+      
+      var card10 = document.getElementById("card10");
+      if (card10) {
+        card10.addEventListener("click", function (e) {
+          window.location.href = "./product-page.html";
+        });
+      }
+      
+      var card11 = document.getElementById("card11");
+      if (card11) {
+        card11.addEventListener("click", function (e) {
+          window.location.href = "./product-page.html";
+        });
+      }
+      
+      var card12 = document.getElementById("card12");
+      if (card12) {
+        card12.addEventListener("click", function (e) {
+          window.location.href = "./product-page.html";
+        });
+      }
+      
+      var card13 = document.getElementById("card13");
+      if (card13) {
+        card13.addEventListener("click", function (e) {
+          window.location.href = "./product-page.html";
+        });
+      }
+      
+      var card14 = document.getElementById("card14");
+      if (card14) {
+        card14.addEventListener("click", function (e) {
+          window.location.href = "./product-page.html";
+        });
+      }
+      
+      var card15 = document.getElementById("card15");
+      if (card15) {
+        card15.addEventListener("click", function (e) {
+          window.location.href = "./product-page.html";
+        });
+      }
+      </script>
+  </body>
+</html>
