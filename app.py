@@ -25,6 +25,7 @@ def setup():
         `email` varchar(255) NOT NULL,
         `username` varchar(255) NOT NULL,
         `password` varchar(255) NOT NULL,
+        `image_url` varchar(255) DEFAULT NULL,
         `name` varchar(255) NOT NULL,
         `age` int NOT NULL,
         `height` int NOT NULL,
@@ -37,6 +38,7 @@ def setup():
         `id` int NOT NULL AUTO_INCREMENT,
         `product_name` varchar(255) DEFAULT NULL,
         `rating` int DEFAULT NULL,
+        `image_url` varchar(255) DEFAULT NULL,
         `product_description` text DEFAULT NULL,
         `product_price` int DEFAULT NULL,
         `product_seller_id` int DEFAULT NULL,
@@ -99,6 +101,7 @@ def setup():
         `id` int NOT NULL AUTO_INCREMENT,
         `order_status` int DEFAULT NULL,
         `user_id` int DEFAULT NULL,
+        `address_id` int DEFAULT NULL,
         PRIMARY KEY (`id`),
         FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
       )""")
@@ -287,13 +290,12 @@ def product(productid):
             cursor.execute(sql,(0,session["user_id"]))
             cart = cursor.fetchone()
             cartid = cart["id"]
-
             sql = """SELECT * FROM `order_product` WHERE `order_id`=%s"""
             cursor.execute(sql,(cartid))
             cart_products = cursor.fetchall()
             exists = 0
             for product in cart_products:
-                if productid == product["product_id"]:
+                if int(productid) == product["product_id"]:
                     sql = """UPDATE `order_product` SET `quantity`=`quantity`+1 WHERE `id`=%s"""
                     cursor.execute(sql,(product["id"]))
                     connection.commit()
@@ -341,7 +343,6 @@ def checkout():
             sql = f"INSERT INTO `order` (order_status,user_id) VALUES (%s,%s)"
             cursor.execute(sql, (0,session["user_id"]))
             connection.commit()
-        print("ordered")
         return redirect("/")
     else:
         with connection.cursor() as cursor:
@@ -349,14 +350,17 @@ def checkout():
             cursor.execute(sql,(cartid))
             cart_products = cursor.fetchall()
         products_list = []
+        net_price = 0
         with connection.cursor() as cursor:
             for cart_product in cart_products:
                 sql = """SELECT * FROM `product` WHERE `id`=%s"""
                 cursor.execute(sql,(cart_product["product_id"]))
                 actual_product = cursor.fetchone()
+                actual_product["quantity"] = cart_product["quantity"]
                 products_list.append(actual_product)
-        print(products_list)
-        return render_template("check-out-page.html",products=products_list)
+                net_price += cart_product["quantity"]*actual_product["product_price"]
+        print(net_price)
+        return render_template("check-out-page.html",products=products_list,net=net_price)
 
 @app.route("/AI",methods=["GET","POST"])
 def ai():
