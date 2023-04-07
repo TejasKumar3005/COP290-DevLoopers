@@ -97,7 +97,6 @@ def setup():
 
       cursor.execute("""CREATE TABLE IF NOT EXISTS `order` (
         `id` int NOT NULL AUTO_INCREMENT,
-        `order_id` int DEFAULT NULL,
         `order_status` int DEFAULT NULL,
         `user_id` int DEFAULT NULL,
         PRIMARY KEY (`id`),
@@ -140,12 +139,10 @@ def login():
 
         # Ensure username was submitted
         if not request.form.get("username"):
-            print(1)
             return "sad life"
 
         # Ensure password was submitted
         elif not request.form.get("password"):
-            print(2)
             return "sad life"
 
         # Query database for username
@@ -156,8 +153,6 @@ def login():
 
         # Ensure username exists and password is correct
         if len(rows) != 1 or not check_password_hash(rows[0]["password"], request.form.get("password")):
-            print(rows)
-            print(3)
             return "sad life"
 
         # Remember which user has logged in
@@ -198,6 +193,14 @@ def register():
         with connection.cursor() as cursor:
             sql = f"INSERT INTO user (username,email,name,age,height,weight,password) VALUES (%s,%s,%s,%s,%s,%s,%s)"
             cursor.execute(sql, (username,email,name,age,height,weight,hash))
+            connection.commit()
+
+            sql = """SELECT id FROM `user` WHERE `username`=%s"""
+            cursor.execute(sql,username)
+            userid = cursor.fetchone()["id"]
+
+            sql = f"INSERT INTO `order` (order_status,user_id) VALUES (%s,%s)"
+            cursor.execute(sql, (0,userid))
             connection.commit()
 
         return redirect("/")
@@ -251,7 +254,6 @@ def create():
     # check whether the file extension is allowed (eg. png,jpeg,jpg,gif)
     if file and allowed_file(file.filename):
         output = upload_file_to_s3(file)
-        print(output) 
         
         # if upload success,will return file name of uploaded file
         if output:
@@ -274,11 +276,24 @@ def store():
             cursor.execute(sql)
             rows = cursor.fetchall()
 
-        print(rows)
-
         return render_template("store-page.html",products=[rows])
 
 @app.route("/product/<productid>",methods=["GET","POST"])
 @login_required
 def product(productid):
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `product` WHERE `id`=%s"""
+        cursor.execute(sql,(productid))
+        product = cursor.fetchone()
+
+        sql = """SELECT category_id FROM `product_category` WHERE `product_id`=%s"""
+        cursor.execute(sql,(productid))
+        category_ids = cursor.fetchall()
+        categories = []
+        for category_id in category_ids:
+            sql = """SELECT name FROM `category` WHERE `id`=%s"""
+            cursor.execute(sql,(category_id["category_id"]))
+            category = cursor.fetchone()
+            categories.append(category["name"])
     
+    return render_template("product-page.html",product=product,categories=categories)
