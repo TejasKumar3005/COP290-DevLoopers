@@ -59,9 +59,10 @@
           </div>
         </div>
         <div class="frame-parent32">
-          <div class="store-wrapper3" id="frameContainer3">
+          <a href="/store" style="text-decoration: none;color: #18a0fb;"><div class="store-wrapper3" id="frameContainer3">
             <div class="store5">Store</div>
-          </div>
+          </div></a>
+
           <div class="store-wrapper3" id="frameContainer4">
             <div class="store5">Zen AI</div>
           </div>
@@ -89,7 +90,7 @@
       </div>
       <div class="cartcheckout-process">
         <div class="frame-parent33">
-          <form class="frame-form">
+          <form class="frame-form" action="/checkout" method="post">
             <div class="frame-wrapper4">
               <div class="inputs-and-selects-parent">
                 <div class="billing-info-parent">
@@ -179,81 +180,6 @@
                 </div>
               </div>
             </div>
-            <div class="frame-wrapper4">
-              <div class="frame-parent36">
-                <div class="billing-info-parent">
-                  <div class="billing-info">Payment method</div>
-                  <div class="please-enter-your">
-                    Please enter your payment method
-                  </div>
-                  <div class="step-1-of">Step 2 of 2</div>
-                </div>
-                <div class="frame-parent37">
-                  <div class="frame-wrapper6">
-                    <div class="group-parent2">
-                      <div class="ic-actions-multi-success-parent">
-                        <img
-                          class="ic-actions-multi-success-icon"
-                          alt=""
-                          src="{{ url_for('static', filename='public/icactionsmultisuccess.svg') }}"
-                        />
-                        <div class="credit-card">Credit card</div>
-                        <div class="visa-inc-logo-1-parent">
-                          <img
-                            class="visa-inc-logo-1-icon"
-                            alt=""
-                            src="{{ url_for('static', filename='public/visa-inc-logo-1.svg') }}"
-                          /><img
-                            class="logomc-icon"
-                            alt=""
-                            src="{{ url_for('static', filename='public/logomc.svg') }}"
-                          />
-                        </div>
-                      </div>
-                      <div class="inputs-and-selects-container">
-                        <div class="inputs-and-selects10">
-                          <div class="first-name">Card number</div>
-                          <div class="rectangle-group">
-                            <div class="group-child2"></div>
-                            <input class="email-addess" type="text" />
-                          </div>
-                        </div>
-                        <div class="inputs-and-selects10">
-                          <div class="inputs-and-selects11">
-                            <div class="first-name">Card holder</div>
-                            <div class="rectangle-group">
-                              <div class="group-child2"></div>
-                              <div class="ddmmyy">Card holder</div>
-                            </div>
-                          </div>
-                          <div class="inputs-and-selects12">
-                            <div class="first-name">CVC</div>
-                            <div class="rectangle-group">
-                              <div class="group-child2"></div>
-                              <div class="ddmmyy">CVC</div>
-                            </div>
-                          </div>
-                          <div class="inputs-and-selects13">
-                            <div class="first-name">Expiration date</div>
-                            <div class="rectangle-group">
-                              <div class="group-child2"></div>
-                              <div class="ddmmyy">DD/MM/YY</div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="group-parent3">
-                    <input class="group-input" type="radio" /><img
-                      class="upi-logo-png-lyp5s5-1-icon"
-                      alt=""
-                      src="{{ url_for('static', filename='public/upi-logo-png-lyp5s5-1@2x.png') }}"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
             <div class="frame-wrapper7">
               <div class="buttons-wrapper">
                 <button class="buttons5">
@@ -269,6 +195,8 @@
                   <div class="order-summary">Order Summary</div>
                 </div>
                 <div class="component-84-parent">
+
+                {% for product in products %}
                   <div class="component-84">
                     <div class="frame-parent38">
                       <div class="basics-wrapper">
@@ -285,40 +213,23 @@
                           <div class="frame-wrapper8">
                             <div class="frame-parent39">
                               <div class="product-title-parent">
-                                <div class="product-title">Product title</div>
-                                <div class="frame-parent40">
-                                  <div class="brand-parent">
-                                    <div class="brand">Brand</div>
-                                    <div class="nike4">Nike</div>
-                                  </div>
-                                  <div class="size-parent">
-                                    <div class="brand">Size</div>
-                                    <div class="div57">9</div>
-                                  </div>
-                                </div>
+                                <div class="product-title">{{ product.product_name }}</div>
                               </div>
                               <div class="ic-actions-star-group">
+                                {% for i in range(product.rating) %}
                                 <img
                                   class="ic-actions-star-icon4"
                                   alt=""
-                                  src="{{ url_for('static', filename='public/icactionsstar1.svg') }}"
-                                /><img
-                                  class="ic-actions-star-icon4"
-                                  alt=""
-                                  src="{{ url_for('static', filename='public/icactionsstar1.svg') }}"
-                                /><img
-                                  class="ic-actions-star-icon4"
-                                  alt=""
-                                  src="{{ url_for('static', filename='public/icactionsstar1.svg') }}"
-                                /><img
-                                  class="ic-actions-star-icon4"
-                                  alt=""
-                                  src="{{ url_for('static', filename='public/icactionsstar1.svg') }}"
-                                /><img
+                                  src="{{ url_for('static', filename='public/icactionsstar2.svg') }}"
+                                />
+                                {% endfor %}
+                                {% for j in range(5-product.rating) %}
+                                <img
                                   class="ic-actions-star-icon4"
                                   alt=""
                                   src="{{ url_for('static', filename='public/icactionsstar5.svg') }}"
                                 />
+                                {% endfor %}
                               </div>
                             </div>
                           </div>
@@ -327,13 +238,11 @@
                           <div class="price-button-child"></div>
                           <div class="price-discount-price">
                             <div class="usd2">36.99 USD</div>
-                            <div class="usd3">48.56 USD</div>
                           </div>
                           <div class="inputs-and-selects14">
                             <div class="pcs1">1 pcs</div>
                             <div class="inputs-and-selects-item"></div>
                             <div class="pcs-group">
-                              <div class="total-order">Pcs</div>
                               <img
                                 class="ic-chevron-down-icon13"
                                 alt=""
@@ -346,99 +255,9 @@
                     </div>
                     <div class="component-84-child"></div>
                   </div>
-                  <div class="component-84">
-                    <div class="frame-parent38">
-                      <div class="basics-wrapper">
-                        <div class="basics9">
-                          <img
-                            class="basics-child6"
-                            alt=""
-                            src="{{ url_for('static', filename='public/rectangle-261@2x.png') }}"
-                          />
-                        </div>
-                      </div>
-                      <div class="content-button">
-                        <div class="content-button-inner">
-                          <div class="frame-wrapper8">
-                            <div class="total-order-wrapper">
-                              <div class="product-title-parent">
-                                <div class="product-title">Product title</div>
-                                <div class="frame-parent40">
-                                  <div class="brand-parent">
-                                    <div class="brand">Brand</div>
-                                    <div class="nike4">Nike</div>
-                                  </div>
-                                  <div class="size-parent">
-                                    <div class="brand">Size</div>
-                                    <div class="div57">9</div>
-                                  </div>
-                                </div>
-                                <div class="ic-actions-star-group">
-                                  <img
-                                    class="ic-actions-star-icon4"
-                                    alt=""
-                                    src="{{ url_for('static', filename='public/icactionsstar1.svg') }}"
-                                  /><img
-                                    class="ic-actions-star-icon4"
-                                    alt=""
-                                    src="{{ url_for('static', filename='public/icactionsstar1.svg') }}"
-                                  /><img
-                                    class="ic-actions-star-icon4"
-                                    alt=""
-                                    src="{{ url_for('static', filename='public/icactionsstar1.svg') }}"
-                                  /><img
-                                    class="ic-actions-star-icon4"
-                                    alt=""
-                                    src="{{ url_for('static', filename='public/icactionsstar1.svg') }}"
-                                  /><img
-                                    class="ic-actions-star-icon4"
-                                    alt=""
-                                    src="{{ url_for('static', filename='public/icactionsstar5.svg') }}"
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="price-button">
-                          <div class="price-button-child"></div>
-                          <div class="price-discount-price">
-                            <div class="usd2">36.99 USD</div>
-                            <div class="usd3">48.56 USD</div>
-                          </div>
-                          <div class="inputs-and-selects15">
-                            <div class="pcs1">1 pcs</div>
-                            <div class="inputs-and-selects-item"></div>
-                            <div class="pcs-container">
-                              <div class="total-order">Pcs</div>
-                              <img
-                                class="ic-chevron-down-icon13"
-                                alt=""
-                                src="{{ url_for('static', filename='public/icchevrondown2.svg') }}"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="component-84-child"></div>
-                  </div>
+                  {% endfor %}
                 </div>
                 <div class="frame-wrapper11">
-                  <div class="group-parent5">
-                    <div class="subtotal-parent">
-                      <div class="subtotal">Subtotal</div>
-                      <div class="usd6">73.98 USD</div>
-                    </div>
-                    <div class="subtotal-parent">
-                      <div class="subtotal">Tax</div>
-                      <div class="usd7">17% 16.53 USD</div>
-                    </div>
-                    <div class="subtotal-parent">
-                      <div class="subtotal">Shipping</div>
-                      <div class="usd8">0 USD</div>
-                    </div>
-                  </div>
                 </div>
                 <div class="frame-parent43">
                   <div class="total-order-wrapper">
@@ -711,12 +530,6 @@
     </div>
 
     <script>
-      var popupbuttons = document.getElementById("popupbuttons");
-      if (popupbuttons) {
-        popupbuttons.addEventListener("click", function (e) {
-          window.location.href = "./store-page.html";
-        });
-      }
       
       var popupbuttons1 = document.getElementById("popupbuttons1");
       if (popupbuttons1) {
@@ -729,13 +542,6 @@
       if (logoContainer) {
         logoContainer.addEventListener("click", function (e) {
           window.location.href = "/";
-        });
-      }
-      
-      var frameContainer3 = document.getElementById("frameContainer3");
-      if (frameContainer3) {
-        frameContainer3.addEventListener("click", function (e) {
-          window.location.href = "./store-page.html";
         });
       }
       

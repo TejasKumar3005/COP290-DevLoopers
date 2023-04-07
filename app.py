@@ -281,19 +281,79 @@ def store():
 @app.route("/product/<productid>",methods=["GET","POST"])
 @login_required
 def product(productid):
-    with connection.cursor() as cursor:
-        sql = """SELECT * FROM `product` WHERE `id`=%s"""
-        cursor.execute(sql,(productid))
-        product = cursor.fetchone()
+    if request.method == "POST":
+        with connection.cursor() as cursor:
+            sql = """SELECT * FROM `order` WHERE `order_status`=%s AND `user_id`=%s"""
+            cursor.execute(sql,(0,session["user_id"]))
+            cart = cursor.fetchone()
+            cartid = cart["id"]
 
-        sql = """SELECT category_id FROM `product_category` WHERE `product_id`=%s"""
-        cursor.execute(sql,(productid))
-        category_ids = cursor.fetchall()
-        categories = []
-        for category_id in category_ids:
-            sql = """SELECT name FROM `category` WHERE `id`=%s"""
-            cursor.execute(sql,(category_id["category_id"]))
-            category = cursor.fetchone()
-            categories.append(category["name"])
+            sql = """SELECT * FROM `order_product` WHERE `order_id`=%s"""
+            cursor.execute(sql,(cartid))
+            cart_products = cursor.fetchall()
+            exists = 0
+            for product in cart_products:
+                if productid == product["product_id"]:
+                    sql = """UPDATE `order_product` SET `quantity`=`quantity`+1 WHERE `id`=%s"""
+                    cursor.execute(sql,(product["id"]))
+                    connection.commit()
+                    exists = 1
+                    break
+            
+            if exists == 0:
+                sql = f"INSERT INTO `order_product` (order_id,product_id,quantity) VALUES (%s,%s,%s)"
+                cursor.execute(sql, (cartid,productid,1))
+                connection.commit()
+        return redirect("/checkout")
+    else:
+        with connection.cursor() as cursor:
+            sql = """SELECT * FROM `product` WHERE `id`=%s"""
+            cursor.execute(sql,(productid))
+            product = cursor.fetchone()
+
+            sql = """SELECT category_id FROM `product_category` WHERE `product_id`=%s"""
+            cursor.execute(sql,(productid))
+            category_ids = cursor.fetchall()
+            categories = []
+            for category_id in category_ids:
+                sql = """SELECT name FROM `category` WHERE `id`=%s"""
+                cursor.execute(sql,(category_id["category_id"]))
+                category = cursor.fetchone()
+                categories.append(category["name"])
+        
+        return render_template("product-page.html",product=product,categories=categories)
+
+@app.route("/checkout",methods=["GET","POST"])
+@login_required
+def checkout():
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `order` WHERE `order_status`=%s AND `user_id`=%s"""
+        cursor.execute(sql,(0,session["user_id"]))
+        cart = cursor.fetchone()
+        cartid = cart["id"]
     
-    return render_template("product-page.html",product=product,categories=categories)
+    if request.method == "POST":
+        with connection.cursor() as cursor:
+            sql = """UPDATE `order` SET `order_status`=1 WHERE `id`=%s"""
+            cursor.execute(sql,(cartid))
+            connection.commit()
+
+            sql = f"INSERT INTO `order` (order_status,user_id) VALUES (%s,%s)"
+            cursor.execute(sql, (0,session["user_id"]))
+            connection.commit()
+        print("ordered")
+        return redirect("/")
+    else:
+        with connection.cursor() as cursor:
+            sql = """SELECT * FROM `order_product` WHERE `order_id`=%s"""
+            cursor.execute(sql,(cartid))
+            cart_products = cursor.fetchall()
+        products_list = []
+        with connection.cursor() as cursor:
+            for cart_product in cart_products:
+                sql = """SELECT * FROM `product` WHERE `id`=%s"""
+                cursor.execute(sql,(cart_product["product_id"]))
+                actual_product = cursor.fetchone()
+                products_list.append(actual_product)
+        print(products_list)
+        return render_template("check-out-page.html",products=products_list)

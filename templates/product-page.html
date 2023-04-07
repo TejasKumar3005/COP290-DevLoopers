@@ -184,7 +184,7 @@
                     class="ic-actions-add-simple-icon"
                     alt=""
                     src="{{ url_for('static', filename='public/icactionsaddsimple.svg') }}"
-                  /><b class="homepage">Add to cart</b>
+                  /><b class="homepage"><form action="/product/{{ product.id }}" method="post"><button type="submit">Add to Cart</button></form></b>
                 </div>
               </div>
               <div class="buttons-parent">
