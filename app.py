@@ -357,3 +357,7 @@ def checkout():
                 products_list.append(actual_product)
         print(products_list)
         return render_template("check-out-page.html",products=products_list)
+
+@app.route("/AI",methods=["GET","POST"])
+def ai():
+    return render_template("zen-ai-page.html")
