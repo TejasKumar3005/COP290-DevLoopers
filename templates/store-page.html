@@ -103,36 +103,28 @@
       </div>
       <div class="navigationsbreadcrumbs1">
         <div class="search1">
-          <div class="search-inner">
-          <div class="all-categories-group">
-            <b class="all-categories1">Search for Items</b
-            >
-          </div>
-          <div class="search-child1"><input type="text"></div>
-          <img
-            class="ic-actions-search-icon"
-            alt=""
-            src="{{ url_for('static', filename='public/icactionssearch.svg') }}"
-          />
-          </div>
+          <form action="/store" method="post">
+            <input type="text" name="inputtext" class="search-inner" style="color: white; font-size: large;">
+            <button class="buttons8" name="submit" style="position: relative;left: 330px;" value="search">Search</button>
+            </form>
         </div>
+        
       </div>
+      
+
       <div class="filter-parent">
+
+        <form action="/store" method="post">
         <div class="filter">
           <div class="frame-parent53">
             <div class="categories-parent">
               <div class="categories">Categories</div>
               <div class="component-59-parent">
+                {% for category in categories %}
                 <div class="component-59">
-                  <div class="category-name"><input type="radio" id="1" name="category" value="1">Category name</div>
+                  <div class="category-name"><input type="radio" name="category" value="{{ category.id }}">{{ category.name }}</div>
                 </div>
-                <div class="component-59">
-                  <div class="category-name"><input type="radio" id="2" name="category" value="2">Category name</div>
-                </div>
-                <div class="component-59">
-                  
-                  <div class="category-name"><input type="radio" id="3" name="category" value="3">Category name</div>
-                </div>
+                {% endfor %}
               </div>
             </div>
             <div class="auto-added-frame">
@@ -140,7 +132,7 @@
                 <div class="div63">Rating</div>
                 <div class="component-63-parent">
                   <div class="component-63">
-                    <input class="ic-actions-multi" type="radio" name="rating" />
+                    <input class="ic-actions-multi" type="radio" name="rating" value="5" />
                     <div class="best-sellers-parent">
                       <img
                         class="ic-actions-star-icon24"
@@ -166,7 +158,7 @@
                     </div>
                   </div>
                   <div class="component-63">
-                    <input class="ic-actions-multi" type="radio" name="rating" />
+                    <input class="ic-actions-multi" type="radio" name="rating" value="4" />
                     <div class="best-sellers-parent">
                       <img
                         class="ic-actions-star-icon24"
@@ -192,7 +184,7 @@
                     </div>
                   </div>
                   <div class="component-63">
-                    <input class="ic-actions-multi" type="radio" name="rating" />
+                    <input class="ic-actions-multi" type="radio" name="rating" value="3" />
                     <div class="best-sellers-parent">
                       <img
                         class="ic-actions-star-icon24"
@@ -218,7 +210,7 @@
                     </div>
                   </div>
                   <div class="component-63">
-                    <input class="ic-actions-multi" type="radio" name="rating" />
+                    <input class="ic-actions-multi" type="radio" name="rating" value="2" />
                     <div class="best-sellers-parent">
                       <img
                         class="ic-actions-star-icon24"
@@ -244,7 +236,7 @@
                     </div>
                   </div>
                   <div class="component-63">
-                    <input class="ic-actions-multi" type="radio" name="rating" />
+                    <input class="ic-actions-multi" type="radio" name="rating" value="1"/>
                     <div class="best-sellers-parent">
                       <img
                         class="ic-actions-star-icon24"
@@ -273,8 +265,8 @@
               </div>
             </div>
             <div class="component-64">
-              <button class="buttons8"><b class="apply">Apply</b></button
-              ><button class="buttons9">
+              <button class="buttons8" name="submit" value="apply"><b class="apply">Apply</b></button
+              ><button class="buttons9" name="submit" value="reset">
                 <img
                   class="ic-chevron-left-icon1"
                   alt=""
@@ -288,6 +280,9 @@
               <div class="price">Price</div>
             </div>
           </div>
+        </form>
+
+
         </div>
         <div class="product-list">
         {% for four_products in products %}

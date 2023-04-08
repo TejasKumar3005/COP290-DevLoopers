@@ -264,14 +264,77 @@ def create():
     else:
         return "File type not accepted,please try again."
 
+
+def split_list_into_4(lst):
+    n = len(lst)
+    n_rows = n // 4 + (n % 4 > 0)
+    result = [[] for _ in range(n_rows)]
+    for i in range(n):
+        result[i // 4].append(lst[i])
+    return result
+
 @app.route("/store",methods=["GET","POST"])
 def store():
+    print(request.form)
+    if request.method == "POST":
+        if request.form.get("submit") == "search":
+            inputtext = request.form.get("inputtext")
+            words = inputtext.split()
+            products = []
+            with connection.cursor() as cursor:
+                for word in words:
+                    word = "%"+word+"%"
+                    sql = f"SELECT * FROM `product` WHERE product_name LIKE %s"
+                    cursor.execute(sql,(word))
+                    products = products + cursor.fetchall()
+        elif request.form.get("submit") == "apply":
+            if "category" in request.form:
+                with connection.cursor() as cursor:
+                    sql = """SELECT product_id FROM product_category WHERE category_id=%s """
+                    cursor.execute(sql,request.form.get("category"))
+                    product_ids = cursor.fetchall()
+                products = []
+                for prod_id in product_ids:
+                    with connection.cursor() as cursor:
+                        sql = """SELECT * FROM `product` WHERE `id`=%s"""
+                        cursor.execute(sql,(prod_id["product_id"]))
+                        products.append(cursor.fetchone())
+            else:
+                with connection.cursor() as cursor:
+                    sql = """SELECT * FROM `product`"""
+                    cursor.execute(sql)
+                    products = cursor.fetchall()
+            
+            if "rating" in request.form:
+                with connection.cursor() as cursor:
+                    sql = """SELECT * FROM `product` WHERE `rating`=%s"""
+                    cursor.execute(sql,(request.form.get("rating")))
+                    ratedproducts = cursor.fetchall()
+                if "category" in request.form:
+                    final = []
+                    for product in products:
+                        if product in ratedproducts:
+                            final.append(product)
+                    products = final
+                else:
+                    products = ratedproducts
+            
+        elif request.form.get("submit") == "reset":
+            with connection.cursor() as cursor:
+                sql = """SELECT * FROM `product`"""
+                cursor.execute(sql)
+                products = cursor.fetchall()
+    else:
         with connection.cursor() as cursor:
             sql = """SELECT * FROM `product`"""
             cursor.execute(sql)
-            rows = cursor.fetchall()
+            products = cursor.fetchall()
 
-        return render_template("store-page.html",products=[rows])
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `category`"""
+        cursor.execute(sql)
+        categories = cursor.fetchall()
+    return render_template("store-page.html",products=split_list_into_4(products),categories=categories)
 
 @app.route("/product/<productid>",methods=["GET","POST"])
 @login_required
@@ -305,7 +368,7 @@ def product(productid):
             cursor.execute(sql,(productid))
             product = cursor.fetchone()
 
-            sql = """SELECT category_id FROM `product_category` WHERE `product_id`=%s"""
+            sql = """SELECT `category_id` FROM `product_category` WHERE `product_id`=%s"""
             cursor.execute(sql,(productid))
             category_ids = cursor.fetchall()
             categories = []
