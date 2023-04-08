@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
-    <link rel="stylesheet" href="./global.css" />
-    <link rel="stylesheet" href="./profile-page.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/global.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/profile-page.css') }}" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
@@ -52,7 +52,7 @@
                 <img
                   class="logo-zenfit-112"
                   alt=""
-                  src="./public/logo-zenfit-1@2x.png"
+                  src="{{ url_for('static', filename= 'public/logo-zenfit-1@2x.png') }}"
                 />
               </div>
             </div>
@@ -60,30 +60,35 @@
         </div>
         <div class="frame-parent56">
           <div class="store-wrapper5" id="frameContainer3">
-            <div class="store7">Store</div>
+            <div class="store7"><a href="/store" style="text-decoration: none;color: #18a0fb;">Store</a></div>
           </div>
           <div class="store-wrapper5" id="frameContainer4">
-            <div class="store7">Zen AI</div>
+            <div class="store7"><a href="/store" style="text-decoration: none;color: #18a0fb;">ZenAI</a></div>
           </div>
           <div class="about-wrapper5"><div class="store7">About</div></div>
           <div class="prozen-parent5">
             <div class="store7">ProZen</div>
-            <img class="vector-icon33" alt="" src="./public/vector10.svg" />
+            <img class="vector-icon33" alt="" src="{{ url_for('static', filename= 'public/vector10.svg') }}" />
           </div>
         </div>
         <div class="this-week-parent">
           <div class="icons-parent4">
-            <img
+            <a href="/profile">
+              <img
               class="icons37"
               alt=""
-              src="./public/icons8.svg"
+              src="{{ url_for('static', filename= 'public/icons8.svg') }}"
               id="icons"
-            /><img
+            />
+            </a>
+            <a href="/checkout">
+              <img
               class="icons38"
               alt=""
-              src="./public/icons3.svg"
+              src="{{ url_for('static', filename= 'public/icons3.svg') }}"
               id="icons1"
             />
+            </a>
           </div>
         </div>
       </div>
@@ -95,7 +100,7 @@
                 <img
                   class="bx-calendar-alt-icon"
                   alt=""
-                  src="./public/bxcalendaralt.svg"
+                  src="{{ url_for('static', filename= 'public/bxcalendaralt.svg') }}"
                 />
               </div>
               <div class="text-container">
@@ -107,7 +112,7 @@
                 <img
                   class="bx-calendar-alt-icon"
                   alt=""
-                  src="./public/bxuser.svg"
+                  src="{{ url_for('static', filename= 'public/bxuser.svg') }}"
                 />
               </div>
               <div class="text-container">
@@ -119,7 +124,7 @@
                 <img
                   class="bx-calendar-alt-icon"
                   alt=""
-                  src="./public/bxchat.svg"
+                  src="{{ url_for('static', filename= 'public/bxchat.svg') }}"
                 />
               </div>
               <div class="text-container">
@@ -131,7 +136,7 @@
                 <img
                   class="bx-calendar-alt-icon"
                   alt=""
-                  src="./public/bxfile.svg"
+                  src="{{ url_for('static', filename= 'public/bxfile.svg') }}"
                 />
               </div>
               <div class="text-container">
@@ -143,7 +148,7 @@
                 <img
                   class="bx-calendar-alt-icon"
                   alt=""
-                  src="./public/bxlock.svg"
+                  src="{{ url_for('static', filename= 'public/bxlock.svg') }}"
                 />
               </div>
               <div class="text-container">
@@ -155,7 +160,7 @@
                 <img
                   class="bx-calendar-alt-icon"
                   alt=""
-                  src="./public/bxfileblank.svg"
+                  src="{{ url_for('static', filename= 'public/bxfileblank.svg') }}"
                 />
               </div>
               <div class="text-container">
@@ -187,7 +192,7 @@
                 <div class="frame-parent60">
                   <div class="parent1">
                     <div class="div107">4:35</div>
-                    <img class="chart-icon2" alt="" src="./public/chart2.svg" />
+                    <img class="chart-icon2" alt="" src="{{ url_for('static', filename= 'public/chart2.svg') }}" />
                   </div>
                   <div class="push-ups-container">
                     <div class="push-ups2">Push ups</div>
@@ -209,7 +214,7 @@
                     <img
                       class="frame-child6"
                       alt=""
-                      src="./public/vector-2.svg"
+                      src="{{ url_for('static', filename= 'public/vector-2.svg') }}"
                     />
                   </div>
                   <div class="progress-graph">
@@ -228,7 +233,7 @@
                           <img
                             class="graph-elements-item"
                             alt=""
-                            src="./public/ellipse-32.svg"
+                            src="{{ url_for('static', filename= 'public/ellipse-32.svg') }}"
                           />
                         </div>
                         <div class="graph-elements1">
@@ -237,7 +242,7 @@
                           <img
                             class="graph-elements-item"
                             alt=""
-                            src="./public/ellipse-32.svg"
+                            src="{{ url_for('static', filename= 'public/ellipse-32.svg') }}"
                           />
                         </div>
                         <div class="graph-elements2">
@@ -246,7 +251,7 @@
                           <img
                             class="graph-elements-item"
                             alt=""
-                            src="./public/ellipse-32.svg"
+                            src="{{ url_for('static', filename= 'public/ellipse-32.svg') }}"
                           />
                         </div>
                         <div class="graph-elements3">
@@ -255,7 +260,7 @@
                           <img
                             class="graph-elements-item"
                             alt=""
-                            src="./public/ellipse-321.svg"
+                            src="{{ url_for('static', filename= 'public/ellipse-321.svg') }}"
                           />
                         </div>
                         <div class="graph-elements4">
@@ -264,7 +269,7 @@
                           <img
                             class="graph-elements-item"
                             alt=""
-                            src="./public/ellipse-32.svg"
+                            src="{{ url_for('static', filename= 'public/ellipse-32.svg') }}"
                           />
                         </div>
                         <div class="graph-elements5">
@@ -273,7 +278,7 @@
                           <img
                             class="graph-elements-item"
                             alt=""
-                            src="./public/ellipse-32.svg"
+                            src="{{ url_for('static', filename= 'public/ellipse-32.svg') }}"
                           />
                         </div>
                         <div class="graph-elements1">
@@ -282,7 +287,7 @@
                           <img
                             class="graph-elements-item"
                             alt=""
-                            src="./public/ellipse-32.svg"
+                            src="{{ url_for('static', filename= 'public/ellipse-32.svg') }}"
                           />
                         </div>
                       </div>
@@ -397,14 +402,14 @@
                       <img
                         class="material-symbolskeyboard-doub-icon"
                         alt=""
-                        src="./public/materialsymbolskeyboarddoublearrowright.svg"
+                        src="{{ url_for('static', filename= 'public/materialsymbolskeyboarddoublearrowright.svg') }}"
                       />
                     </div>
                   </div>
                   <img
                     class="arrow-icon01-3-4"
                     alt=""
-                    src="./public/arrowicon01-3-4@2x.png"
+                    src="{{ url_for('static', filename= 'public/arrowicon01-3-4@2x.png') }}"
                   />
                 </div>
                 <div class="frame-parent68">
@@ -424,14 +429,14 @@
                       <img
                         class="material-symbolskeyboard-doub-icon"
                         alt=""
-                        src="./public/materialsymbolskeyboarddoublearrowright.svg"
+                        src="{{ url_for('static', filename= 'public/materialsymbolskeyboarddoublearrowright.svg') }}"
                       />
                     </div>
                   </div>
                   <img
                     class="arrow-icon01-2-3"
                     alt=""
-                    src="./public/arrowicon01-2-3@2x.png"
+                    src="{{ url_for('static', filename= 'public/arrowicon01-2-3@2x.png') }}"
                   />
                 </div>
                 <div class="frame-parent70">
@@ -451,14 +456,14 @@
                       <img
                         class="material-symbolskeyboard-doub-icon"
                         alt=""
-                        src="./public/materialsymbolskeyboarddoublearrowright.svg"
+                        src="{{ url_for('static', filename= 'public/materialsymbolskeyboarddoublearrowright.svg') }}"
                       />
                     </div>
                   </div>
                   <img
                     class="arrow-icon01-1-2"
                     alt=""
-                    src="./public/arrowicon01-1-2@2x.png"
+                    src="{{ url_for('static', filename= 'public/arrowicon01-1-2@2x.png') }}"
                   />
                 </div>
                 <div class="frame-parent70">
@@ -478,14 +483,14 @@
                       <img
                         class="material-symbolskeyboard-doub-icon"
                         alt=""
-                        src="./public/materialsymbolskeyboarddoublearrowright.svg"
+                        src="{{ url_for('static', filename= 'public/materialsymbolskeyboarddoublearrowright.svg') }}"
                       />
                     </div>
                   </div>
                   <img
                     class="arrow-icon01-1-2"
                     alt=""
-                    src="./public/arrowicon01-2-2@2x.png"
+                    src="{{ url_for('static', filename= 'public/arrowicon01-2-2@2x.png') }}"
                   />
                 </div>
               </div>
@@ -508,7 +513,7 @@
                 <img
                   class="logo-zenfit-112"
                   alt=""
-                  src="./public/logo-zenfit-13@2x.png"
+                  src="{{ url_for('static', filename= 'public/logo-zenfit-13@2x.png') }}"
                 />
               </div>
             </div>
@@ -550,16 +555,16 @@
             <img
               class="ellipse-icon20"
               alt=""
-              src="./public/ellipse2.svg"
+              src="{{ url_for('static', filename= 'public/ellipse2.svg') }}"
             /><img
               class="ellipse-icon20"
               alt=""
-              src="./public/ellipse2.svg"
+              src="{{ url_for('static', filename= 'public/ellipse2.svg') }}"
             /><img
               class="ellipse-icon20"
               alt=""
-              src="./public/ellipse2.svg"
-            /><img class="ellipse-icon20" alt="" src="./public/ellipse2.svg" />
+              src="{{ url_for('static', filename= 'public/ellipse2.svg') }}"
+            /><img class="ellipse-icon20" alt="" src="{{ url_for('static', filename= 'public/ellipse2.svg') }}" />
           </div>
         </div>
       </div>
@@ -576,7 +581,7 @@
                 <img
                   class="ic-actions-close-simple-icon"
                   alt=""
-                  src="./public/icactionsclosesimple.svg"
+                  src="{{ url_for('static', filename= 'public/icactionsclosesimple.svg') }}"
                 />
               </button>
             </div>
@@ -588,7 +593,7 @@
                       <img
                         class="basics-child8"
                         alt=""
-                        src="./public/rectangle-261@2x.png"
+                        src="{{ url_for('static', filename= 'public/rectangle-261@2x.png') }}"
                       />
                     </div>
                   </div>
@@ -613,23 +618,23 @@
                             <img
                               class="ic-actions-star-icon14"
                               alt=""
-                              src="./public/icactionsstar2.svg"
+                              src="{{ url_for('static', filename= 'public/icactionsstar2.svg') }}"
                             /><img
                               class="ic-actions-star-icon14"
                               alt=""
-                              src="./public/icactionsstar2.svg"
+                              src="{{ url_for('static', filename= 'public/icactionsstar2.svg') }}"
                             /><img
                               class="ic-actions-star-icon14"
                               alt=""
-                              src="./public/icactionsstar2.svg"
+                              src="{{ url_for('static', filename= 'public/icactionsstar2.svg') }}"
                             /><img
                               class="ic-actions-star-icon14"
                               alt=""
-                              src="./public/icactionsstar2.svg"
+                              src="{{ url_for('static', filename= 'public/icactionsstar2.svg') }}"
                             /><img
                               class="ic-actions-star-icon14"
                               alt=""
-                              src="./public/icactionsstar11.svg"
+                              src="{{ url_for('static', filename= 'public/icactionsstar11.svg') }}"
                             />
                           </div>
                         </div>
@@ -649,7 +654,7 @@
                           <img
                             class="ic-chevron-down-icon15"
                             alt=""
-                            src="./public/icchevrondown.svg"
+                            src="{{ url_for('static', filename= 'public/icchevrondown.svg') }}"
                           />
                         </div>
                       </div>
@@ -665,7 +670,7 @@
                       <img
                         class="basics-child8"
                         alt=""
-                        src="./public/rectangle-261@2x.png"
+                        src="{{ url_for('static', filename= 'public/rectangle-261@2x.png') }}"
                       />
                     </div>
                   </div>
@@ -690,23 +695,23 @@
                             <img
                               class="ic-actions-star-icon14"
                               alt=""
-                              src="./public/icactionsstar3.svg"
+                              src="{{ url_for('static', filename= 'public/icactionsstar3.svg') }}"
                             /><img
                               class="ic-actions-star-icon14"
                               alt=""
-                              src="./public/icactionsstar3.svg"
+                              src="{{ url_for('static', filename= 'public/icactionsstar3.svg') }}"
                             /><img
                               class="ic-actions-star-icon14"
                               alt=""
-                              src="./public/icactionsstar3.svg"
+                              src="{{ url_for('static', filename= 'public/icactionsstar3.svg') }}"
                             /><img
                               class="ic-actions-star-icon14"
                               alt=""
-                              src="./public/icactionsstar3.svg"
+                              src="{{ url_for('static', filename= 'public/icactionsstar3.svg') }}"
                             /><img
                               class="ic-actions-star-icon14"
                               alt=""
-                              src="./public/icactionsstar31.svg"
+                              src="{{ url_for('static', filename= 'public/icactionsstar31.svg') }}"
                             />
                           </div>
                         </div>
@@ -726,7 +731,7 @@
                           <img
                             class="ic-chevron-down-icon15"
                             alt=""
-                            src="./public/icchevrondown1.svg"
+                            src="{{ url_for('static', filename= 'public/icchevrondown1.svg') }}"
                           />
                         </div>
                       </div>
@@ -743,7 +748,7 @@
                 <img
                   class="ic-chevron-left-icon"
                   alt=""
-                  src="./public/icchevronleft.svg"
+                  src="{{ url_for('static', filename= 'public/icchevronleft.svg') }}"
                 /><b class="button10">Continue shopping</b></button
               ><button class="buttons7" id="popupbuttons1">
                 <b class="go-to-checkout">Go to Checkout</b>
@@ -760,12 +765,6 @@
     </div>
 
     <script>
-      var popupbuttons = document.getElementById("popupbuttons");
-      if (popupbuttons) {
-        popupbuttons.addEventListener("click", function (e) {
-          window.location.href = "./store-page.html";
-        });
-      }
       
       var popupbuttons1 = document.getElementById("popupbuttons1");
       if (popupbuttons1) {
@@ -780,27 +779,7 @@
           window.location.href = "/";
         });
       }
-      
-      var frameContainer3 = document.getElementById("frameContainer3");
-      if (frameContainer3) {
-        frameContainer3.addEventListener("click", function (e) {
-          window.location.href = "./store-page.html";
-        });
-      }
-      
-      var frameContainer4 = document.getElementById("frameContainer4");
-      if (frameContainer4) {
-        frameContainer4.addEventListener("click", function (e) {
-          window.location.href = "./zen-ai-page.html";
-        });
-      }
-      
-      var icons = document.getElementById("icons");
-      if (icons) {
-        icons.addEventListener("click", function (e) {
-          window.location.href = "profile-page.html";
-        });
-      }
+    
       
       var icons1 = document.getElementById("icons1");
       if (icons1) {

@@ -221,14 +221,6 @@ def logout():
     # Redirect user to login form
     return redirect("/")
 
-@app.route("/profile/<userid>")
-@login_required
-def profile(userid):
-    if session["user_id"] == int(userid):
-        return render_template("profile.html")
-    else:
-        return redirect("/")
-
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 # function to check file extension
@@ -383,3 +375,7 @@ def checkout():
 @app.route("/AI",methods=["GET","POST"])
 def ai():
     return render_template("zen-ai-page.html")
+
+@app.route("/profile",methods=["GET","POST"])
+def profile():
+    return render_template("profile-page.html")

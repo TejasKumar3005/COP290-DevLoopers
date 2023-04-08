@@ -82,17 +82,21 @@
         {% else %}
         <div class="navigation-a-inner4">
           <div class="icons-parent3">
-            <img
+            <a href="/profile">
+              <img
               class="icons18"
               alt=""
               src="{{ url_for('static', filename='public/icons6.svg') }}"
               id="icons"
-            /><img
+            />
+            </a>
+            <a href="/checkout">
+              <img
               class="icons19"
               alt=""
               src="{{ url_for('static', filename='public/icons5.svg') }}"
               id="icons1"
-            />
+            /></a>
           </div>
         </div>
         {% endif %}

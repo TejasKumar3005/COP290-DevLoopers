@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <meta name="viewport" content="initial-scfale=1, width=device-width" />
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/global.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/index.css') }}" />
     <link
@@ -82,17 +82,19 @@
         {% else %}
         <div class="navigation-a-inner4">
           <div class="icons-parent3">
-            <img
+            <a href="/profile">
+              <img
               class="icons18"
               alt=""
               src="{{ url_for('static', filename='public/icons6.svg') }}"
               id="icons"
-            /><img
+            /></a>
+            <a href="/checkout"><img
               class="icons19"
               alt=""
               src="{{ url_for('static', filename='public/icons5.svg') }}"
               id="icons1"
-            />
+            /></a>
           </div>
         </div>
         {% endif %}
