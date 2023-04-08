@@ -98,60 +98,40 @@
                     Please choose your address
                   </div>
                 </div>
+                {% for address in addresses %}
+                
+                <label><input type="radio" name="address" value="{{ address.id }}">{{ address.street }} {{ address.city }} {{ address.state }} {{ address.zip }}</label>
+                {% endfor %}
                 <div class="frame-parent35">
                   <div class="inputs-and-selects-parent">
                     <div class="inputs-and-selects-wrapper">
-                      <div class="first-name">Address</div>
+                      <div class="first-name">Street</div>
                       <div class="rectangle-group">
-                        <div class="group-child2"></div>
-                        <input class="email-addess" type="text" />
+                        <input class="group-child2" name="street">
                       </div>
                     </div>
                     <div class="inputs-and-selects5">
                       <div class="rectangle-parent2">
-                        <input class="group-child3" type="text" /><input
-                          class="choose-a-state"
-                          type="text"
-                        /><img
+                        <input class="group-child3" type="text" name="state"/><img
                           class="ic-chevron-top-bottom-icon"
                           alt=""
                           src="{{ url_for('static', filename='public/icchevrontopbottom.svg') }}"
                         />
                       </div>
-                      <div class="first-name">State / Country</div>
+                      <div class="first-name">State</div>
                     </div>
                   </div>
                   <div class="inputs-and-selects-group">
                     <div class="inputs-and-selects-wrapper">
-                      <div class="first-name">Last name</div>
+                      <div class="first-name">City</div>
                       <div class="rectangle-group">
-                        <input class="rectangle-input" type="text" /><input
-                          class="email-addess"
-                          type="text"
-                        />
+                        <input class="rectangle-input" type="text" name="city"/>
                       </div>
                     </div>
                     <div class="inputs-and-selects-wrapper">
-                      <div class="first-name">Phone number</div>
+                      <div class="first-name">ZIP</div>
                       <div class="rectangle-group">
-                        <input class="rectangle-input" type="text" /><input
-                          class="email-addess"
-                          type="text"
-                        />
-                      </div>
-                    </div>
-                    <div class="inputs-and-selects-wrapper">
-                      <div class="first-name">Town / City</div>
-                      <div class="rectangle-group">
-                        <div class="group-child2"></div>
-                        <input class="email-addess" type="text" />
-                      </div>
-                    </div>
-                    <div class="inputs-and-selects-wrapper">
-                      <div class="first-name">ZIP/Postal code</div>
-                      <div class="rectangle-group">
-                        <div class="group-child2"></div>
-                        <input class="email-addess" type="text" />
+                        <input class="rectangle-input" type="text" name="zip"/>
                       </div>
                     </div>
                   </div>

@@ -328,6 +328,7 @@ def product(productid):
 @app.route("/checkout",methods=["GET","POST"])
 @login_required
 def checkout():
+
     with connection.cursor() as cursor:
         sql = """SELECT * FROM `order` WHERE `order_status`=%s AND `user_id`=%s"""
         cursor.execute(sql,(0,session["user_id"]))
@@ -336,21 +337,32 @@ def checkout():
     
     if request.method == "POST":
         with connection.cursor() as cursor:
-            sql = """UPDATE `order` SET `order_status`=1 WHERE `id`=%s"""
-            cursor.execute(sql,(cartid))
+            if ("address") in request.form:
+                addressid = request.form.get("address")
+            else:
+                sql = f"INSERT INTO `address` (street,city,state,zip,user_id) VALUES (%s,%s,%s,%s,%s)"
+                cursor.execute(sql, (request.form.get("street"),request.form.get("city"),request.form.get("state"),request.form.get("zip"),session["user_id"]))
+                connection.commit()   
+                addressid = cursor.lastrowid
+            
+            sql = """UPDATE `order` SET `order_status`=1, `address_id`=%s WHERE `id`=%s """
+            cursor.execute(sql,(addressid,cartid))
             connection.commit()
 
             sql = f"INSERT INTO `order` (order_status,user_id) VALUES (%s,%s)"
             cursor.execute(sql, (0,session["user_id"]))
             connection.commit()
+
         return redirect("/")
     else:
         with connection.cursor() as cursor:
             sql = """SELECT * FROM `order_product` WHERE `order_id`=%s"""
             cursor.execute(sql,(cartid))
             cart_products = cursor.fetchall()
+
         products_list = []
         net_price = 0
+
         with connection.cursor() as cursor:
             for cart_product in cart_products:
                 sql = """SELECT * FROM `product` WHERE `id`=%s"""
@@ -359,8 +371,14 @@ def checkout():
                 actual_product["quantity"] = cart_product["quantity"]
                 products_list.append(actual_product)
                 net_price += cart_product["quantity"]*actual_product["product_price"]
-        print(net_price)
-        return render_template("check-out-page.html",products=products_list,net=net_price)
+
+            sql = """SELECT * FROM `address` WHERE `user_id`=%s"""
+            cursor.execute(sql,(session["user_id"]))
+            addresses = cursor.fetchall()
+
+        print(addresses)
+
+        return render_template("check-out-page.html",products=products_list,net=net_price,addresses=addresses)
 
 @app.route("/AI",methods=["GET","POST"])
 def ai():
