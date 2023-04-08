@@ -2,3 +2,4 @@ flask
 pymysql
 flask_session
 boto3
+requests
