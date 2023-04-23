@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
-    <link rel="stylesheet" href="./global.css" />
-    <link rel="stylesheet" href="./community-page.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/global1.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/community-page.css') }}" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
@@ -52,17 +52,17 @@
                 <img
                   class="logo-zenfit-18"
                   alt=""
-                  src="./public/logo-zenfit-1@2x.png"
+                  src="{{ url_for('static', filename= 'public1/logo-zenfit-1@2x.png') }}"
                 />
               </div>
             </div>
           </div>
         </a>
         <div class="frame-parent48">
-          <a class="store-wrapper2" href="./store-page.html" id="frameLink1">
+          <a class="store-wrapper2" href="./store" id="frameLink1">
             <div class="store4">Store</div>
           </a>
-          <a class="store-wrapper2" href="./zen-ai-page.html" id="frameLink2">
+          <a class="store-wrapper2" href="./AI" id="frameLink2">
             <div class="store4">Zen AI</div>
           </a>
           <div class="about-wrapper2">
@@ -70,18 +70,18 @@
           </div>
           <button class="frame-button">
             <div class="prozen4">ProZen</div>
-            <img class="vector-icon16" alt="" src="./public/vector10.svg" />
+            <img class="vector-icon16" alt="" src="{{ url_for('static', filename= 'public1/vector10.svg') }}" />
           </button>
         </div>
         <div class="navigation-a-inner2">
           <div class="icons-parent1">
             <a class="icons10" id="icons">
-              <img class="vector-icon17" alt="" src="./public/vector13.svg" />
+              <img class="vector-icon17" alt="" src="{{ url_for('static', filename= 'public1/vector13.svg') }}" />
 
-              <img class="vector-icon18" alt="" src="./public/vector14.svg" />
+              <img class="vector-icon18" alt="" src="{{ url_for('static', filename= 'public1/vector14.svg') }}" />
             </a>
             <button class="icons11" id="icons1">
-              <img class="frame-icon" alt="" src="./public/frame-20211.svg" />
+              <img class="frame-icon" alt="" src="{{ url_for('static', filename= 'public1/frame-20211.svg') }}" />
             </button>
           </div>
         </div>
@@ -99,7 +99,7 @@
             <img
               class="ic-chevron-down-icon5"
               alt=""
-              src="./public/icchevrondown711.svg"
+              src="{{ url_for('static', filename= 'public1/icchevrondown711.svg') }}"
             />
           </div>
           <div class="line-div"></div>
@@ -112,7 +112,7 @@
           <img
             class="ic-actions-search-icon2"
             alt=""
-            src="./public/icactionssearch1.svg"
+            src="{{ url_for('static', filename= 'public1/icactionssearch1.svg') }}"
           />
         </form>
       </div>
@@ -121,18 +121,18 @@
       </div>
       <div class="blogfeatured-posts">
         <div class="blogpostlarge-parent">
-          <a class="blogpostlarge" href="./post-page.html">
+          <a class="blogpostlarge" href="./post">
             <div class="basics13">
               <img
                 class="basics-child9"
                 alt=""
-                src="./public/rectangle-262@2x.png"
+                src="{{ url_for('static', filename= 'public1/rectangle-262@2x.png') }}"
               />
             </div>
             <img
               class="blogpostlarge-child"
               alt=""
-              src="./public/rectangle-342.svg"
+              src="{{ url_for('static', filename= 'public1/rectangle-342.svg') }}"
             />
 
             <div class="this-is-a-space-for-your-blog-parent">
@@ -146,7 +146,7 @@
                     <img
                       class="avatars-icon1"
                       alt=""
-                      src="./public/avatars1.svg"
+                      src="{{ url_for('static', filename= 'public1/avatars1.svg') }}"
                     />
 
                     <div class="author7">Author</div>
@@ -159,18 +159,18 @@
               <div class="tag">Tag</div>
             </div>
           </a>
-          <a class="blogpostlarge1" href="./post-page.html">
+          <a class="blogpostlarge1" href="./post">
             <div class="basics13">
               <img
                 class="basics-child9"
                 alt=""
-                src="./public/rectangle-263@2x.png"
+                src="{{ url_for('static', filename= 'public1/rectangle-263@2x.png') }}"
               />
             </div>
             <img
               class="blogpostlarge-child"
               alt=""
-              src="./public/rectangle-343.svg"
+              src="{{ url_for('static', filename= 'public1/rectangle-343.svg') }}"
             />
 
             <div class="this-is-a-space-for-your-blog-parent">
@@ -184,7 +184,7 @@
                     <img
                       class="avatars-icon1"
                       alt=""
-                      src="./public/avatars2.svg"
+                      src="{{ url_for('static', filename= 'public1/avatars2.svg') }}"
                     />
 
                     <div class="author7">Author</div>
@@ -197,18 +197,18 @@
               <div class="tag">Tag</div>
             </div>
           </a>
-          <a class="blogpostlarge2" href="./post-page.html">
+          <a class="blogpostlarge2" href="./post">
             <div class="basics13">
               <img
                 class="basics-child9"
                 alt=""
-                src="./public/rectangle-264@2x.png"
+                src="{{ url_for('static', filename= 'public1/rectangle-264@2x.png') }}"
               />
             </div>
             <img
               class="blogpostlarge-child"
               alt=""
-              src="./public/rectangle-344.svg"
+              src="{{ url_for('static', filename= 'public1/rectangle-344.svg') }}"
             />
 
             <div class="this-is-a-space-for-your-blog-parent">
@@ -222,7 +222,7 @@
                     <img
                       class="avatars-icon1"
                       alt=""
-                      src="./public/avatars3.svg"
+                      src="{{ url_for('static', filename= 'public1/avatars3.svg') }}"
                     />
 
                     <div class="author7">Author</div>
@@ -239,7 +239,7 @@
       </div>
       <div class="bloglist-widgets">
         <div class="blogpostmedium-parent">
-          <a class="blogpostmedium" href="./post-page.html">
+          <a class="blogpostmedium" href="./post">
             <div class="basics16">
               <div class="basics-child12"></div>
             </div>
@@ -258,7 +258,7 @@
               </div>
             </div>
           </a>
-          <a class="blogpostmedium" href="./post-page.html">
+          <a class="blogpostmedium" href="./post">
             <div class="basics16">
               <div class="basics-child12"></div>
             </div>
@@ -296,7 +296,7 @@
               </div>
             </div>
           </a>
-          <a class="blogpostmedium3" href="./post-page.html">
+          <a class="blogpostmedium3" href="./post">
             <div class="basics16">
               <div class="basics-child12"></div>
             </div>
@@ -317,7 +317,7 @@
           </a>
         </div>
         <div class="blogpostmedium-parent">
-          <a class="blogpostmedium" href="./post-page.html">
+          <a class="blogpostmedium" href="./post">
             <div class="basics16">
               <div class="basics-child12"></div>
             </div>
@@ -336,7 +336,7 @@
               </div>
             </div>
           </a>
-          <a class="blogpostmedium" href="./post-page.html">
+          <a class="blogpostmedium" href="./post">
             <div class="basics16">
               <div class="basics-child12"></div>
             </div>
@@ -355,7 +355,7 @@
               </div>
             </div>
           </a>
-          <a class="blogpostmedium" href="./post-page.html">
+          <a class="blogpostmedium" href="./post">
             <div class="basics16">
               <div class="basics-child12"></div>
             </div>
@@ -374,7 +374,7 @@
               </div>
             </div>
           </a>
-          <a class="blogpostmedium3" href="./post-page.html">
+          <a class="blogpostmedium3" href="./post">
             <div class="basics16">
               <div class="basics-child12"></div>
             </div>
@@ -395,7 +395,7 @@
           </a>
         </div>
         <div class="blogpostmedium-parent">
-          <a class="blogpostmedium" href="./post-page.html">
+          <a class="blogpostmedium" href="./post">
             <div class="basics16">
               <div class="basics-child12"></div>
             </div>
@@ -414,7 +414,7 @@
               </div>
             </div>
           </a>
-          <a class="blogpostmedium" href="./post-page.html">
+          <a class="blogpostmedium" href="./post">
             <div class="basics16">
               <div class="basics-child12"></div>
             </div>
@@ -433,7 +433,7 @@
               </div>
             </div>
           </a>
-          <a class="blogpostmedium" href="./post-page.html">
+          <a class="blogpostmedium" href="./post">
             <div class="basics16">
               <div class="basics-child12"></div>
             </div>
@@ -452,7 +452,7 @@
               </div>
             </div>
           </a>
-          <a class="blogpostmedium3" href="./post-page.html">
+          <a class="blogpostmedium3" href="./post">
             <div class="basics16">
               <div class="basics-child12"></div>
             </div>
@@ -498,7 +498,7 @@
                 <img
                   class="logo-zenfit-18"
                   alt=""
-                  src="./public/logo-zenfit-12@2x.png"
+                  src="{{ url_for('static', filename= 'public1/logo-zenfit-12@2x.png') }}"
                 />
               </div>
             </div>
@@ -537,13 +537,13 @@
           </div>
           <div class="follow-us-parent2">
             <div class="follow-us4">Follow us:</div>
-            <img class="ellipse-icon16" alt="" src="./public/ellipse1.svg" />
+            <img class="ellipse-icon16" alt="" src="{{ url_for('static', filename= 'public1/ellipse1.svg') }}" />
 
-            <img class="ellipse-icon16" alt="" src="./public/ellipse1.svg" />
+            <img class="ellipse-icon16" alt="" src="{{ url_for('static', filename= 'public1/ellipse1.svg') }}" />
 
-            <img class="ellipse-icon16" alt="" src="./public/ellipse1.svg" />
+            <img class="ellipse-icon16" alt="" src="{{ url_for('static', filename= 'public1/ellipse1.svg') }}" />
 
-            <img class="ellipse-icon16" alt="" src="./public/ellipse1.svg" />
+            <img class="ellipse-icon16" alt="" src="{{ url_for('static', filename= 'public1/ellipse1.svg') }}" />
           </div>
         </div>
       </div>
@@ -560,7 +560,7 @@
                 <img
                   class="ic-actions-close-simple-icon"
                   alt=""
-                  src="./public/icactionsclosesimple.svg"
+                  src="{{ url_for('static', filename= 'public1/icactionsclosesimple.svg') }}"
                 />
               </button>
             </div>
@@ -572,7 +572,7 @@
                       <img
                         class="basics-child2"
                         alt=""
-                        src="./public/rectangle-2611@2x.png"
+                        src="{{ url_for('static', filename= 'public1/rectangle-2611@2x.png') }}"
                       />
                     </div>
                   </div>
@@ -597,31 +597,31 @@
                             <img
                               class="ic-actions-star-icon"
                               alt=""
-                              src="./public/icactionsstar21.svg"
+                              src="{{ url_for('static', filename= 'public1/icactionsstar21.svg') }}"
                             />
 
                             <img
                               class="ic-actions-star-icon"
                               alt=""
-                              src="./public/icactionsstar21.svg"
+                              src="{{ url_for('static', filename= 'public1/icactionsstar21.svg') }}"
                             />
 
                             <img
                               class="ic-actions-star-icon"
                               alt=""
-                              src="./public/icactionsstar21.svg"
+                              src="{{ url_for('static', filename= 'public1/icactionsstar21.svg') }}"
                             />
 
                             <img
                               class="ic-actions-star-icon"
                               alt=""
-                              src="./public/icactionsstar21.svg"
+                              src="{{ url_for('static', filename= 'public1/icactionsstar21.svg') }}"
                             />
 
                             <img
                               class="ic-actions-star-icon"
                               alt=""
-                              src="./public/icactionsstar111.svg"
+                              src="{{ url_for('static', filename= 'public1/icactionsstar111.svg') }}"
                             />
                           </div>
                         </div>
@@ -641,7 +641,7 @@
                           <img
                             class="ic-chevron-down-icon"
                             alt=""
-                            src="./public/icchevrondown7.svg"
+                            src="{{ url_for('static', filename= 'public1/icchevrondown7.svg') }}"
                           />
                         </div>
                       </div>
@@ -657,7 +657,7 @@
                       <img
                         class="basics-child2"
                         alt=""
-                        src="./public/rectangle-2611@2x.png"
+                        src="{{ url_for('static', filename= 'public1/rectangle-2611@2x.png') }}"
                       />
                     </div>
                   </div>
@@ -682,31 +682,31 @@
                             <img
                               class="ic-actions-star-icon"
                               alt=""
-                              src="./public/icactionsstar3.svg"
+                              src="{{ url_for('static', filename= 'public1/icactionsstar3.svg') }}"
                             />
 
                             <img
                               class="ic-actions-star-icon"
                               alt=""
-                              src="./public/icactionsstar3.svg"
+                              src="{{ url_for('static', filename= 'public1/icactionsstar3.svg') }}"
                             />
 
                             <img
                               class="ic-actions-star-icon"
                               alt=""
-                              src="./public/icactionsstar3.svg"
+                              src="{{ url_for('static', filename= 'public1/icactionsstar3.svg') }}"
                             />
 
                             <img
                               class="ic-actions-star-icon"
                               alt=""
-                              src="./public/icactionsstar3.svg"
+                              src="{{ url_for('static', filename= 'public1/icactionsstar3.svg') }}"
                             />
 
                             <img
                               class="ic-actions-star-icon"
                               alt=""
-                              src="./public/icactionsstar31.svg"
+                              src="{{ url_for('static', filename= 'public1/icactionsstar31.svg') }}"
                             />
                           </div>
                         </div>
@@ -726,7 +726,7 @@
                           <img
                             class="ic-chevron-down-icon"
                             alt=""
-                            src="./public/icchevrondown11.svg"
+                            src="{{ url_for('static', filename= 'public1/icchevrondown11.svg') }}"
                           />
                         </div>
                       </div>
@@ -743,7 +743,7 @@
                 <img
                   class="ic-chevron-left-icon"
                   alt=""
-                  src="./public/icchevronleft.svg"
+                  src="{{ url_for('static', filename= 'public1/icchevronleft.svg') }}"
                 />
 
                 <b class="button6">Continue shopping</b>
@@ -786,14 +786,14 @@
       var popupbuttons = document.getElementById("popupbuttons");
       if (popupbuttons) {
         popupbuttons.addEventListener("click", function (e) {
-          window.location.href = "./store-page.html";
+          window.location.href = "./store";
         });
       }
       
       var popupbuttons1 = document.getElementById("popupbuttons1");
       if (popupbuttons1) {
         popupbuttons1.addEventListener("click", function (e) {
-          window.location.href = "./check-out-page.html";
+          window.location.href = "./checkout";
         });
       }
       var scrollAnimElements = document.querySelectorAll("[data-animate-on-scroll]");
@@ -826,21 +826,21 @@
       var frameLink1 = document.getElementById("frameLink1");
       if (frameLink1) {
         frameLink1.addEventListener("click", function (e) {
-          window.location.href = "./store-page.html";
+          window.location.href = "./store";
         });
       }
       
       var frameLink2 = document.getElementById("frameLink2");
       if (frameLink2) {
         frameLink2.addEventListener("click", function (e) {
-          window.location.href = "./zen-ai-page.html";
+          window.location.href = "./AI";
         });
       }
       
       var icons = document.getElementById("icons");
       if (icons) {
         icons.addEventListener("click", function (e) {
-          window.location.href = "./profile-page.html";
+          window.location.href = "./profile";
         });
       }
       

@@ -3,6 +3,7 @@ import pymysql
 from help import login_required,is_logged_in,upload_file_to_s3
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_session import Session
+import random
 
 app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -140,9 +141,14 @@ def selectuserbyid(id):
 
 @app.route('/')
 def index():
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `product`"""
+        cursor.execute(sql)
+        products = cursor.fetchall()
+    products = random.sample(products,4)
     if is_logged_in():
-        return render_template('index.html', logged=1,userid=session["user_id"])
-    return render_template('index.html', logged=0)
+        return render_template('index.html', logged=1,userid=session["user_id"],products=products)
+    return render_template('index.html', logged=0,products=products)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -463,4 +469,10 @@ def history():
 @login_required
 def detailpost():
     return render_template("post-page.html")
+
+@app.route("/community",methods=["GET","POST"])
+@login_required
+def comm():
+    return render_template("community-page.html")
+
 
