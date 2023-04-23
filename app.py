@@ -124,6 +124,20 @@ def setup():
 
 setup()
 
+def selectuserbyusername(username):
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `user` WHERE `username`=%s"""
+        cursor.execute(sql,username)
+        rows = cursor.fetchall()
+    return rows
+
+def selectuserbyid(id):
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `user` WHERE `id`=%s"""
+        cursor.execute(sql,id)
+        rows = cursor.fetchall()
+    return rows
+
 @app.route('/')
 def index():
     if is_logged_in():
@@ -147,12 +161,8 @@ def login():
         # Ensure password was submitted
         elif not request.form.get("password"):
             return "sad life"
-
-        # Query database for username
-        with connection.cursor() as cursor:
-            sql = """SELECT * FROM `user` WHERE `username`=%s"""
-            cursor.execute(sql,request.form.get("username"))
-            rows = cursor.fetchall()
+        
+        rows = selectuserbyusername(request.form.get("username"))
 
         # Ensure username exists and password is correct
         if len(rows) != 1 or not check_password_hash(rows[0]["password"], request.form.get("password")):
@@ -181,11 +191,8 @@ def register():
         email = request.form.get("email")
         confirmation = request.form.get("confirmation")
         hash = generate_password_hash(password)
-
-        with connection.cursor() as cursor:
-            sql = """SELECT * FROM `user` WHERE `username`=%s"""
-            cursor.execute(sql,username)
-            rows = cursor.fetchall()
+        
+        rows = selectuserbyusername(username)
 
         if rows or not username:
             return "name exists or empty"
@@ -227,10 +234,6 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 def allowed_file(filename):
     return '.' in filename and \
         filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-@app.route("/post",methods=["GET"])
-def post():
-    return render_template("post.html")
 
 @app.route("/upload", methods=["POST"])
 def create():
@@ -440,5 +443,24 @@ def ai():
     return render_template("zen-ai-page.html")
 
 @app.route("/profile",methods=["GET","POST"])
+@login_required
 def profile():
     return render_template("profile-page.html")
+
+@app.route("/user",methods=["GET","POST"])
+@login_required
+def user():
+    rows = selectuserbyid(session["user_id"])
+    print(rows)
+    return render_template("user-page.html",user=rows[0])
+
+@app.route("/order-history",methods=["GET","POST"])
+@login_required
+def history():
+    return render_template("order-history-page.html")
+
+@app.route("/post",methods=["GET","POST"])
+@login_required
+def detailpost():
+    return render_template("post-page.html")
+

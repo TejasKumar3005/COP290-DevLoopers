@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/global1.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/order-history-page.css') }}" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Open Sans:wght@400&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Itim:wght@400&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM Sans:wght@400;700&display=swap"
+    />
+  </head>
+  <body>
+    <div class="order-history-page">
+      <div class="navigation-a3">
+        <div class="logo-wrapper1">
+          <div class="logo6" id="logoContainer">
+            <div class="logo-inner5">
+              <div class="logo-zenfit-1-wrapper4">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="frame-parent30">
+          <div class="comunity-frame" id="frameContainer3">
+            <div class="store3">Store</div>
+          </div>
+          <div class="comunity-frame" id="frameContainer4">
+            <div class="store3">Zen AI</div>
+          </div>
+          <div class="about-wrapper1">
+            <div class="store3">About</div>
+          </div>
+          <div class="prozen-parent1">
+            <div class="store3">ProZen</div>
+          </div>
+        </div>
+        <div class="navigation-a-inner1">
+          <div class="icons-container">
+            <button class="icons8" id="icons">
+              <img class="vector-icon14" alt="" src="{{ url_for('static', filename= 'public1/vector6.svg') }}" />
+
+              <img class="vector-icon15" alt="" src="{{ url_for('static', filename= 'public1/vector7.svg') }}" />
+            </button>
+            <button class="icons9" id="icons1">
+              <img class="icons-inner" alt="" src="{{ url_for('static', filename= 'public1/frame-2021.svg') }}" />
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="menu-drawer-group">
+        <div class="menu-drawer1">
+          <div class="apps-pages1">
+            <div class="listitem6" id="listItemContainer">
+              <div class="container42">
+                <img
+                  class="bx-calendar-alt-icon1"
+                  alt=""
+                  src="{{ url_for('static', filename= 'public1/bxcalendaralt.svg') }}"
+                />
+              </div>
+              <div class="text-container6">
+                <div class="fitness-board1">Fitness Board</div>
+              </div>
+            </div>
+            <div class="listitem7" id="listItemContainer1">
+              <div class="container42">
+                <img
+                  class="bx-calendar-alt-icon1"
+                  alt=""
+                  src="{{ url_for('static', filename= 'public1/bxuser.svg') }}"
+                />
+              </div>
+              <div class="text-container6">
+                <div class="fitness-board1">User</div>
+              </div>
+            </div>
+            <div class="listitem8">
+              <div class="container42">
+                <img
+                  class="bx-calendar-alt-icon1"
+                  alt=""
+                  src="{{ url_for('static', filename= 'public1/bxchat.svg') }}"
+                />
+              </div>
+              <div class="text-container6">
+                <div class="fitness-board1">Chat</div>
+              </div>
+            </div>
+            <div class="listitem9">
+              <div class="container42">
+                <img
+                  class="bx-calendar-alt-icon1"
+                  alt=""
+                  src="{{ url_for('static', filename= 'public1/bxfile.svg') }}"
+                />
+              </div>
+              <div class="text-container6">
+                <div class="fitness-board1">Order History</div>
+              </div>
+            </div>
+            <div class="listitem8">
+              <div class="container42">
+                <img
+                  class="bx-calendar-alt-icon1"
+                  alt=""
+                  src="{{ url_for('static', filename= 'public1/bxlock.svg') }}"
+                />
+              </div>
+              <div class="text-container6">
+                <div class="subscription1">Subscription</div>
+              </div>
+            </div>
+            <div class="listitem8">
+              <div class="container42">
+                <img
+                  class="bx-calendar-alt-icon1"
+                  alt=""
+                  src="{{ url_for('static', filename= 'public1/bxfileblank.svg') }}"
+                />
+              </div>
+              <div class="text-container6">
+                <div class="fitness-board1">Your Posts</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="navigationsbreadcrumbs-parent">
+          <div class="navigationsbreadcrumbs1">
+          </div>
+          <div class="frame-parent31" id="frameContainer50">
+            <div class="basics-frame">
+              <div class="basics8">
+                <img
+                  class="basics-child4"
+                  alt=""
+                  src="{{ url_for('static', filename= 'public1/rectangle-261@2x.png') }}"
+                />
+              </div>
+            </div>
+            <div class="frame-parent32">
+              <div class="frame-parent33">
+                <div class="product-title-container">
+                  <div class="product-title2">Product title</div>
+                  <div class="space-for-a">
+                    Space for a small product description
+                  </div>
+                </div>
+                <div class="ic-actions-star-container">
+                  <img
+                    class="ic-actions-star-icon10"
+                    alt=""
+                    src="{{ url_for('static', filename= 'public1/icactionsstar.svg') }}"
+                  />
+
+                  <img
+                    class="ic-actions-star-icon10"
+                    alt=""
+                    src="{{ url_for('static', filename= 'public1/icactionsstar.svg') }}"
+                  />
+
+                  <img
+                    class="ic-actions-star-icon10"
+                    alt=""
+                    src="{{ url_for('static', filename= 'public1/icactionsstar.svg') }}"
+                  />
+
+                  <img
+                    class="ic-actions-star-icon10"
+                    alt=""
+                    src="{{ url_for('static', filename= 'public1/icactionsstar.svg') }}"
+                  />
+
+                  <img
+                    class="ic-actions-star-icon10"
+                    alt=""
+                    src="{{ url_for('static', filename= 'public1/icactionsstar1.svg') }}"
+                  />
+                </div>
+              </div>
+              <div class="group-parent1">
+                <div class="brand-container">
+                  <div class="delivery">Brand</div>
+                  <div class="nike2">Nike</div>
+                </div>
+                <div class="size-container">
+                  <div class="delivery">Size</div>
+                  <div class="nike2">9</div>
+                </div>
+                <div class="delivery-parent">
+                  <div class="delivery">Delivery</div>
+                  <div class="nike2">Mumbai</div>
+                </div>
+                <div class="number-parent">
+                  <div class="delivery">Number</div>
+                  <div class="nike2">1 pcs</div>
+                </div>
+              </div>
+            </div>
+            <div class="group-parent2">
+              <div class="usd-parent">
+                <div class="usd5">36.99 USD</div>
+                <div class="div27">48.56</div>
+              </div>
+              <div class="free-shipping-parent">
+                <div class="free-shipping">Free Shipping</div>
+                <div class="delivery-in-1">Delivery in 1 day</div>
+              </div>
+              <div class="frame-wrapper4">
+                <div class="buttons-container">
+                  <div class="buttons11" id="buttonsContainer6">
+                    <b class="men">Buy Again</b>
+                    <img
+                      class="ic-actions-heart-icon"
+                      alt=""
+                      src="{{ url_for('static', filename= 'public1/icchevronright1.svg') }}"
+                    />
+                  </div>
+                  <div class="buttons12">
+                    <img class="ic-actions-heart-icon" alt="" />
+
+                    <b class="men">Order Details</b>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="frame-parent31" id="frameContainer60">
+            <div class="basics-frame">
+              <div class="basics8">
+                <img
+                  class="basics-child4"
+                  alt=""
+                  src="{{ url_for('static', filename= 'public1/rectangle-261@2x.png') }}"
+                />
+              </div>
+            </div>
+            <div class="frame-parent32">
+              <div class="frame-parent33">
+                <div class="product-title-container">
+                  <div class="product-title2">Product title</div>
+                  <div class="space-for-a">
+                    Space for a small product description
+                  </div>
+                </div>
+                <div class="ic-actions-star-container">
+                  <img
+                    class="ic-actions-star-icon10"
+                    alt=""
+                    src="{{ url_for('static', filename= 'public1/icactionsstar.svg') }}"
+                  />
+
+                  <img
+                    class="ic-actions-star-icon10"
+                    alt=""
+                    src="{{ url_for('static', filename= 'public1/icactionsstar.svg') }}"
+                  />
+
+                  <img
+                    class="ic-actions-star-icon10"
+                    alt=""
+                    src="{{ url_for('static', filename= 'public1/icactionsstar.svg') }}"
+                  />
+
+                  <img
+                    class="ic-actions-star-icon10"
+                    alt=""
+                    src="{{ url_for('static', filename= 'public1/icactionsstar.svg') }}"
+                  />
+
+                  <img
+                    class="ic-actions-star-icon10"
+                    alt=""
+                    src="{{ url_for('static', filename= 'public1/icactionsstar1.svg') }}"
+                  />
+                </div>
+              </div>
+              <div class="group-parent1">
+                <div class="brand-container">
+                  <div class="delivery">Brand</div>
+                  <div class="nike2">Nike</div>
+                </div>
+                <div class="size-container">
+                  <div class="delivery">Size</div>
+                  <div class="nike2">9</div>
+                </div>
+                <div class="delivery-parent">
+                  <div class="delivery">Delivery</div>
+                  <div class="nike2">Mumbai</div>
+                </div>
+                <div class="number-parent">
+                  <div class="delivery">Number</div>
+                  <div class="nike2">1 pcs</div>
+                </div>
+              </div>
+            </div>
+            <div class="group-parent2">
+              <div class="usd-parent">
+                <div class="usd5">36.99 USD</div>
+                <div class="div27">48.56</div>
+              </div>
+              <div class="free-shipping-parent">
+                <div class="free-shipping">Free Shipping</div>
+                <div class="delivery-in-1">Delivery in 1 day</div>
+              </div>
+              <div class="frame-wrapper4">
+                <div class="buttons-container">
+                  <div class="buttons11" id="buttonsContainer8">
+                    <b class="men">Buy Again</b>
+                    <img
+                      class="ic-actions-heart-icon"
+                      alt=""
+                      src="{{ url_for('static', filename= 'public1/icchevronright1.svg') }}"
+                    />
+                  </div>
+                  <div class="buttons12">
+                    <img class="ic-actions-heart-icon" alt="" />
+
+                    <b class="men">Order Details</b>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="navigationspaginations">
+            <div class="frame-parent46">
+              <div class="page-parent">
+                <div class="men">Page:</div>
+                <div class="men">1</div>
+                <div class="men">2</div>
+                <div class="shoes">3</div>
+                <div class="men">4</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-a3">
+        <div class="logo-parent2">
+          <div class="logo7">
+            <div class="logo-inner5">
+              <div class="logo-zenfit-1-wrapper4">
+                <img
+                  class="logo-zenfit-16"
+                  alt=""
+                  src="{{ url_for('static', filename= 'public1/logo-zenfit-12@2x.png') }}"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="frame-parent47">
+            <div class="mobile-app-parent1">
+              <b class="mobile-app3">Mobile app</b>
+              <div class="features-live-share-container3">
+                <p class="features3">Features</p>
+                <p class="features3">Live share</p>
+                <p class="features3">Video record</p>
+              </div>
+            </div>
+            <div class="mobile-app-parent1">
+              <b class="mobile-app3">Community</b>
+              <div class="features-live-share-container3">
+                <p class="features3">Featured artists</p>
+                <p class="features3">The Portal</p>
+                <p class="features3">Live events</p>
+              </div>
+            </div>
+            <div class="mobile-app-parent1">
+              <b class="mobile-app3">Company</b>
+              <div class="features-live-share-container3">
+                <p class="features3">About us</p>
+                <p class="features3">Contact us</p>
+                <p class="features3">History</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-a-child1"></div>
+        <div class="photo-inc-2019-we-love-our-parent1">
+          <div class="photo-inc-20193">
+            © ZenFit, Inc. 2023 made by DevLoopers
+          </div>
+          <div class="follow-us-parent1">
+            <div class="follow-us3">Follow us:</div>
+            <img class="ellipse-icon12" alt="" src="{{ url_for('static', filename= 'public1/ellipse1.svg') }}" />
+
+            <img class="ellipse-icon12" alt="" src="{{ url_for('static', filename= 'public1/ellipse1.svg') }}" />
+
+            <img class="ellipse-icon12" alt="" src="{{ url_for('static', filename= 'public1/ellipse1.svg') }}" />
+
+            <img class="ellipse-icon12" alt="" src="{{ url_for('static', filename= 'public1/ellipse1.svg') }}" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="cartPopup" class="popup-overlay" style="display: none">
+      <div class="cart" data-animate-on-scroll>
+        <div class="modalsshoping-cart">
+          <div class="group-parent">
+            <div class="shopping-cart-parent">
+              <div class="shopping-cart">Shopping cart</div>
+              <button class="close-parent" id="popupframeButton">
+                <div class="close">Close</div>
+              </button>
+            </div>
+            <article class="component-84-parent">
+              <article class="component-84">
+                <div class="frame-parent9">
+                  <div class="basics-wrapper">
+                    <div class="basics5">
+                    </div>
+                  </div>
+                  <div class="content-button">
+                    <div class="content-button-inner">
+                      <div class="frame-wrapper1">
+                        <div class="frame-parent10">
+                          <div class="product-title-parent">
+                            <div class="product-title">Product title</div>
+                            <div class="frame-parent11">
+                              <div class="brand-parent">
+                                <div class="brand">Brand</div>
+                                <div class="nike">Nike</div>
+                              </div>
+                              <div class="size-parent">
+                                <div class="brand">Size</div>
+                                <div class="div14">9</div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="ic-actions-star-parent">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="price-button">
+                      <div class="price-button-child"></div>
+                      <div class="price-discount-price">
+                        <div class="usd">36.99 USD</div>
+                        <div class="usd1">48.56 USD</div>
+                      </div>
+                      <div class="inputs-and-selects">
+                        <div class="pcs">1 pcs</div>
+                        <div class="inputs-and-selects-child"></div>
+                        <div class="pcs-parent">
+                          <div class="pcs1">Pcs</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="component-84-child"></div>
+              </article>
+              <article class="component-84">
+                <div class="frame-parent9">
+                  <div class="basics-wrapper">
+                    <div class="basics5">
+                    </div>
+                  </div>
+                  <div class="content-button">
+                    <div class="content-button-inner">
+                      <div class="frame-wrapper1">
+                        <div class="frame-parent10">
+                          <div class="product-title-parent">
+                            <div class="product-title">Product title</div>
+                            <div class="frame-parent11">
+                              <div class="brand-parent">
+                                <div class="brand">Brand</div>
+                                <div class="nike">Nike</div>
+                              </div>
+                              <div class="size-parent">
+                                <div class="brand">Size</div>
+                                <div class="div14">9</div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="ic-actions-star-parent">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="price-button">
+                      <div class="price-button-child"></div>
+                      <div class="price-discount-price">
+                        <div class="usd">36.99 USD</div>
+                        <div class="usd1">48.56 USD</div>
+                      </div>
+                      <div class="inputs-and-selects">
+                        <div class="pcs">1 pcs</div>
+                        <div class="inputs-and-selects-child"></div>
+                        <div class="pcs-parent">
+                          <div class="pcs1">Pcs</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="component-84-child"></div>
+              </article>
+            </article>
+          </div>
+          <div class="group-container">
+            <div class="buttons-parent">
+              <button class="buttons1" id="popupbuttons">
+
+                <b class="button6">Continue shopping</b>
+              </button>
+              <button class="buttons2" id="popupbuttons1">
+                <b class="go-to-checkout">Go to Checkout</b>
+              </button>
+            </div>
+            <div class="subtotal-parent">
+              <div class="subtotal">Subtotal</div>
+              <div class="usd4">73.98 USD</div>
+            </div>
+            <div class="group-child"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var popupframeButton = document.getElementById("popupframeButton");
+      if (popupframeButton) {
+        popupframeButton.addEventListener("click", function (e) {
+          var popup = e.currentTarget.parentNode;
+          function isOverlay(node) {
+            return !!(
+              node &&
+              node.classList &&
+              node.classList.contains("popup-overlay")
+            );
+          }
+          while (popup && !isOverlay(popup)) {
+            popup = popup.parentNode;
+          }
+          if (isOverlay(popup)) {
+            popup.style.display = "none";
+          }
+        });
+      }
+      
+      var popupbuttons = document.getElementById("popupbuttons");
+      if (popupbuttons) {
+        popupbuttons.addEventListener("click", function (e) {
+          window.location.href = "./store";
+        });
+      }
+      
+      var popupbuttons1 = document.getElementById("popupbuttons1");
+      if (popupbuttons1) {
+        popupbuttons1.addEventListener("click", function (e) {
+          window.location.href = "./checkout";
+        });
+      }
+      var scrollAnimElements = document.querySelectorAll("[data-animate-on-scroll]");
+      var observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting || entry.intersectionRatio > 0) {
+              const targetElement = entry.target;
+              targetElement.classList.add("animate");
+              observer.unobserve(targetElement);
+            }
+          }
+        },
+        {
+          threshold: 0.15,
+        }
+      );
+      
+      for (let i = 0; i < scrollAnimElements.length; i++) {
+        observer.observe(scrollAnimElements[i]);
+      }
+      
+      var logoContainer = document.getElementById("logoContainer");
+      if (logoContainer) {
+        logoContainer.addEventListener("click", function (e) {
+          window.location.href = "/";
+        });
+      }
+      
+      var frameContainer3 = document.getElementById("frameContainer3");
+      if (frameContainer3) {
+        frameContainer3.addEventListener("click", function (e) {
+          window.location.href = "./store";
+        });
+      }
+      
+      var frameContainer4 = document.getElementById("frameContainer4");
+      if (frameContainer4) {
+        frameContainer4.addEventListener("click", function (e) {
+          window.location.href = "./AI";
+        });
+      }
+      
+      var icons = document.getElementById("icons");
+      if (icons) {
+        icons.addEventListener("click", function (e) {
+          window.location.href = "./profile";
+        });
+      }
+      
+      var icons1 = document.getElementById("icons1");
+      if (icons1) {
+        icons1.addEventListener("click", function () {
+          var popup = document.getElementById("cartPopup");
+          if (!popup) return;
+          var popupStyle = popup.style;
+          if (popupStyle) {
+            popupStyle.display = "flex";
+            popupStyle.zIndex = 100;
+            popupStyle.backgroundColor = "rgba(113, 113, 113, 0.3)";
+            popupStyle.alignItems = "center";
+            popupStyle.justifyContent = "center";
+          }
+          popup.setAttribute("closable", "");
+      
+          var onClick =
+            popup.onClick ||
+            function (e) {
+              if (e.target === popup && popup.hasAttribute("closable")) {
+                popupStyle.display = "none";
+              }
+            };
+          popup.addEventListener("click", onClick);
+        });
+      }
+      
+      var listItemContainer = document.getElementById("listItemContainer");
+      if (listItemContainer) {
+        listItemContainer.addEventListener("click", function (e) {
+          window.location.href = "./profile";
+        });
+      }
+      
+      var listItemContainer1 = document.getElementById("listItemContainer1");
+      if (listItemContainer1) {
+        listItemContainer1.addEventListener("click", function (e) {
+          window.location.href = "./user";
+        });
+      }
+      
+      var buttonsContainer = document.getElementById("buttonsContainer");
+      if (buttonsContainer) {
+        buttonsContainer.addEventListener("click", function (e) {
+          window.location.href = "./product";
+        });
+      }
+      
+      var frameContainer20 = document.getElementById("frameContainer20");
+      if (frameContainer20) {
+        frameContainer20.addEventListener("click", function (e) {
+          window.location.href = "./product";
+        });
+      }
+      
+      var buttonsContainer2 = document.getElementById("buttonsContainer2");
+      if (buttonsContainer2) {
+        buttonsContainer2.addEventListener("click", function (e) {
+          window.location.href = "./product";
+        });
+      }
+      
+      var frameContainer30 = document.getElementById("frameContainer30");
+      if (frameContainer30) {
+        frameContainer30.addEventListener("click", function (e) {
+          window.location.href = "./product";
+        });
+      }
+      
+      var buttonsContainer4 = document.getElementById("buttonsContainer4");
+      if (buttonsContainer4) {
+        buttonsContainer4.addEventListener("click", function (e) {
+          window.location.href = "./product";
+        });
+      }
+      
+      var frameContainer40 = document.getElementById("frameContainer40");
+      if (frameContainer40) {
+        frameContainer40.addEventListener("click", function (e) {
+          window.location.href = "./product";
+        });
+      }
+      
+      var buttonsContainer6 = document.getElementById("buttonsContainer6");
+      if (buttonsContainer6) {
+        buttonsContainer6.addEventListener("click", function (e) {
+          window.location.href = "./product";
+        });
+      }
+      
+      var frameContainer50 = document.getElementById("frameContainer50");
+      if (frameContainer50) {
+        frameContainer50.addEventListener("click", function (e) {
+          window.location.href = "./product";
+        });
+      }
+      
+      var buttonsContainer8 = document.getElementById("buttonsContainer8");
+      if (buttonsContainer8) {
+        buttonsContainer8.addEventListener("click", function (e) {
+          window.location.href = "./product";
+        });
+      }
+      
+      var frameContainer60 = document.getElementById("frameContainer60");
+      if (frameContainer60) {
+        frameContainer60.addEventListener("click", function (e) {
+          window.location.href = "./product";
+        });
+      }
+      </script>
+  </body>
+</html>

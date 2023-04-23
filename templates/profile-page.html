@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/global.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/global1.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/profile-page.css') }}" />
     <link
       rel="stylesheet"
@@ -31,140 +31,134 @@
     />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=DM Sans:wght@400;700&display=swap"
-    />
-    <link
-      rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Itim:wght@400&display=swap"
     />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400&display=swap"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM Sans:wght@400;700&display=swap"
+    />
   </head>
   <body>
     <div class="profile-page">
-      <div class="navigation-a7">
-        <div class="logo-wrapper5">
-          <div class="logo12" id="logoContainer">
-            <div class="logo-inner11">
-              <div class="logo-zenfit-1-wrapper10">
+      <div class="navigation-a5">
+        <div class="logo-wrapper2">
+          <div class="logo10" id="logoContainer">
+            <div class="logo-inner9">
+              <div class="logo-zenfit-1-wrapper8">
                 <img
-                  class="logo-zenfit-112"
+                  class="logo-zenfit-110"
                   alt=""
-                  src="{{ url_for('static', filename= 'public/logo-zenfit-1@2x.png') }}"
+                  src="{{ url_for('static', filename='public1/logo-zenfit-1@2x.png') }}"
                 />
               </div>
             </div>
           </div>
         </div>
-        <div class="frame-parent56">
-          <div class="store-wrapper5" id="frameContainer3">
-            <a href="/store" style="text-decoration: none;color: #18a0fb;"><div class="store7">Store</div></a>
+        <div class="frame-parent54">
+          <div class="store-wrapper3" id="frameContainer3">
+            <div class="store5">Store</div>
           </div>
-          <div class="store-wrapper5" id="frameContainer4">
-            <a href="/AI" style="text-decoration: none;color: #18a0fb;"><div class="store7">ZenAI</div></a>
+          <div class="store-wrapper3" id="frameContainer4">
+            <div class="store5">Zen AI</div>
           </div>
-          <div class="about-wrapper5"><div class="store7">About</div></div>
-          <div class="prozen-parent5">
-            <div class="store7">ProZen</div>
-            <img class="vector-icon33" alt="" src="{{ url_for('static', filename= 'public/vector10.svg') }}" />
+          <div class="about-wrapper3">
+            <div class="store5">About</div>
+          </div>
+          <div class="prozen-parent2">
+            <div class="store5">ProZen</div>
+            <img class="vector-icon19" alt="" src="{{ url_for('static', filename='public1/vector10.svg') }}" />
           </div>
         </div>
         <div class="this-week-parent">
-          <div class="icons-parent4">
-            <a href="/profile">
-              <img
-              class="icons37"
-              alt=""
-              src="{{ url_for('static', filename= 'public/icons8.svg') }}"
-              id="icons"
-            />
-            </a>
-            <a href="/checkout">
-              <img
-              class="icons38"
-              alt=""
-              src="{{ url_for('static', filename= 'public/icons3.svg') }}"
-              id="icons1"
-            />
-            </a>
+          <div class="icons-parent2">
+            <button class="icons12" id="icons">
+              <img class="vector-icon20" alt="" src="{{ url_for('static', filename='public1/vector21.svg') }}" />
+
+              <img class="vector-icon21" alt="" src="{{ url_for('static', filename='public1/vector22.svg') }}" />
+            </button>
+            <button class="icons13" id="icons1">
+              <img class="icons-child1" alt="" src="{{ url_for('static', filename='public1/frame-20211.svg') }}" />
+            </button>
           </div>
         </div>
       </div>
-      <div class="menu-drawer-parent">
-        <div class="menu-drawer">
-          <div class="apps-pages">
-            <div class="listitem">
-              <div class="container1">
+      <div class="menu-drawer-container">
+        <div class="menu-drawer2">
+          <div class="apps-pages2">
+            <div class="listitem12">
+              <div class="container48">
                 <img
-                  class="bx-calendar-alt-icon"
+                  class="bx-calendar-alt-icon2"
                   alt=""
-                  src="{{ url_for('static', filename= 'public/bxcalendaralt.svg') }}"
+                  src="{{ url_for('static', filename='public1/bxcalendaralt1.svg') }}"
                 />
               </div>
-              <div class="text-container">
-                <div class="fitness-board">Fitness Board</div>
+              <div class="text-container12">
+                <div class="fitness-board2">Fitness Board</div>
               </div>
             </div>
-            <div class="listitem1">
-              <div class="container1">
+            <div class="listitem13" id="listItemContainer1">
+              <div class="container48">
                 <img
-                  class="bx-calendar-alt-icon"
+                  class="bx-calendar-alt-icon2"
                   alt=""
-                  src="{{ url_for('static', filename= 'public/bxuser.svg') }}"
+                  src="{{ url_for('static', filename='public1/bxuser1.svg') }}"
                 />
               </div>
-              <div class="text-container">
-                <div class="fitness-board">User</div>
+              <div class="text-container12">
+                <div class="fitness-board2">User</div>
               </div>
             </div>
-            <div class="listitem1">
-              <div class="container1">
+            <div class="listitem14">
+              <div class="container48">
                 <img
-                  class="bx-calendar-alt-icon"
+                  class="bx-calendar-alt-icon2"
                   alt=""
-                  src="{{ url_for('static', filename= 'public/bxchat.svg') }}"
+                  src="{{ url_for('static', filename='public1/bxchat.svg') }}"
                 />
               </div>
-              <div class="text-container">
-                <div class="fitness-board">Chat</div>
+              <div class="text-container12">
+                <div class="fitness-board2">Chat</div>
               </div>
             </div>
-            <div class="listitem1">
-              <div class="container1">
+            <div class="listitem13" id="listItemContainer3">
+              <div class="container48">
                 <img
-                  class="bx-calendar-alt-icon"
+                  class="bx-calendar-alt-icon2"
                   alt=""
-                  src="{{ url_for('static', filename= 'public/bxfile.svg') }}"
+                  src="{{ url_for('static', filename='public1/bxfile1.svg') }}"
                 />
               </div>
-              <div class="text-container">
-                <div class="fitness-board">Order History</div>
+              <div class="text-container12">
+                <div class="fitness-board2">Order History</div>
               </div>
             </div>
-            <div class="listitem1">
-              <div class="container1">
+            <div class="listitem14">
+              <div class="container48">
                 <img
-                  class="bx-calendar-alt-icon"
+                  class="bx-calendar-alt-icon2"
                   alt=""
-                  src="{{ url_for('static', filename= 'public/bxlock.svg') }}"
+                  src="{{ url_for('static', filename='public1/bxlock1.svg') }}"
                 />
               </div>
-              <div class="text-container">
-                <div class="subscription">Subscription</div>
+              <div class="text-container12">
+                <div class="subscription2">Subscription</div>
               </div>
             </div>
-            <div class="listitem1">
-              <div class="container1">
+            <div class="listitem14">
+              <div class="container48">
                 <img
-                  class="bx-calendar-alt-icon"
+                  class="bx-calendar-alt-icon2"
                   alt=""
-                  src="{{ url_for('static', filename= 'public/bxfileblank.svg') }}"
+                  src="{{ url_for('static', filename='public1/bxfileblank1.svg') }}"
                 />
               </div>
-              <div class="text-container">
-                <div class="fitness-board">Your Posts</div>
+              <div class="text-container12">
+                <div class="fitness-board2">Your Posts</div>
               </div>
             </div>
           </div>
@@ -173,48 +167,49 @@
           <div class="options">
             <div class="exercise-parent">
               <b class="exercise">Exercise</b>
-              <div class="frame-child5"></div>
+              <div class="frame-child1"></div>
             </div>
             <div class="food-plan">Food plan</div>
             <div class="notes">Notes</div>
           </div>
-          <div class="frame-parent57">
-            <div class="frame-parent58">
+          <div class="frame-parent55">
+            <div class="frame-parent56">
               <div class="shape-your-ideal-body-parent">
                 <div class="shape-your-ideal-container">
                   <span class="shape-your-ideal-container1"
-                    >SHAPE <span>YOUR IDEAL BODY</span></span
-                  >
+                    >SHAPE
+                    <span>YOUR IDEAL BODY</span>
+                  </span>
                 </div>
                 <div class="day-21">Day 21</div>
               </div>
-              <div class="frame-parent59">
-                <div class="frame-parent60">
-                  <div class="parent1">
-                    <div class="div107">4:35</div>
-                    <img class="chart-icon2" alt="" src="{{ url_for('static', filename= 'public/chart2.svg') }}" />
+              <div class="frame-parent57">
+                <div class="frame-parent58">
+                  <div class="parent">
+                    <div class="div62">4:35</div>
+                    <img class="chart-icon" alt="" src="{{ url_for('static', filename='public1/chart.svg') }}" />
                   </div>
-                  <div class="push-ups-container">
-                    <div class="push-ups2">Push ups</div>
-                    <div class="x-5-minutes2">6 x 5 minutes</div>
+                  <div class="push-ups-parent">
+                    <div class="push-ups">Push ups</div>
+                    <div class="x-5-minutes">6 x 5 minutes</div>
                   </div>
-                  <div class="sit-ups-frame">
-                    <div class="sit-ups2">Sit Ups</div>
+                  <div class="sit-ups-wrapper">
+                    <div class="sit-ups">Sit Ups</div>
                   </div>
-                  <div class="sit-ups-frame">
-                    <div class="sit-ups2">Squats</div>
+                  <div class="sit-ups-wrapper">
+                    <div class="sit-ups">Squats</div>
                   </div>
-                  <div class="sit-ups-frame">
-                    <div class="sit-ups2">Pull Ups</div>
+                  <div class="sit-ups-wrapper">
+                    <div class="sit-ups">Pull Ups</div>
                   </div>
                 </div>
                 <div class="progress">
                   <div class="week-3-parent">
                     <div class="week-3">Week 3</div>
                     <img
-                      class="frame-child6"
+                      class="frame-child2"
                       alt=""
-                      src="{{ url_for('static', filename= 'public/vector-2.svg') }}"
+                      src="{{ url_for('static', filename='public1/vector-2.svg') }}"
                     />
                   </div>
                   <div class="progress-graph">
@@ -233,7 +228,7 @@
                           <img
                             class="graph-elements-item"
                             alt=""
-                            src="{{ url_for('static', filename= 'public/ellipse-32.svg') }}"
+                            src="{{ url_for('static', filename='public1/ellipse-32.svg') }}"
                           />
                         </div>
                         <div class="graph-elements1">
@@ -242,7 +237,7 @@
                           <img
                             class="graph-elements-item"
                             alt=""
-                            src="{{ url_for('static', filename= 'public/ellipse-32.svg') }}"
+                            src="{{ url_for('static', filename='public1/ellipse-32.svg') }}"
                           />
                         </div>
                         <div class="graph-elements2">
@@ -251,7 +246,7 @@
                           <img
                             class="graph-elements-item"
                             alt=""
-                            src="{{ url_for('static', filename= 'public/ellipse-32.svg') }}"
+                            src="{{ url_for('static', filename='public1/ellipse-32.svg') }}"
                           />
                         </div>
                         <div class="graph-elements3">
@@ -260,7 +255,7 @@
                           <img
                             class="graph-elements-item"
                             alt=""
-                            src="{{ url_for('static', filename= 'public/ellipse-321.svg') }}"
+                            src="{{ url_for('static', filename='public1/ellipse-321.svg') }}"
                           />
                         </div>
                         <div class="graph-elements4">
@@ -269,7 +264,7 @@
                           <img
                             class="graph-elements-item"
                             alt=""
-                            src="{{ url_for('static', filename= 'public/ellipse-32.svg') }}"
+                            src="{{ url_for('static', filename='public1/ellipse-32.svg') }}"
                           />
                         </div>
                         <div class="graph-elements5">
@@ -278,7 +273,7 @@
                           <img
                             class="graph-elements-item"
                             alt=""
-                            src="{{ url_for('static', filename= 'public/ellipse-32.svg') }}"
+                            src="{{ url_for('static', filename='public1/ellipse-32.svg') }}"
                           />
                         </div>
                         <div class="graph-elements1">
@@ -287,17 +282,17 @@
                           <img
                             class="graph-elements-item"
                             alt=""
-                            src="{{ url_for('static', filename= 'public/ellipse-32.svg') }}"
+                            src="{{ url_for('static', filename='public1/ellipse-32.svg') }}"
                           />
                         </div>
                       </div>
                     </div>
-                    <div class="parent2">
-                      <div class="div108">40</div>
-                      <div class="div108">30</div>
-                      <div class="div108">20</div>
-                      <div class="div108">10</div>
-                      <div class="div108">0</div>
+                    <div class="group">
+                      <div class="div63">40</div>
+                      <div class="div63">30</div>
+                      <div class="div63">20</div>
+                      <div class="div63">10</div>
+                      <div class="div63">0</div>
                     </div>
                   </div>
                 </div>
@@ -305,8 +300,8 @@
               <div class="horizontal-column">
                 <div class="total-calories-parent">
                   <b class="total-calories">Total Calories</b>
-                  <div class="frame-parent61">
-                    <div class="frame-parent62">
+                  <div class="frame-parent59">
+                    <div class="frame-parent60">
                       <div class="this-week-parent">
                         <div class="this-week">This week</div>
                         <div class="kcal">2300 Kcal</div>
@@ -323,8 +318,8 @@
                 </div>
                 <div class="total-hours-parent">
                   <b class="total-hours">Total Hours</b>
-                  <div class="frame-parent63">
-                    <div class="frame-parent64">
+                  <div class="frame-parent61">
+                    <div class="frame-parent62">
                       <div class="this-week-parent">
                         <div class="this-week">This week</div>
                         <div class="hrs">16 hrs</div>
@@ -364,8 +359,8 @@
                 </div>
                 <div class="total-calories-parent">
                   <b class="total-hours">Total Hours</b>
-                  <div class="frame-parent61">
-                    <div class="frame-parent64">
+                  <div class="frame-parent59">
+                    <div class="frame-parent62">
                       <div class="this-week-parent">
                         <div class="this-week">This week</div>
                         <div class="hrs">16 hrs</div>
@@ -384,120 +379,120 @@
             </div>
             <div class="vertical-column">
               <div class="your-liked-posts">Your Liked Posts</div>
-              <div class="frame-parent67">
-                <div class="frame-parent68">
+              <div class="frame-parent65">
+                <div class="frame-parent66">
                   <div class="health-fitness-parent">
                     <b class="health-fitness">Health Fitness</b>
                     <div class="lorem-ipsum-dolor-container2">
-                      <span class="shape-your-ideal-container1"
-                        ><p class="lorem-ipsum-dolor2">
+                      <span class="shape-your-ideal-container1">
+                        <p class="lorem-ipsum-dolor2">
                           Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit, sed do eiusmod tempor incididunt ut labore et
                           dolore magna aliqua. .
-                        </p></span
-                      >
+                        </p>
+                      </span>
                     </div>
                     <div class="learn-more-parent">
                       <div class="learn-more">Learn More</div>
                       <img
                         class="material-symbolskeyboard-doub-icon"
                         alt=""
-                        src="{{ url_for('static', filename= 'public/materialsymbolskeyboarddoublearrowright.svg') }}"
+                        src="{{ url_for('static', filename='public1/materialsymbolskeyboarddoublearrowright.svg') }}"
                       />
                     </div>
                   </div>
                   <img
                     class="arrow-icon01-3-4"
                     alt=""
-                    src="{{ url_for('static', filename= 'public/arrowicon01-3-4@2x.png') }}"
+                    src="{{ url_for('static', filename='public1/arrowicon01-3-4@2x.png') }}"
                   />
                 </div>
-                <div class="frame-parent68">
+                <div class="frame-parent66">
                   <div class="health-fitness-parent">
                     <b class="health-fitness">Health Fitness</b>
                     <div class="lorem-ipsum-dolor-container2">
-                      <span class="shape-your-ideal-container1"
-                        ><p class="lorem-ipsum-dolor2">
+                      <span class="shape-your-ideal-container1">
+                        <p class="lorem-ipsum-dolor2">
                           Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit, sed do eiusmod tempor incididunt ut labore et
                           dolore magna aliqua. .
-                        </p></span
-                      >
+                        </p>
+                      </span>
                     </div>
                     <div class="learn-more-parent">
                       <div class="learn-more">Learn More</div>
                       <img
                         class="material-symbolskeyboard-doub-icon"
                         alt=""
-                        src="{{ url_for('static', filename= 'public/materialsymbolskeyboarddoublearrowright.svg') }}"
+                        src="{{ url_for('static', filename='public1/materialsymbolskeyboarddoublearrowright.svg') }}"
                       />
                     </div>
                   </div>
                   <img
                     class="arrow-icon01-2-3"
                     alt=""
-                    src="{{ url_for('static', filename= 'public/arrowicon01-2-3@2x.png') }}"
+                    src="{{ url_for('static', filename='public1/arrowicon01-2-3@2x.png') }}"
                   />
                 </div>
-                <div class="frame-parent70">
+                <div class="frame-parent68">
                   <div class="health-fitness-parent">
                     <b class="health-fitness">Health Fitness</b>
                     <div class="lorem-ipsum-dolor-container2">
-                      <span class="shape-your-ideal-container1"
-                        ><p class="lorem-ipsum-dolor2">
+                      <span class="shape-your-ideal-container1">
+                        <p class="lorem-ipsum-dolor2">
                           Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit, sed do eiusmod tempor incididunt ut labore et
                           dolore magna aliqua. .
-                        </p></span
-                      >
+                        </p>
+                      </span>
                     </div>
                     <div class="learn-more-parent">
                       <div class="learn-more">Learn More</div>
                       <img
                         class="material-symbolskeyboard-doub-icon"
                         alt=""
-                        src="{{ url_for('static', filename= 'public/materialsymbolskeyboarddoublearrowright.svg') }}"
+                        src="{{ url_for('static', filename='public1/materialsymbolskeyboarddoublearrowright.svg') }}"
                       />
                     </div>
                   </div>
                   <img
                     class="arrow-icon01-1-2"
                     alt=""
-                    src="{{ url_for('static', filename= 'public/arrowicon01-1-2@2x.png') }}"
+                    src="{{ url_for('static', filename='public1/arrowicon01-1-2@2x.png') }}"
                   />
                 </div>
-                <div class="frame-parent70">
+                <div class="frame-parent68">
                   <div class="health-fitness-parent">
                     <b class="health-fitness">Health Fitness</b>
                     <div class="lorem-ipsum-dolor-container2">
-                      <span class="shape-your-ideal-container1"
-                        ><p class="lorem-ipsum-dolor2">
+                      <span class="shape-your-ideal-container1">
+                        <p class="lorem-ipsum-dolor2">
                           Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit, sed do eiusmod tempor incididunt ut labore et
                           dolore magna aliqua. .
-                        </p></span
-                      >
+                        </p>
+                      </span>
                     </div>
                     <div class="learn-more-parent">
                       <div class="learn-more">Learn More</div>
                       <img
                         class="material-symbolskeyboard-doub-icon"
                         alt=""
-                        src="{{ url_for('static', filename= 'public/materialsymbolskeyboarddoublearrowright.svg') }}"
+                        src="{{ url_for('static', filename='public1/materialsymbolskeyboarddoublearrowright.svg') }}"
                       />
                     </div>
                   </div>
                   <img
                     class="arrow-icon01-1-2"
                     alt=""
-                    src="{{ url_for('static', filename= 'public/arrowicon01-2-2@2x.png') }}"
+                    src="{{ url_for('static', filename='public1/arrowicon01-2-2@2x.png') }}"
                   />
                 </div>
               </div>
-              <div class="parent3">
+              <div class="parent1">
                 <div class="total-calories">1</div>
                 <div class="total-calories">2</div>
-                <div class="div116">3</div>
+                <div class="div71">3</div>
                 <div class="total-calories">...</div>
                 <div class="total-calories">8</div>
               </div>
@@ -507,18 +502,18 @@
       </div>
       <div class="footer-a5">
         <div class="logo-parent4">
-          <div class="logo13">
-            <div class="logo-inner11">
-              <div class="logo-zenfit-1-wrapper10">
+          <div class="logo11">
+            <div class="logo-inner9">
+              <div class="logo-zenfit-1-wrapper8">
                 <img
-                  class="logo-zenfit-112"
+                  class="logo-zenfit-110"
                   alt=""
-                  src="{{ url_for('static', filename= 'public/logo-zenfit-13@2x.png') }}"
+                  src="{{ url_for('static', filename='public1/logo-zenfit-13@2x.png') }}"
                 />
               </div>
             </div>
           </div>
-          <div class="frame-parent72">
+          <div class="frame-parent70">
             <div class="mobile-app-parent3">
               <b class="mobile-app5">Mobile app</b>
               <div class="features-live-share-container5">
@@ -552,225 +547,283 @@
           </div>
           <div class="follow-us-parent3">
             <div class="follow-us5">Follow us:</div>
-            <img
-              class="ellipse-icon20"
-              alt=""
-              src="{{ url_for('static', filename= 'public/ellipse2.svg') }}"
-            /><img
-              class="ellipse-icon20"
-              alt=""
-              src="{{ url_for('static', filename= 'public/ellipse2.svg') }}"
-            /><img
-              class="ellipse-icon20"
-              alt=""
-              src="{{ url_for('static', filename= 'public/ellipse2.svg') }}"
-            /><img class="ellipse-icon20" alt="" src="{{ url_for('static', filename= 'public/ellipse2.svg') }}" />
+            <img class="ellipse-icon20" alt="" src="{{ url_for('static', filename='public1/ellipse2.svg') }}" />
+
+            <img class="ellipse-icon20" alt="" src="{{ url_for('static', filename='public1/ellipse2.svg') }}" />
+
+            <img class="ellipse-icon20" alt="" src="{{ url_for('static', filename='public1/ellipse2.svg') }}" />
+
+            <img class="ellipse-icon20" alt="" src="{{ url_for('static', filename='public1/ellipse2.svg') }}" />
           </div>
         </div>
       </div>
     </div>
 
-    <div id="cartContainer" class="popup-overlay" style="display: none">
-      <div class="cart1">
+    <div id="cartPopup" class="popup-overlay" style="display: none">
+      <div class="cart" data-animate-on-scroll>
         <div class="modalsshoping-cart">
-          <div class="group-parent6">
+          <div class="group-parent">
             <div class="shopping-cart-parent">
               <div class="shopping-cart">Shopping cart</div>
-              <button class="close-parent">
+              <button class="close-parent" id="popupframeButton">
                 <div class="close">Close</div>
                 <img
                   class="ic-actions-close-simple-icon"
                   alt=""
-                  src="{{ url_for('static', filename= 'public/icactionsclosesimple.svg') }}"
+                  src="{{ url_for('static', filename='public1/icactionsclosesimple.svg') }}"
                 />
               </button>
             </div>
-            <article class="component-84-group">
-              <article class="component-841">
-                <div class="frame-parent45">
-                  <div class="basics-wrapper1">
-                    <div class="basics11">
+            <article class="component-84-parent">
+              <article class="component-84">
+                <div class="frame-parent9">
+                  <div class="basics-wrapper">
+                    <div class="basics5">
                       <img
-                        class="basics-child8"
+                        class="basics-child2"
                         alt=""
-                        src="{{ url_for('static', filename= 'public/rectangle-261@2x.png') }}"
+                        src="{{ url_for('static', filename='public1/rectangle-2611@2x.png') }}"
                       />
                     </div>
                   </div>
-                  <div class="content-button2">
-                    <div class="content-button-inner1">
-                      <div class="frame-wrapper12">
-                        <div class="frame-parent46">
-                          <div class="product-title-container">
-                            <div class="product-title2">Product title</div>
-                            <div class="frame-parent47">
-                              <div class="brand-container">
-                                <div class="brand2">Brand</div>
-                                <div class="nike6">Nike</div>
+                  <div class="content-button">
+                    <div class="content-button-inner">
+                      <div class="frame-wrapper1">
+                        <div class="frame-parent10">
+                          <div class="product-title-parent">
+                            <div class="product-title">Product title</div>
+                            <div class="frame-parent11">
+                              <div class="brand-parent">
+                                <div class="brand">Brand</div>
+                                <div class="nike">Nike</div>
                               </div>
-                              <div class="size-container">
-                                <div class="brand2">Size</div>
-                                <div class="div59">9</div>
+                              <div class="size-parent">
+                                <div class="brand">Size</div>
+                                <div class="div14">9</div>
                               </div>
                             </div>
                           </div>
-                          <div class="ic-actions-star-parent1">
+                          <div class="ic-actions-star-parent">
                             <img
-                              class="ic-actions-star-icon14"
+                              class="ic-actions-star-icon"
                               alt=""
-                              src="{{ url_for('static', filename= 'public/icactionsstar2.svg') }}"
-                            /><img
-                              class="ic-actions-star-icon14"
+                              src="{{ url_for('static', filename='public1/icactionsstar21.svg') }}"
+                            />
+
+                            <img
+                              class="ic-actions-star-icon"
                               alt=""
-                              src="{{ url_for('static', filename= 'public/icactionsstar2.svg') }}"
-                            /><img
-                              class="ic-actions-star-icon14"
+                              src="{{ url_for('static', filename='public1/icactionsstar21.svg') }}"
+                            />
+
+                            <img
+                              class="ic-actions-star-icon"
                               alt=""
-                              src="{{ url_for('static', filename= 'public/icactionsstar2.svg') }}"
-                            /><img
-                              class="ic-actions-star-icon14"
+                              src="{{ url_for('static', filename='public1/icactionsstar21.svg') }}"
+                            />
+
+                            <img
+                              class="ic-actions-star-icon"
                               alt=""
-                              src="{{ url_for('static', filename= 'public/icactionsstar2.svg') }}"
-                            /><img
-                              class="ic-actions-star-icon14"
+                              src="{{ url_for('static', filename='public1/icactionsstar21.svg') }}"
+                            />
+
+                            <img
+                              class="ic-actions-star-icon"
                               alt=""
-                              src="{{ url_for('static', filename= 'public/icactionsstar11.svg') }}"
+                              src="{{ url_for('static', filename='public1/icactionsstar111.svg') }}"
                             />
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="price-button2">
-                      <div class="price-button-inner"></div>
-                      <div class="price-discount-price2">
-                        <div class="usd10">36.99 USD</div>
-                        <div class="usd11">48.56 USD</div>
+                    <div class="price-button">
+                      <div class="price-button-child"></div>
+                      <div class="price-discount-price">
+                        <div class="usd">36.99 USD</div>
+                        <div class="usd1">48.56 USD</div>
                       </div>
-                      <div class="inputs-and-selects16">
-                        <div class="pcs5">1 pcs</div>
-                        <div class="line-div"></div>
-                        <div class="pcs-parent1">
-                          <div class="pcs6">Pcs</div>
+                      <div class="inputs-and-selects">
+                        <div class="pcs">1 pcs</div>
+                        <div class="inputs-and-selects-child"></div>
+                        <div class="pcs-parent">
+                          <div class="pcs1">Pcs</div>
                           <img
-                            class="ic-chevron-down-icon15"
+                            class="ic-chevron-down-icon"
                             alt=""
-                            src="{{ url_for('static', filename= 'public/icchevrondown.svg') }}"
+                            src="{{ url_for('static', filename='public1/icchevrondown7.svg') }}"
                           />
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="component-84-item"></div>
+                <div class="component-84-child"></div>
               </article>
-              <article class="component-841">
-                <div class="frame-parent45">
-                  <div class="basics-wrapper1">
-                    <div class="basics11">
+              <article class="component-84">
+                <div class="frame-parent9">
+                  <div class="basics-wrapper">
+                    <div class="basics5">
                       <img
-                        class="basics-child8"
+                        class="basics-child2"
                         alt=""
-                        src="{{ url_for('static', filename= 'public/rectangle-261@2x.png') }}"
+                        src="{{ url_for('static', filename='public1/rectangle-2611@2x.png') }}"
                       />
                     </div>
                   </div>
-                  <div class="content-button2">
-                    <div class="content-button-inner1">
-                      <div class="frame-wrapper12">
-                        <div class="frame-parent46">
-                          <div class="product-title-container">
-                            <div class="product-title2">Product title</div>
-                            <div class="frame-parent47">
-                              <div class="brand-container">
-                                <div class="brand2">Brand</div>
-                                <div class="nike6">Nike</div>
+                  <div class="content-button">
+                    <div class="content-button-inner">
+                      <div class="frame-wrapper1">
+                        <div class="frame-parent10">
+                          <div class="product-title-parent">
+                            <div class="product-title">Product title</div>
+                            <div class="frame-parent11">
+                              <div class="brand-parent">
+                                <div class="brand">Brand</div>
+                                <div class="nike">Nike</div>
                               </div>
-                              <div class="size-container">
-                                <div class="brand2">Size</div>
-                                <div class="div59">9</div>
+                              <div class="size-parent">
+                                <div class="brand">Size</div>
+                                <div class="div14">9</div>
                               </div>
                             </div>
                           </div>
-                          <div class="ic-actions-star-parent1">
+                          <div class="ic-actions-star-parent">
                             <img
-                              class="ic-actions-star-icon14"
+                              class="ic-actions-star-icon"
                               alt=""
-                              src="{{ url_for('static', filename= 'public/icactionsstar3.svg') }}"
-                            /><img
-                              class="ic-actions-star-icon14"
+                              src="{{ url_for('static', filename='public1/icactionsstar3.svg') }}"
+                            />
+
+                            <img
+                              class="ic-actions-star-icon"
                               alt=""
-                              src="{{ url_for('static', filename= 'public/icactionsstar3.svg') }}"
-                            /><img
-                              class="ic-actions-star-icon14"
+                              src="{{ url_for('static', filename='public1/icactionsstar3.svg') }}"
+                            />
+
+                            <img
+                              class="ic-actions-star-icon"
                               alt=""
-                              src="{{ url_for('static', filename= 'public/icactionsstar3.svg') }}"
-                            /><img
-                              class="ic-actions-star-icon14"
+                              src="{{ url_for('static', filename='public1/icactionsstar3.svg') }}"
+                            />
+
+                            <img
+                              class="ic-actions-star-icon"
                               alt=""
-                              src="{{ url_for('static', filename= 'public/icactionsstar3.svg') }}"
-                            /><img
-                              class="ic-actions-star-icon14"
+                              src="{{ url_for('static', filename='public1/icactionsstar3.svg') }}"
+                            />
+
+                            <img
+                              class="ic-actions-star-icon"
                               alt=""
-                              src="{{ url_for('static', filename= 'public/icactionsstar31.svg') }}"
+                              src="{{ url_for('static', filename='public1/icactionsstar31.svg') }}"
                             />
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="price-button2">
-                      <div class="price-button-inner"></div>
-                      <div class="price-discount-price2">
-                        <div class="usd10">36.99 USD</div>
-                        <div class="usd11">48.56 USD</div>
+                    <div class="price-button">
+                      <div class="price-button-child"></div>
+                      <div class="price-discount-price">
+                        <div class="usd">36.99 USD</div>
+                        <div class="usd1">48.56 USD</div>
                       </div>
-                      <div class="inputs-and-selects16">
-                        <div class="pcs5">1 pcs</div>
-                        <div class="line-div"></div>
-                        <div class="pcs-parent1">
-                          <div class="pcs6">Pcs</div>
+                      <div class="inputs-and-selects">
+                        <div class="pcs">1 pcs</div>
+                        <div class="inputs-and-selects-child"></div>
+                        <div class="pcs-parent">
+                          <div class="pcs1">Pcs</div>
                           <img
-                            class="ic-chevron-down-icon15"
+                            class="ic-chevron-down-icon"
                             alt=""
-                            src="{{ url_for('static', filename= 'public/icchevrondown1.svg') }}"
+                            src="{{ url_for('static', filename='public1/icchevrondown11.svg') }}"
                           />
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="component-84-item"></div>
+                <div class="component-84-child"></div>
               </article>
             </article>
           </div>
-          <div class="group-parent7">
-            <div class="buttons-group">
-              <button class="buttons6" id="popupbuttons">
+          <div class="group-container">
+            <div class="buttons-parent">
+              <button class="buttons1" id="popupbuttons">
                 <img
                   class="ic-chevron-left-icon"
                   alt=""
-                  src="{{ url_for('static', filename= 'public/icchevronleft.svg') }}"
-                /><b class="button10">Continue shopping</b></button
-              ><button class="buttons7" id="popupbuttons1">
+                  src="{{ url_for('static', filename='public1/icchevronleft.svg') }}"
+                />
+
+                <b class="button6">Continue shopping</b>
+              </button>
+              <button class="buttons2" id="popupbuttons1">
                 <b class="go-to-checkout">Go to Checkout</b>
               </button>
             </div>
-            <div class="subtotal-group">
-              <div class="subtotal1">Subtotal</div>
-              <div class="usd14">73.98 USD</div>
+            <div class="subtotal-parent">
+              <div class="subtotal">Subtotal</div>
+              <div class="usd4">73.98 USD</div>
             </div>
-            <div class="group-child12"></div>
+            <div class="group-child"></div>
           </div>
         </div>
       </div>
     </div>
 
     <script>
+      var popupframeButton = document.getElementById("popupframeButton");
+      if (popupframeButton) {
+        popupframeButton.addEventListener("click", function (e) {
+          var popup = e.currentTarget.parentNode;
+          function isOverlay(node) {
+            return !!(
+              node &&
+              node.classList &&
+              node.classList.contains("popup-overlay")
+            );
+          }
+          while (popup && !isOverlay(popup)) {
+            popup = popup.parentNode;
+          }
+          if (isOverlay(popup)) {
+            popup.style.display = "none";
+          }
+        });
+      }
+      
+      var popupbuttons = document.getElementById("popupbuttons");
+      if (popupbuttons) {
+        popupbuttons.addEventListener("click", function (e) {
+          window.location.href = "./store";
+        });
+      }
       
       var popupbuttons1 = document.getElementById("popupbuttons1");
       if (popupbuttons1) {
         popupbuttons1.addEventListener("click", function (e) {
-          window.location.href = "./check-out-page.html";
+          window.location.href = "./checkout";
         });
+      }
+      var scrollAnimElements = document.querySelectorAll("[data-animate-on-scroll]");
+      var observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting || entry.intersectionRatio > 0) {
+              const targetElement = entry.target;
+              targetElement.classList.add("animate");
+              observer.unobserve(targetElement);
+            }
+          }
+        },
+        {
+          threshold: 0.15,
+        }
+      );
+      
+      for (let i = 0; i < scrollAnimElements.length; i++) {
+        observer.observe(scrollAnimElements[i]);
       }
       
       var logoContainer = document.getElementById("logoContainer");
@@ -779,12 +832,32 @@
           window.location.href = "/";
         });
       }
-    
+      
+      var frameContainer3 = document.getElementById("frameContainer3");
+      if (frameContainer3) {
+        frameContainer3.addEventListener("click", function (e) {
+          window.location.href = "./store";
+        });
+      }
+      
+      var frameContainer4 = document.getElementById("frameContainer4");
+      if (frameContainer4) {
+        frameContainer4.addEventListener("click", function (e) {
+          window.location.href = "./AI";
+        });
+      }
+      
+      var icons = document.getElementById("icons");
+      if (icons) {
+        icons.addEventListener("click", function (e) {
+          window.location.href = "./profile";
+        });
+      }
       
       var icons1 = document.getElementById("icons1");
       if (icons1) {
         icons1.addEventListener("click", function () {
-          var popup = document.getElementById("cartContainer");
+          var popup = document.getElementById("cartPopup");
           if (!popup) return;
           var popupStyle = popup.style;
           if (popupStyle) {
@@ -804,6 +877,20 @@
               }
             };
           popup.addEventListener("click", onClick);
+        });
+      }
+      
+      var listItemContainer1 = document.getElementById("listItemContainer1");
+      if (listItemContainer1) {
+        listItemContainer1.addEventListener("click", function (e) {
+          window.location.href = "./user";
+        });
+      }
+      
+      var listItemContainer3 = document.getElementById("listItemContainer3");
+      if (listItemContainer3) {
+        listItemContainer3.addEventListener("click", function (e) {
+          window.location.href = "./order-history";
         });
       }
       </script>
