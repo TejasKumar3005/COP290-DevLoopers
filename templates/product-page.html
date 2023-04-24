@@ -100,7 +100,7 @@
                 <img
                   class="basics-child2"
                   alt=""
-                  src="{{ url_for('static', filename='public/rectangle-273@2x.png') }}"
+                  src="{{ product.image_url }}"
                 />
               </div>
             </div>
@@ -326,21 +326,22 @@
         <div class="productsproducts-with-title1-inner">
           <div class="frame-wrapper3">
             <div class="card-group">
+              {% for product in fourprods %}
               <div class="card5">
-                <div class="card-image4">
+                <div class="card-image4" style="background-image: url({{ product.image_url }});">
                   <div class="rating4">
                     <img class="star-icon4" alt="" src="{{ url_for('static', filename='public/star4.svg') }}" />
-                    <div class="bakery">4.8</div>
+                    <div class="bakery">{{ product.rating }}</div>
                   </div>
                   <div class="button6">
                     <div class="exclusive4">EXCLUSIVE</div>
                   </div>
                 </div>
                 <div class="card-body6">
-                  <div class="nike-infinity-react1">Nike Infinity React 3</div>
+                  <div class="nike-infinity-react1">{{ product.product_name }}</div>
                 </div>
                 <div class="card-footer5">
-                  <div class="bakery">$180</div>
+                  <div class="bakery">{{ product.product_price }}</div>
                   <div class="icons10">
                     <img
                       class="vector-icon10"
@@ -350,78 +351,7 @@
                   </div>
                 </div>
               </div>
-              <div class="card6">
-                <div class="card-image5">
-                  <div class="rating4">
-                    <img class="star-icon4" alt="" src="{{ url_for('static', filename='public/star11.svg') }}" />
-                    <div class="bakery">4.8</div>
-                  </div>
-                  <div class="button6">
-                    <div class="exclusive4">EXCLUSIVE</div>
-                  </div>
-                </div>
-                <div class="card-body6">
-                  <div class="nike-infinity-react1">Nike Pegasus 39</div>
-                </div>
-                <div class="card-footer5">
-                  <div class="bakery">$180</div>
-                  <div class="icons11">
-                    <img
-                      class="vector-icon10"
-                      alt=""
-                      src="{{ url_for('static', filename='public/vector7.svg') }}"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="card5">
-                <div class="card-image6">
-                  <div class="rating4">
-                    <img class="star-icon4" alt="" src="{{ url_for('static', filename='public/star21.svg') }}" />
-                    <div class="bakery">4.8</div>
-                  </div>
-                  <div class="button6">
-                    <div class="exclusive4">EXCLUSIVE</div>
-                  </div>
-                </div>
-                <div class="card-body6">
-                  <div class="nike-infinity-react1">Nike 121 Shoes</div>
-                </div>
-                <div class="card-footer5">
-                  <div class="bakery">$180</div>
-                  <div class="icons10">
-                    <img
-                      class="vector-icon10"
-                      alt=""
-                      src="{{ url_for('static', filename='public/vector8.svg') }}"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="card5">
-                <div class="card-image7">
-                  <div class="rating4">
-                    <img class="star-icon4" alt="" src="{{ url_for('static', filename='public/star31.svg') }}" />
-                    <div class="bakery">4.8</div>
-                  </div>
-                  <div class="button6">
-                    <div class="exclusive4">EXCLUSIVE</div>
-                  </div>
-                </div>
-                <div class="card-body6">
-                  <div class="nike-infinity-react1">Nike Runners</div>
-                </div>
-                <div class="card-footer5">
-                  <div class="bakery">$180</div>
-                  <div class="icons13">
-                    <img
-                      class="vector-icon10"
-                      alt=""
-                      src="{{ url_for('static', filename='public/vector9.svg') }}"
-                    />
-                  </div>
-                </div>
-              </div>
+              {% endfor %}
             </div>
           </div>
         </div>

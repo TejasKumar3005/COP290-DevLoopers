@@ -162,7 +162,7 @@
                 <div class="card-parent">
                   {% for product in products %}
                   <a class="card" href="./product/{{ product.id }}"
-                    ><div class="card-image">
+                    ><div class="card-image" style="background-image: url({{ product.image_url }});">
                       <div class="rating">
                         <img class="star-icon" alt="" src="{{ url_for('static', filename='public/star.svg') }}" />
                         <div class="div">{{ product.rating }}</div>

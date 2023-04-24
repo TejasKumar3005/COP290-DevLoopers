@@ -289,7 +289,7 @@
           <div class="card-container">
           {% for product in four_products %}
             <a class="card9" href="/product/{{ product.id }}" id="card"
-              ><div class="card-image8">
+              ><div class="card-image8" style="background-image: url({{ product.image_url }});">
                 <div class="rating9">
                   <img class="star-icon8" alt="" src="{{ url_for('static', filename='public/star5.svg') }}" />
                   <div class="best-sellers">{{ product.rating }}</div>

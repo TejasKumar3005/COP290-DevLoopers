@@ -177,17 +177,20 @@ def get_addresses():
         addresses = cursor.fetchall()
     return addresses
 
-@app.route('/')
-def index():
+def get4randomproducts():
     with connection.cursor() as cursor:
         sql = """SELECT * FROM `product`"""
         cursor.execute(sql)
         products = cursor.fetchall()
     if len(products) >= 4:
         products = random.sample(products,4)
+    return products
+
+@app.route('/')
+def index():
     if is_logged_in():
-        return render_template('index.html', logged=1,userid=session["user_id"],products=products)
-    return render_template('index.html', logged=0,products=products)
+        return render_template('index.html', logged=1,userid=session["user_id"],products=get4randomproducts())
+    return render_template('index.html', logged=0,products=get4randomproducts())
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -383,7 +386,7 @@ def store():
         sql = """SELECT * FROM `category`"""
         cursor.execute(sql)
         categories = cursor.fetchall()
-    return render_template("store-page.html",products=split_list_into_4(products),categories=categories)
+    return render_template("store-page.html",products=split_list_into_4(products)[0:4],categories=categories)
 
 @app.route("/product/<productid>",methods=["GET","POST"])
 @login_required
@@ -426,8 +429,9 @@ def product(productid):
                 cursor.execute(sql,(category_id["category_id"]))
                 category = cursor.fetchone()
                 categories.append(category["name"])
-        
-        return render_template("product-page.html",product=product,categories=categories)
+        ans = get4randomproducts()
+        print(ans)
+        return render_template("product-page.html",product=product,categories=categories,fourprods=ans)
 
 @app.route("/checkout",methods=["GET","POST"])
 @login_required
@@ -475,22 +479,24 @@ def profile():
 def user():
     if request.method == "POST":
         with connection.cursor() as cursor:
-            uploadedfile = request.files["user_file"]
-            firstname = request.form.get("firstname")
-            lastname = request.form.get("lastname")
-            email = request.form.get("email")
-            age = request.form.get("age")
-            height = request.form.get("height")
-            weight = request.form.get("weight")
-            if uploadedfile:
-                filename = upload_file_to_s3(uploadedfile)
-                sql = """UPDATE `user` SET `firstname`=%s, `lastname`=%s, `email`=%s, `age`=%s, `height`=%s, `weight`=%s, `image_url`=%s WHERE `id`=%s """
-                cursor.execute(sql,(firstname,lastname,email,age,height,weight,"https://flask-zenfit.s3.amazonaws.com/"+filename,session["user_id"]))
-            else:
-                filename = upload_file_to_s3(uploadedfile)
-                sql = """UPDATE `user` SET `firstname`=%s, `lastname`=%s, `email`=%s, `age`=%s, `height`=%s, `weight`=%s WHERE `id`=%s """
-                cursor.execute(sql,(firstname,lastname,email,age,height,weight,session["user_id"]))
-            connection.commit()
+            if (request.form.get("submit") == "changeuser"):
+                uploadedfile = request.files["user_file"]
+                firstname = request.form.get("firstname")
+                lastname = request.form.get("lastname")
+                email = request.form.get("email")
+                age = request.form.get("age")
+                height = request.form.get("height")
+                weight = request.form.get("weight")
+                if uploadedfile:
+                    filename = upload_file_to_s3(uploadedfile)
+                    sql = """UPDATE `user` SET `firstname`=%s, `lastname`=%s, `email`=%s, `age`=%s, `height`=%s, `weight`=%s, `image_url`=%s WHERE `id`=%s """
+                    cursor.execute(sql,(firstname,lastname,email,age,height,weight,"https://flask-zenfit.s3.amazonaws.com/"+filename,session["user_id"]))
+                else:
+                    filename = upload_file_to_s3(uploadedfile)
+                    sql = """UPDATE `user` SET `firstname`=%s, `lastname`=%s, `email`=%s, `age`=%s, `height`=%s, `weight`=%s WHERE `id`=%s """
+                    cursor.execute(sql,(firstname,lastname,email,age,height,weight,session["user_id"]))
+                connection.commit()
+                
 
     rows = selectuserbyid()
     print(rows)
