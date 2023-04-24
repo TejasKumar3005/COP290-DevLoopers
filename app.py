@@ -139,6 +139,43 @@ def selectuserbyid(id):
         rows = cursor.fetchall()
     return rows
 
+def retrieve_cart_id():
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `order` WHERE `order_status`=%s AND `user_id`=%s"""
+        cursor.execute(sql,(0,session["user_id"]))
+        cart = cursor.fetchone()
+        cartid = cart["id"]
+    return cartid
+
+def get_cart_from_cartid(cartid):
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `order_product` WHERE `order_id`=%s"""
+        cursor.execute(sql,(cartid))
+        cart_products = cursor.fetchall()
+    return cart_products
+
+def get_productsandnet_from_cart(cart_products):
+    products_list = []
+    net_price = 0
+
+    with connection.cursor() as cursor:
+        for cart_product in cart_products:
+            sql = """SELECT * FROM `product` WHERE `id`=%s"""
+            cursor.execute(sql,(cart_product["product_id"]))
+            actual_product = cursor.fetchone()
+            actual_product["quantity"] = cart_product["quantity"]
+            products_list.append(actual_product)
+            net_price += cart_product["quantity"]*actual_product["product_price"]
+    
+    return products_list, net_price
+
+def get_addresses():
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `address` WHERE `user_id`=%s"""
+        cursor.execute(sql,(session["user_id"]))
+        addresses = cursor.fetchall()
+    return addresses
+
 @app.route('/')
 def index():
     with connection.cursor() as cursor:
@@ -392,12 +429,7 @@ def product(productid):
 @app.route("/checkout",methods=["GET","POST"])
 @login_required
 def checkout():
-
-    with connection.cursor() as cursor:
-        sql = """SELECT * FROM `order` WHERE `order_status`=%s AND `user_id`=%s"""
-        cursor.execute(sql,(0,session["user_id"]))
-        cart = cursor.fetchone()
-        cartid = cart["id"]
+    cartid = retrieve_cart_id()
     
     if request.method == "POST":
         with connection.cursor() as cursor:
@@ -419,28 +451,9 @@ def checkout():
 
         return redirect("/")
     else:
-        with connection.cursor() as cursor:
-            sql = """SELECT * FROM `order_product` WHERE `order_id`=%s"""
-            cursor.execute(sql,(cartid))
-            cart_products = cursor.fetchall()
-
-        products_list = []
-        net_price = 0
-
-        with connection.cursor() as cursor:
-            for cart_product in cart_products:
-                sql = """SELECT * FROM `product` WHERE `id`=%s"""
-                cursor.execute(sql,(cart_product["product_id"]))
-                actual_product = cursor.fetchone()
-                actual_product["quantity"] = cart_product["quantity"]
-                products_list.append(actual_product)
-                net_price += cart_product["quantity"]*actual_product["product_price"]
-
-            sql = """SELECT * FROM `address` WHERE `user_id`=%s"""
-            cursor.execute(sql,(session["user_id"]))
-            addresses = cursor.fetchall()
-
-        print(addresses)
+        
+        (products_list,net_price) = get_productsandnet_from_cart(get_cart_from_cartid(cartid))
+        addresses = get_addresses()
 
         return render_template("check-out-page.html",products=products_list,net=net_price,addresses=addresses)
 
@@ -451,7 +464,8 @@ def ai():
 @app.route("/profile",methods=["GET","POST"])
 @login_required
 def profile():
-    return render_template("profile-page.html")
+    (products_list,net_price) = get_productsandnet_from_cart(get_cart_from_cartid(retrieve_cart_id()))
+    return render_template("profile-page.html",products=products_list,net=net_price)
 
 @app.route("/user",methods=["GET","POST"])
 @login_required
@@ -474,5 +488,6 @@ def detailpost():
 @login_required
 def comm():
     return render_template("community-page.html")
+
 
 

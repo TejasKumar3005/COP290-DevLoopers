@@ -575,6 +575,7 @@
               </button>
             </div>
             <article class="component-84-parent">
+              {% for product in products %}
               <article class="component-84">
                 <div class="frame-parent9">
                   <div class="basics-wrapper">
@@ -591,48 +592,23 @@
                       <div class="frame-wrapper1">
                         <div class="frame-parent10">
                           <div class="product-title-parent">
-                            <div class="product-title">Product title</div>
-                            <div class="frame-parent11">
-                              <div class="brand-parent">
-                                <div class="brand">Brand</div>
-                                <div class="nike">Nike</div>
-                              </div>
-                              <div class="size-parent">
-                                <div class="brand">Size</div>
-                                <div class="div14">9</div>
-                              </div>
-                            </div>
+                            <div class="product-title">{{ product.product_name }}</div>
                           </div>
                           <div class="ic-actions-star-parent">
-                            <img
-                              class="ic-actions-star-icon"
-                              alt=""
-                              src="{{ url_for('static', filename='public1/icactionsstar21.svg') }}"
-                            />
-
-                            <img
-                              class="ic-actions-star-icon"
-                              alt=""
-                              src="{{ url_for('static', filename='public1/icactionsstar21.svg') }}"
-                            />
-
-                            <img
-                              class="ic-actions-star-icon"
-                              alt=""
-                              src="{{ url_for('static', filename='public1/icactionsstar21.svg') }}"
-                            />
-
-                            <img
-                              class="ic-actions-star-icon"
-                              alt=""
-                              src="{{ url_for('static', filename='public1/icactionsstar21.svg') }}"
-                            />
-
+                          {% for i in range(product.rating) %}
+                          <img
+                            class="ic-actions-star-icon"
+                            alt=""
+                            src="{{ url_for('static', filename='public1/icactionsstar21.svg') }}"
+                          />
+                          {% endfor %}
+                          {% for i in range(5-product.rating) %}
                             <img
                               class="ic-actions-star-icon"
                               alt=""
                               src="{{ url_for('static', filename='public1/icactionsstar111.svg') }}"
                             />
+                          {% endfor %}
                           </div>
                         </div>
                       </div>
@@ -640,14 +616,12 @@
                     <div class="price-button">
                       <div class="price-button-child"></div>
                       <div class="price-discount-price">
-                        <div class="usd">36.99 USD</div>
-                        <div class="usd1">48.56 USD</div>
+                        <div class="usd">{{ product.product_price }} USD</div>
                       </div>
                       <div class="inputs-and-selects">
-                        <div class="pcs">1 pcs</div>
+                        <div class="pcs">{{ product.quantity }} pcs</div>
                         <div class="inputs-and-selects-child"></div>
                         <div class="pcs-parent">
-                          <div class="pcs1">Pcs</div>
                           <img
                             class="ic-chevron-down-icon"
                             alt=""
@@ -660,91 +634,7 @@
                 </div>
                 <div class="component-84-child"></div>
               </article>
-              <article class="component-84">
-                <div class="frame-parent9">
-                  <div class="basics-wrapper">
-                    <div class="basics5">
-                      <img
-                        class="basics-child2"
-                        alt=""
-                        src="{{ url_for('static', filename='public1/rectangle-2611@2x.png') }}"
-                      />
-                    </div>
-                  </div>
-                  <div class="content-button">
-                    <div class="content-button-inner">
-                      <div class="frame-wrapper1">
-                        <div class="frame-parent10">
-                          <div class="product-title-parent">
-                            <div class="product-title">Product title</div>
-                            <div class="frame-parent11">
-                              <div class="brand-parent">
-                                <div class="brand">Brand</div>
-                                <div class="nike">Nike</div>
-                              </div>
-                              <div class="size-parent">
-                                <div class="brand">Size</div>
-                                <div class="div14">9</div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="ic-actions-star-parent">
-                            <img
-                              class="ic-actions-star-icon"
-                              alt=""
-                              src="{{ url_for('static', filename='public1/icactionsstar3.svg') }}"
-                            />
-
-                            <img
-                              class="ic-actions-star-icon"
-                              alt=""
-                              src="{{ url_for('static', filename='public1/icactionsstar3.svg') }}"
-                            />
-
-                            <img
-                              class="ic-actions-star-icon"
-                              alt=""
-                              src="{{ url_for('static', filename='public1/icactionsstar3.svg') }}"
-                            />
-
-                            <img
-                              class="ic-actions-star-icon"
-                              alt=""
-                              src="{{ url_for('static', filename='public1/icactionsstar3.svg') }}"
-                            />
-
-                            <img
-                              class="ic-actions-star-icon"
-                              alt=""
-                              src="{{ url_for('static', filename='public1/icactionsstar31.svg') }}"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="price-button">
-                      <div class="price-button-child"></div>
-                      <div class="price-discount-price">
-                        <div class="usd">36.99 USD</div>
-                        <div class="usd1">48.56 USD</div>
-                      </div>
-                      <div class="inputs-and-selects">
-                        <div class="pcs">1 pcs</div>
-                        <div class="inputs-and-selects-child"></div>
-                        <div class="pcs-parent">
-                          <div class="pcs1">Pcs</div>
-                          <img
-                            class="ic-chevron-down-icon"
-                            alt=""
-                            src="{{ url_for('static', filename='public1/icchevrondown11.svg') }}"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="component-84-child"></div>
-              </article>
+              {% endfor %}
             </article>
           </div>
           <div class="group-container">
@@ -764,7 +654,7 @@
             </div>
             <div class="subtotal-parent">
               <div class="subtotal">Subtotal</div>
-              <div class="usd4">73.98 USD</div>
+              <div class="usd4">{{ net }} USD</div>
             </div>
             <div class="group-child"></div>
           </div>
