@@ -27,7 +27,8 @@ def setup():
         `username` varchar(255) NOT NULL,
         `password` varchar(255) NOT NULL,
         `image_url` varchar(255) DEFAULT NULL,
-        `name` varchar(255) NOT NULL,
+        `firstname` varchar(255) NOT NULL,
+        `lastname` varchar(255) NOT NULL,
         `age` int NOT NULL,
         `height` int NOT NULL,
         `weight` int NOT NULL,
@@ -70,8 +71,19 @@ def setup():
       cursor.execute("""CREATE TABLE IF NOT EXISTS `post` (
         `id` int NOT NULL AUTO_INCREMENT,
         `post_title` varchar(255) DEFAULT NULL,
+        `image_url` varchar(255) DEFAULT NULL,
         `post_time` datetime DEFAULT NULL,
         `post_text` text DEFAULT NULL,
+        `user_id` int DEFAULT NULL,
+        PRIMARY KEY (`id`),
+        FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+      )""")
+
+      cursor.execute("""CREATE TABLE IF NOT EXISTS `reply` (
+        `id` int NOT NULL AUTO_INCREMENT,
+        `reply_time` datetime DEFAULT NULL,
+        `reply_text` text DEFAULT NULL,
+        `post_id` int DEFAULT NULL,
         `user_id` int DEFAULT NULL,
         PRIMARY KEY (`id`),
         FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
@@ -86,18 +98,7 @@ def setup():
         `event_end` datetime DEFAULT NULL,
         PRIMARY KEY (`id`)
       )""")
-
-      cursor.execute("""CREATE TABLE IF NOT EXISTS `note` (
-        `id` int NOT NULL AUTO_INCREMENT,
-        `note_title` varchar(255) DEFAULT NULL,
-        `note_text` text DEFAULT NULL,
-        `note_creation_time` datetime DEFAULT NULL,
-        `note_update_time` datetime DEFAULT NULL,
-        `note_taker_id` int NOT NULL,
-        PRIMARY KEY (`id`),
-        FOREIGN KEY (`note_taker_id`) REFERENCES `user` (`id`)
-      )""")
-
+      
       cursor.execute("""CREATE TABLE IF NOT EXISTS `order` (
         `id` int NOT NULL AUTO_INCREMENT,
         `order_status` int DEFAULT NULL,
@@ -132,10 +133,10 @@ def selectuserbyusername(username):
         rows = cursor.fetchall()
     return rows
 
-def selectuserbyid(id):
+def selectuserbyid():
     with connection.cursor() as cursor:
         sql = """SELECT * FROM `user` WHERE `id`=%s"""
-        cursor.execute(sql,id)
+        cursor.execute(sql,session["user_id"])
         rows = cursor.fetchall()
     return rows
 
@@ -200,17 +201,17 @@ def login():
 
         # Ensure username was submitted
         if not request.form.get("username"):
-            return "sad life"
+            return "username not submitted"
 
         # Ensure password was submitted
         elif not request.form.get("password"):
-            return "sad life"
+            return "password not submitted"
         
         rows = selectuserbyusername(request.form.get("username"))
 
         # Ensure username exists and password is correct
         if len(rows) != 1 or not check_password_hash(rows[0]["password"], request.form.get("password")):
-            return "sad life"
+            return "username does not exist or password is incorrect"
 
         # Remember which user has logged in
         session["user_id"] = rows[0]["id"]
@@ -227,7 +228,8 @@ def register():
     """Register user"""
     if request.method == 'POST':
         username = request.form.get("username")
-        name = request.form.get("name")
+        firstname = request.form.get("firstname")
+        lastname = request.form.get("lastname")
         age = int(request.form.get("age"))
         height = int(request.form.get("height"))
         weight = int(request.form.get("weight"))
@@ -245,8 +247,8 @@ def register():
             return "passwords do not match or empty"
 
         with connection.cursor() as cursor:
-            sql = f"INSERT INTO user (username,email,name,age,height,weight,password) VALUES (%s,%s,%s,%s,%s,%s,%s)"
-            cursor.execute(sql, (username,email,name,age,height,weight,hash))
+            sql = f"INSERT INTO user (username,email,firstname,lastname,age,height,weight,password) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"
+            cursor.execute(sql, (username,email,firstname,lastname,age,height,weight,hash))
             connection.commit()
 
             sql = """SELECT id FROM `user` WHERE `username`=%s"""
@@ -471,7 +473,26 @@ def profile():
 @app.route("/user",methods=["GET","POST"])
 @login_required
 def user():
-    rows = selectuserbyid(session["user_id"])
+    if request.method == "POST":
+        with connection.cursor() as cursor:
+            uploadedfile = request.files["user_file"]
+            firstname = request.form.get("firstname")
+            lastname = request.form.get("lastname")
+            email = request.form.get("email")
+            age = request.form.get("age")
+            height = request.form.get("height")
+            weight = request.form.get("weight")
+            if uploadedfile:
+                filename = upload_file_to_s3(uploadedfile)
+                sql = """UPDATE `user` SET `firstname`=%s, `lastname`=%s, `email`=%s, `age`=%s, `height`=%s, `weight`=%s, `image_url`=%s WHERE `id`=%s """
+                cursor.execute(sql,(firstname,lastname,email,age,height,weight,"https://flask-zenfit.s3.amazonaws.com/"+filename,session["user_id"]))
+            else:
+                filename = upload_file_to_s3(uploadedfile)
+                sql = """UPDATE `user` SET `firstname`=%s, `lastname`=%s, `email`=%s, `age`=%s, `height`=%s, `weight`=%s WHERE `id`=%s """
+                cursor.execute(sql,(firstname,lastname,email,age,height,weight,session["user_id"]))
+            connection.commit()
+
+    rows = selectuserbyid()
     print(rows)
     return render_template("user-page.html",user=rows[0])
 

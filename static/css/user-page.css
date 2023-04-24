@@ -1,3 +1,24 @@
+input[type="file"]::-webkit-file-upload-button {
+  visibility: hidden;
+}
+input[type="file"]::before {
+  content: 'Select a file';
+  display: inline-block;
+  background: #007bff;
+  color: #fff;
+  padding: 5px 10px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-weight: 700;
+  border-radius: 5px;
+}
+input[type="file"]:hover::before {
+  background: #0069d9;
+}
+
+
 @keyframes slide-in-right {
   0% {
     transform: translateX(200px);

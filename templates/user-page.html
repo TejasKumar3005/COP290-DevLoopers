@@ -171,7 +171,7 @@
                 <img
                   class="avatar-icon1"
                   alt=""
-                  src="{{ url_for('static', filename= 'public1/avatar1@2x.png') }}"
+                  src="{{ user.image_url }}"
                 />
 
                 <div class="deta">
@@ -230,8 +230,18 @@
                         src="{{ url_for('static', filename= 'public1/personoutline.svg') }}"
                       />
 
-                      <div class="mumbai">Full Name:</div>
-                      <div class="india">{{ user.name }}</div>
+                      <div class="mumbai">First Name:</div>
+                      <div class="india">{{ user.firstname }}</div>
+                    </div>
+                    <div class="list1">
+                      <img
+                        class="bx-calendar-alt-icon"
+                        alt=""
+                        src="{{ url_for('static', filename= 'public1/personoutline.svg') }}"
+                      />
+
+                      <div class="mumbai">Last Name:</div>
+                      <div class="india">{{ user.lastname }}</div>
                     </div>
                     <div class="list1">
                       <img
@@ -252,36 +262,6 @@
 
                       <div class="mumbai">Height:</div>
                       <div class="india">{{ user.height }} cm</div>
-                    </div>
-                    <div class="list1">
-                      <img
-                        class="bx-calendar-alt-icon"
-                        alt=""
-                        src="{{ url_for('static', filename= 'public1/starborder.svg') }}"
-                      />
-
-                      <div class="mumbai">Weight:</div>
-                      <div class="india">{{ user.weight }} kg</div>
-                    </div>
-                    <div class="list1">
-                      <img
-                        class="bx-calendar-alt-icon"
-                        alt=""
-                        src="{{ url_for('static', filename= 'public1/emojiflags.svg') }}"
-                      />
-
-                      <div class="mumbai">Country:</div>
-                      <div class="india">India</div>
-                    </div>
-                    <div class="list1">
-                      <img
-                        class="bx-calendar-alt-icon"
-                        alt=""
-                        src="{{ url_for('static', filename= 'public1/translate.svg') }}"
-                      />
-
-                      <div class="mumbai">Language:</div>
-                      <div class="india">English</div>
                     </div>
                   </div>
                 </div>
@@ -848,20 +828,15 @@
 
     <div id="changeDetailsPopup" class="popup-overlay" style="display: none">
       <div class="change-details">
-        <form class="body" method="post">
+        <form class="body" action="/user" method="post" enctype="multipart/form-data">
           <div class="upload-photo">
-            <img class="avatar-icon" alt="" src="{{ url_for('static', filename= 'public1/avatar@2x.png') }}" />
+            <img class="avatar-icon" alt="" src="{{ user.image_url }}" />
 
             <div class="actions">
               <div class="buttons9">
                 <button class="button7">
                   <div class="unstyledbutton">
-                    <div class="button8">Upload new photo</div>
-                  </div>
-                </button>
-                <button class="button9">
-                  <div class="unstyledbutton">
-                    <div class="button10">Reset</div>
+                    <input class="button8" type="file" name="user_file">
                   </div>
                 </button>
               </div>
@@ -877,7 +852,7 @@
                   <div class="label-container">
                     <div class="label">First Name</div>
                   </div>
-                  <input class="active" type="text" />
+                  <input class="active" type="text" style="color: white;" name="firstname" value="{{ user.firstname }}"/>
                 </div>
               </div>
               <div class="textfieldoutlined">
@@ -885,7 +860,7 @@
                   <div class="label-container">
                     <div class="label">Last Name</div>
                   </div>
-                  <input class="active" type="text" />
+                  <input class="active" type="text" style="color: white;" name="lastname" value="{{ user.lastname }}"/>
                 </div>
               </div>
             </div>
@@ -895,25 +870,15 @@
                   <div class="label-container">
                     <div class="label">Email</div>
                   </div>
-                  <input class="active" type="email" />
+                  <input class="active" type="email" style="color: white;" name="email" value="{{ user.email }}"/>
                 </div>
               </div>
               <div class="textfieldoutlined">
                 <div class="input">
                   <div class="label-container">
-                    <div class="label">Phone Number</div>
+                    <div class="label">Age (in years)</div>
                   </div>
-                  <input class="active" type="tel" />
-                </div>
-              </div>
-            </div>
-            <div class="row2">
-              <div class="textfieldoutlined">
-                <div class="input">
-                  <div class="label-container">
-                    <div class="label">Address</div>
-                  </div>
-                  <input class="active" type="text" />
+                  <input class="active" type="text" style="color: white;" name="age" value="{{ user.age }}"/>
                 </div>
               </div>
             </div>
@@ -921,154 +886,27 @@
               <div class="textfieldoutlined">
                 <div class="input">
                   <div class="label-container">
-                    <div class="label">State</div>
+                    <div class="label">Height (in cm)</div>
                   </div>
-                  <input class="active" type="text" />
+                  <input class="active" type="text" style="color: white;" name="height" value="{{ user.height }}"/>
                 </div>
               </div>
               <div class="textfieldoutlined">
                 <div class="input">
                   <div class="label-container">
-                    <div class="label">Zip Code</div>
+                    <div class="label">Weight (in kg)</div>
                   </div>
-                  <input class="active" type="number" />
+                  <input class="active" type="number" style="color: white;" name="weight" value="{{ user.weight }}"/>
                 </div>
               </div>
             </div>
             <div class="upload-photo">
-              <div class="selectoutlined">
-                <div class="input">
-                  <div class="label-container">
-                    <div class="label">Country</div>
-                  </div>
-                  <div class="active7">
-                    <div class="muiautocompletetag">
-                      <div class="chip">
-                        <div class="container">
-                          <div class="avatar">
-                            <div class="op">F</div>
-                          </div>
-                          <div class="typography">
-                            <div class="chip1">Chip</div>
-                          </div>
-                          <img
-                            class="cancel-icon"
-                            alt=""
-                            src="{{ url_for('static', filename= 'public1/cancel.svg') }}"
-                          />
-                        </div>
-                      </div>
-                      <div class="chip">
-                        <div class="container">
-                          <div class="avatar">
-                            <div class="op">F</div>
-                          </div>
-                          <div class="typography">
-                            <div class="chip1">Chip</div>
-                          </div>
-                          <img
-                            class="cancel-icon"
-                            alt=""
-                            src="{{ url_for('static', filename= 'public1/cancel.svg') }}"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <input class="value" type="text" />
-
-                    <div class="mui-autocomplete-indicator">
-                      <div class="iconbutton">
-                        <div class="unstylediconbutton">
-                          <img
-                            class="close-icon"
-                            alt=""
-                            src="{{ url_for('static', filename= 'public1/close.svg') }}"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="arrow">
-                      <img
-                        class="cancel-icon"
-                        alt=""
-                        src="{{ url_for('static', filename= 'public1/arrowdropdown.svg') }}"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="selectoutlined">
-                <div class="input">
-                  <div class="label-container">
-                    <div class="label">Language</div>
-                  </div>
-                  <div class="active7">
-                    <div class="muiautocompletetag">
-                      <div class="chip">
-                        <div class="container">
-                          <div class="avatar">
-                            <div class="op">F</div>
-                          </div>
-                          <div class="typography">
-                            <div class="chip1">Chip</div>
-                          </div>
-                          <img
-                            class="cancel-icon"
-                            alt=""
-                            src="{{ url_for('static', filename= 'public1/cancel.svg') }}"
-                          />
-                        </div>
-                      </div>
-                      <div class="chip">
-                        <div class="container">
-                          <div class="avatar">
-                            <div class="op">F</div>
-                          </div>
-                          <div class="typography">
-                            <div class="chip1">Chip</div>
-                          </div>
-                          <img
-                            class="cancel-icon"
-                            alt=""
-                            src="{{ url_for('static', filename= 'public1/cancel.svg') }}"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <input class="value" type="text" />
-
-                    <div class="mui-autocomplete-indicator">
-                      <div class="iconbutton">
-                        <div class="unstylediconbutton">
-                          <img
-                            class="close-icon"
-                            alt=""
-                            src="{{ url_for('static', filename= 'public1/close.svg') }}"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="arrow">
-                      <img
-                        class="cancel-icon"
-                        alt=""
-                        src="{{ url_for('static', filename= 'public1/arrowdropdown.svg') }}"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
           <div class="buttons9">
             <button class="button7">
               <div class="unstyledbutton">
                 <div class="button8">Save Changes</div>
-              </div>
-            </button>
-            <button class="button13">
-              <div class="unstyledbutton">
-                <div class="button14">Reset</div>
               </div>
             </button>
           </div>
