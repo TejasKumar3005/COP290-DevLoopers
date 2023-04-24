@@ -182,7 +182,8 @@ def index():
         sql = """SELECT * FROM `product`"""
         cursor.execute(sql)
         products = cursor.fetchall()
-    products = random.sample(products,4)
+    if len(products) >= 4:
+        products = random.sample(products,4)
     if is_logged_in():
         return render_template('index.html', logged=1,userid=session["user_id"],products=products)
     return render_template('index.html', logged=0,products=products)
