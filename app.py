@@ -284,15 +284,7 @@ def allowed_file(filename):
     return '.' in filename and \
         filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@app.route("/upload", methods=["POST"])
-def create():
-
-    # check whether an input field with name 'user_file' exist
-    if 'user_file' not in request.files:
-        return "user file not found"
-
-    # after confirm 'user_file' exist, get the file from input
-    file = request.files['user_file']
+def upload_safe(file):
 
     # check whether a file is selected
     if file.filename == '':
@@ -306,7 +298,7 @@ def create():
         if output:
             # write your code here 
             # to save the file name in database
-            return "uploaded"
+            return file.filename
 
         # upload failed, redirect to upload page
         else:
@@ -327,7 +319,6 @@ def split_list_into_4(lst):
 
 @app.route("/store",methods=["GET","POST"])
 def store():
-    print(request.form)
     if request.method == "POST":
         if request.form.get("submit") == "search":
             inputtext = request.form.get("inputtext")
@@ -430,7 +421,6 @@ def product(productid):
                 category = cursor.fetchone()
                 categories.append(category["name"])
         ans = get4randomproducts()
-        print(ans)
         return render_template("product-page.html",product=product,categories=categories,fourprods=ans)
 
 @app.route("/checkout",methods=["GET","POST"])
@@ -488,18 +478,17 @@ def user():
                 height = request.form.get("height")
                 weight = request.form.get("weight")
                 if uploadedfile:
-                    filename = upload_file_to_s3(uploadedfile)
+                    print("uploaded")
+                    filename = upload_safe(uploadedfile)
                     sql = """UPDATE `user` SET `firstname`=%s, `lastname`=%s, `email`=%s, `age`=%s, `height`=%s, `weight`=%s, `image_url`=%s WHERE `id`=%s """
                     cursor.execute(sql,(firstname,lastname,email,age,height,weight,"https://flask-zenfit.s3.amazonaws.com/"+filename,session["user_id"]))
                 else:
-                    filename = upload_file_to_s3(uploadedfile)
                     sql = """UPDATE `user` SET `firstname`=%s, `lastname`=%s, `email`=%s, `age`=%s, `height`=%s, `weight`=%s WHERE `id`=%s """
                     cursor.execute(sql,(firstname,lastname,email,age,height,weight,session["user_id"]))
                 connection.commit()
                 
 
     rows = selectuserbyid()
-    print(rows)
     return render_template("user-page.html",user=rows[0])
 
 @app.route("/order-history",methods=["GET","POST"])

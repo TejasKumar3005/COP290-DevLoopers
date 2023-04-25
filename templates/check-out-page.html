@@ -81,14 +81,12 @@
               id="icons"
             />
             </a>
-            <a href="/checkout">
               <img
               class="icons17"
               alt=""
               src="{{ url_for('static', filename='public/icons3.svg') }}"
               id="icons1"
             />
-            </a>
           </div>
         </div>
       </div>
@@ -279,19 +277,15 @@
           </div>
           <div class="follow-us-parent1">
             <div class="follow-us3">Follow us:</div>
-            <img
+            <img class="ellipse-icon12" alt="" src="https://cdn-icons-png.flaticon.com/512/124/124010.png" /><img
               class="ellipse-icon12"
               alt=""
-              src="{{ url_for('static', filename='public/ellipse1.svg') }}"
-            /><img
+              src="https://cdn-icons-png.flaticon.com/512/124/124021.png"
+            /><img class="ellipse-icon12" alt="" src="https://img.freepik.com/premium-vector/instagram-social-media-icon-gradient-social-media-logo_197792-4682.jpg" /><img
               class="ellipse-icon12"
               alt=""
-              src="{{ url_for('static', filename='public/ellipse1.svg') }}"
-            /><img
-              class="ellipse-icon12"
-              alt=""
-              src="{{ url_for('static', filename='public/ellipse1.svg') }}"
-            /><img class="ellipse-icon12" alt="" src="{{ url_for('static', filename='public/ellipse1.svg') }}" />
+              src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"
+            />
           </div>
         </div>
       </div>
@@ -303,7 +297,7 @@
           <div class="group-parent6">
             <div class="shopping-cart-parent">
               <div class="shopping-cart">Shopping cart</div>
-              <button class="close-parent">
+              <button class="close-parent" id="popupframeButton">
                 <div class="close">Close</div>
                 <img
                   class="ic-actions-close-simple-icon"
@@ -492,11 +486,30 @@
     </div>
 
     <script>
+      var popupframeButton = document.getElementById("popupframeButton");
+      if (popupframeButton) {
+        popupframeButton.addEventListener("click", function (e) {
+          var popup = e.currentTarget.parentNode;
+          function isOverlay(node) {
+            return !!(
+              node &&
+              node.classList &&
+              node.classList.contains("popup-overlay")
+            );
+          }
+          while (popup && !isOverlay(popup)) {
+            popup = popup.parentNode;
+          }
+          if (isOverlay(popup)) {
+            popup.style.display = "none";
+          }
+        });
+      }
       
       var popupbuttons1 = document.getElementById("popupbuttons1");
       if (popupbuttons1) {
         popupbuttons1.addEventListener("click", function (e) {
-          window.location.href = "check-out-page.html";
+          window.location.href = "./checkout";
         });
       }
       

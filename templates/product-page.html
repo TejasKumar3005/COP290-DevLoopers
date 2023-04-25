@@ -81,14 +81,12 @@
               id="icons"
             />
             </a>
-            <a href="/checkout">
               <img
               class="icons9"
               alt=""
               src="{{ url_for('static', filename='public/icons5.svg') }}"
               id="icons1"
             />
-            </a>
           </div>
         </div>
       </div>
@@ -327,7 +325,7 @@
           <div class="frame-wrapper3">
             <div class="card-group">
               {% for product in fourprods %}
-              <div class="card5">
+              <a class="card5" href="/product/{{ product.id }}" style="color: inherit;text-decoration: none;">
                 <div class="card-image4" style="background-image: url({{ product.image_url }});">
                   <div class="rating4">
                     <img class="star-icon4" alt="" src="{{ url_for('static', filename='public/star4.svg') }}" />
@@ -350,7 +348,7 @@
                     />
                   </div>
                 </div>
-              </div>
+              </a>
               {% endfor %}
             </div>
           </div>
@@ -403,15 +401,15 @@
           </div>
           <div class="follow-us-group">
             <div class="follow-us1">Follow us:</div>
-            <img class="ellipse-icon4" alt="" src="{{ url_for('static', filename='public/ellipse.svg') }}" /><img
+            <img class="ellipse-icon4" alt="" src="https://cdn-icons-png.flaticon.com/512/124/124010.png" /><img
               class="ellipse-icon4"
               alt=""
-              src="{{ url_for('static', filename='public/ellipse.svg') }}"
-            /><img
+              src="https://cdn-icons-png.flaticon.com/512/124/124021.png"
+            /><img class="ellipse-icon4" alt="" src="https://img.freepik.com/premium-vector/instagram-social-media-icon-gradient-social-media-logo_197792-4682.jpg" /><img
               class="ellipse-icon4"
               alt=""
-              src="{{ url_for('static', filename='public/ellipse.svg') }}"
-            /><img class="ellipse-icon4" alt="" src="{{ url_for('static', filename='public/ellipse.svg') }}" />
+              src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"
+            />
           </div>
         </div>
       </div>
@@ -423,7 +421,7 @@
           <div class="group-parent6">
             <div class="shopping-cart-parent">
               <div class="shopping-cart">Shopping cart</div>
-              <button class="close-parent">
+              <button class="close-parent" id="pop">
                 <div class="close">Close</div>
                 <img
                   class="ic-actions-close-simple-icon"
@@ -616,7 +614,7 @@
       var popupbuttons1 = document.getElementById("popupbuttons1");
       if (popupbuttons1) {
         popupbuttons1.addEventListener("click", function (e) {
-          window.location.href = "./check-out-page.html";
+          window.location.href = "./checkout";
         });
       }
       
@@ -630,14 +628,14 @@
       var frameContainer3 = document.getElementById("frameContainer3");
       if (frameContainer3) {
         frameContainer3.addEventListener("click", function (e) {
-          window.location.href = "./zen-ai-page.html";
+          window.location.href = "./AI";
         });
       }
       
       var icons = document.getElementById("icons");
       if (icons) {
         icons.addEventListener("click", function (e) {
-          window.location.href = "./profile-page.html";
+          window.location.href = "./profile";
         });
       }
       
