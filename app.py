@@ -467,10 +467,42 @@ def user():
     rows = selectuserbyid()
     return render_template("user-page.html",user=rows[0])
 
+def get_orders():
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `order` WHERE `order_status`=1 AND `user_id`=%s"""
+        cursor.execute(sql,(session["user_id"]))
+        orders = cursor.fetchall()
+    return orders
+
+def get_products_of_order(order):
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `order_product` WHERE `order_id`=%s"""
+        cursor.execute(sql,(order["id"]))
+        products = cursor.fetchall()
+    return products
+
+def get_products_from_order_products(order_products):
+    products = []
+    for order_product in order_products:
+        with connection.cursor() as cursor:
+            sql = """SELECT * FROM `product` WHERE `id`=%s"""
+            cursor.execute(sql,(order_product["product_id"]))
+            product = cursor.fetchone()
+            product["num"] = order_product["quantity"]
+            products.append(product)
+    return products
+
+
 @app.route("/order-history",methods=["GET","POST"])
 @login_required
 def history():
-    return render_template("order-history-page.html")
+    orders = get_orders()
+    for order in orders:
+        order_products =  get_products_of_order(order)
+        products = get_products_from_order_products(order_products)
+        order["products"] = products
+
+    return render_template("order-history-page.html",orders=orders)
 
 @app.route("/post",methods=["GET","POST"])
 def detailpost():
