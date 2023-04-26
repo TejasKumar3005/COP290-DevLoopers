@@ -71,6 +71,16 @@
             <img class="vector-icon9" alt="" src="{{ url_for('static', filename='public/vector10.svg') }}" />
           </button>
         </div>
+
+        {% if logged == 0 %}
+        <div class="solid-button-parent">
+          <button class="solid-button" id="solidButton">
+            <div class="prozen">Register</div></button
+          ><button class="button" id="button">
+            <div class="store">Log In</div>
+          </button>
+        </div>
+        {% else %}
         <div class="navigation-a-inner1">
           <div class="icons-container">
             <a href="/profile">
@@ -89,6 +99,8 @@
             />
           </div>
         </div>
+        {% endif %}        
+
       </div>
       <div class="frame-parent21">
         <div class="frame-parent22">
@@ -168,7 +180,7 @@
               <div class="rectangle-parent">
                 <div class="group-child"></div>
                 <div class="usd-parent">
-                  <div class="free-shipping">{{ product.product_price }} USD</div>
+                  <div class="free-shipping">₹ {{ product.product_price }}</div>
                 </div>
                 <div class="inputs-and-selects1">
                   <div class="div24">1</div>
@@ -339,7 +351,7 @@
                   <div class="nike-infinity-react1">{{ product.product_name }}</div>
                 </div>
                 <div class="card-footer5">
-                  <div class="bakery">{{ product.product_price }}</div>
+                  <div class="bakery">₹{{ product.product_price }}</div>
                   <div class="icons10">
                     <img
                       class="vector-icon10"
@@ -609,6 +621,120 @@
       </div>
     </div>
 
+    <div id="registerMember" class="popup-overlay" style="display: none">
+      <div class="register-member2">
+        <form class="register-member3" action="/register" method="post">
+          <div class="register-now4">Register Now</div>
+          <div class="registration-option2">
+            <div class="log-in3">Member</div>
+          </div>
+          <div class="name-field2">
+            <div class="full-name2">Username</div>
+            <div class="input-field9">
+              <input class="tejas-kumar1" type="text" name="username" />
+            </div>
+            <div class="full-name2" >First Name</div>
+            <div class="input-field9">
+              <input class="tejas-kumar1" type="text" name="firstname" />
+            </div>
+            <div class="full-name2" >Last Name</div>
+            <div class="input-field9">
+              <input class="tejas-kumar1" type="text" name="lastname" />
+            </div>
+          </div>
+          <div class="details-feild2">
+            <div class="age-field2">
+              <p class="age4">Age</p>
+              <input class="input-field10" type="number" name="age" />
+            </div>
+            <div class="height-field2">
+              <div class="full-name2">Height</div>
+              <div class="input-height-field-parent">
+                <input class="input-height-field2" type="number" name="height" style="color: white;"/>
+                <div class="full-name2">cm</div>
+              </div>
+            </div>
+            <div class="weight-field">
+              <div class="full-name2">Weight</div>
+              <div class="input-height-field-group">
+                <input class="input-height-field2" type="number" name="weight" style="color: white;"/>
+                <div class="full-name2">kg</div>
+              </div>
+            </div>
+          </div>
+          <div class="name-field2">
+            <div class="full-name2">Email</div>
+            <div class="input-field11">
+              <img class="email-icon2" alt="" src="{{ url_for('static', filename='public/email2.svg') }}" />
+              <div class="input-field-child2"></div>
+              <input class="tejas-kumar1" type="email" name="email" style="color: white;"/>
+            </div>
+          </div>
+          <div class="password-field3">
+            <div class="full-name2">Password</div>
+            <div class="input-field11">
+              <img class="password-icon2" alt="" src="{{ url_for('static', filename='public/password2.svg') }}" />
+              <div class="input-field-child2"></div>
+              <input class="input2" type="password" name="password" style="color: white;"/>
+            </div>
+          </div>
+          <div class="password-field3">
+            <div class="full-name2">Password Confirmation</div>
+            <div class="input-field11">
+              <img class="password-icon2" alt="" src="{{ url_for('static', filename='public/password2.svg') }}" />
+              <div class="input-field-child2"></div>
+              <input class="input2" type="password" name="confirmation" style="color: white;"/>
+            </div>
+          </div>
+          <button class="log-in-button2" type="submit">
+            <div class="register-now5">Register Now</div>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div id="logInContainer" class="popup-overlay" style="display: none">
+      <div class="log-in4">
+        <form class="sign-in" method="post" action="/login">
+          <div class="log-in5">Log In</div>
+          <div class="email-field3">
+            <div class="email3">Username</div>
+            <div class="input-field13">
+              <img class="email-icon3" alt="" src="{{ url_for('static', filename='public/email3.svg') }}" />
+              <div class="input-field-child4"></div>
+              <input class="examplegmailcom3" type="text" name="username" style="color: white;" />
+            </div>
+          </div>
+          <div class="password-field4">
+            <div class="email3">Password</div>
+            <div class="input-field13">
+              <img class="password-icon3" alt="" src="{{ url_for('static', filename='public/password3.svg') }}" />
+              <div class="input-field-child4"></div>
+              <input class="input3" type="password" name="password" style="color: white;"/>
+            </div>
+          </div>
+          <button class="forget-password">Forget password?</button
+          ><button class="log-in-button3" type="submit">
+            <div class="log-in6">Log In</div>
+          </button>
+          <div class="or">
+            <img class="or-child" alt="" src="{{ url_for('static', filename='public/line-11.svg') }}" />
+            <div class="or1">Or</div>
+            <img class="or-item" alt="" src="{{ url_for('static', filename='public/line-11.svg') }}" />
+          </div>
+          <button class="social-icons">
+            <div class="google">
+              <img class="google-icon" alt="" src="{{ url_for('static', filename='public/google.svg') }}" />
+            </div></button
+          ><button class="dont-have-an-container">
+            <span class="dont-have-an">Don’t have an account? </span
+            ><span class="sign">Sign</span><span class="span"> </span
+            ><span class="sign">Up</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
     <script>
       
       var popupbuttons1 = document.getElementById("popupbuttons1");
@@ -669,6 +795,60 @@
       if (buttonsContainer) {
         buttonsContainer.addEventListener("click", function () {
           var popup = document.getElementById("cartContainer");
+          if (!popup) return;
+          var popupStyle = popup.style;
+          if (popupStyle) {
+            popupStyle.display = "flex";
+            popupStyle.zIndex = 100;
+            popupStyle.backgroundColor = "rgba(113, 113, 113, 0.3)";
+            popupStyle.alignItems = "center";
+            popupStyle.justifyContent = "center";
+          }
+          popup.setAttribute("closable", "");
+      
+          var onClick =
+            popup.onClick ||
+            function (e) {
+              if (e.target === popup && popup.hasAttribute("closable")) {
+                popupStyle.display = "none";
+              }
+            };
+          popup.addEventListener("click", onClick);
+
+
+        });
+      }
+
+      var solidButton = document.getElementById("solidButton");
+      if (solidButton) {
+        solidButton.addEventListener("click", function () {
+          var popup = document.getElementById("registerMember");
+          if (!popup) return;
+          var popupStyle = popup.style;
+          if (popupStyle) {
+            popupStyle.display = "flex";
+            popupStyle.zIndex = 100;
+            popupStyle.backgroundColor = "rgba(113, 113, 113, 0.3)";
+            popupStyle.alignItems = "center";
+            popupStyle.justifyContent = "center";
+          }
+          popup.setAttribute("closable", "");
+      
+          var onClick =
+            popup.onClick ||
+            function (e) {
+              if (e.target === popup && popup.hasAttribute("closable")) {
+                popupStyle.display = "none";
+              }
+            };
+          popup.addEventListener("click", onClick);
+        });
+      }
+
+      var button = document.getElementById("button");
+      if (button) {
+        button.addEventListener("click", function () {
+          var popup = document.getElementById("logInContainer");
           if (!popup) return;
           var popupStyle = popup.style;
           if (popupStyle) {

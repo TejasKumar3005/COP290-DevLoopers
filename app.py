@@ -1,6 +1,6 @@
 from flask import Flask, render_template, session, redirect, request
 import pymysql
-from help import login_required,is_logged_in,upload_file_to_s3
+from help import login_required,is_logged_in,upload_safe
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_session import Session
 import random
@@ -188,9 +188,7 @@ def get4randomproducts():
 
 @app.route('/')
 def index():
-    if is_logged_in():
-        return render_template('index.html', logged=1,userid=session["user_id"],products=get4randomproducts())
-    return render_template('index.html', logged=0,products=get4randomproducts())
+    return render_template('index.html', logged=(is_logged_in()),products=get4randomproducts())
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -277,38 +275,6 @@ def logout():
     # Redirect user to login form
     return redirect("/")
 
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
-
-# function to check file extension
-def allowed_file(filename):
-    return '.' in filename and \
-        filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-def upload_safe(file):
-
-    # check whether a file is selected
-    if file.filename == '':
-        return "no file selected"
-
-    # check whether the file extension is allowed (eg. png,jpeg,jpg,gif)
-    if file and allowed_file(file.filename):
-        output = upload_file_to_s3(file)
-        
-        # if upload success,will return file name of uploaded file
-        if output:
-            # write your code here 
-            # to save the file name in database
-            return file.filename
-
-        # upload failed, redirect to upload page
-        else:
-            return "Unable to upload, try again"
-        
-    # if file extension not allowed
-    else:
-        return "File type not accepted,please try again."
-
-
 def split_list_into_4(lst):
     n = len(lst)
     n_rows = n // 4 + (n % 4 > 0)
@@ -370,17 +336,18 @@ def store():
     else:
         with connection.cursor() as cursor:
             sql = """SELECT * FROM `product`"""
-            cursor.execute(sql)
+            cursor.execute(sql,())
             products = cursor.fetchall()
-
+    products = random.sample(products,16)
     with connection.cursor() as cursor:
         sql = """SELECT * FROM `category`"""
         cursor.execute(sql)
         categories = cursor.fetchall()
-    return render_template("store-page.html",products=split_list_into_4(products)[0:4],categories=categories)
+    print(is_logged_in())
+    return render_template("store-page.html",products=split_list_into_4(products),categories=categories,logged=(is_logged_in()))
+
 
 @app.route("/product/<productid>",methods=["GET","POST"])
-@login_required
 def product(productid):
     if request.method == "POST":
         with connection.cursor() as cursor:
@@ -421,7 +388,7 @@ def product(productid):
                 category = cursor.fetchone()
                 categories.append(category["name"])
         ans = get4randomproducts()
-        return render_template("product-page.html",product=product,categories=categories,fourprods=ans)
+        return render_template("product-page.html",product=product,categories=categories,fourprods=ans,logged=(is_logged_in()))
 
 @app.route("/checkout",methods=["GET","POST"])
 @login_required
@@ -455,6 +422,7 @@ def checkout():
         return render_template("check-out-page.html",products=products_list,net=net_price,addresses=addresses)
 
 @app.route("/AI",methods=["GET","POST"])
+@login_required
 def ai():
     return render_template("zen-ai-page.html")
 
@@ -497,7 +465,6 @@ def history():
     return render_template("order-history-page.html")
 
 @app.route("/post",methods=["GET","POST"])
-@login_required
 def detailpost():
     return render_template("post-page.html")
 

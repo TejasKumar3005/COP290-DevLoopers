@@ -19,8 +19,8 @@ def login_required(f):
 
 def is_logged_in():
     if session.get("user_id") is None:
-        return False
-    return True
+        return 0
+    return 1
 
 s3 = boto3.client(
     "s3",
@@ -51,3 +51,34 @@ def upload_file_to_s3(file, acl="public-read"):
 
     # after upload file to s3 bucket, return filename of the uploaded file
     return file.filename
+
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+
+# function to check file extension
+def allowed_file(filename):
+    return '.' in filename and \
+        filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+def upload_safe(file):
+
+    # check whether a file is selected
+    if file.filename == '':
+        return "no file selected"
+
+    # check whether the file extension is allowed (eg. png,jpeg,jpg,gif)
+    if file and allowed_file(file.filename):
+        output = upload_file_to_s3(file)
+        
+        # if upload success,will return file name of uploaded file
+        if output:
+            # write your code here 
+            # to save the file name in database
+            return file.filename
+
+        # upload failed, redirect to upload page
+        else:
+            return "Unable to upload, try again"
+        
+    # if file extension not allowed
+    else:
+        return "File type not accepted,please try again."
