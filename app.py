@@ -180,7 +180,7 @@ def get_addresses():
 def get4randomproducts():
     with connection.cursor() as cursor:
         sql = """SELECT * FROM `product`"""
-        cursor.execute(sql)
+        cursor.execute(sql,())
         products = cursor.fetchall()
     if len(products) >= 4:
         products = random.sample(products,4)
@@ -311,7 +311,7 @@ def store():
             else:
                 with connection.cursor() as cursor:
                     sql = """SELECT * FROM `product`"""
-                    cursor.execute(sql)
+                    cursor.execute(sql,())
                     products = cursor.fetchall()
             
             if "rating" in request.form:
@@ -331,7 +331,7 @@ def store():
         elif request.form.get("submit") == "reset":
             with connection.cursor() as cursor:
                 sql = """SELECT * FROM `product`"""
-                cursor.execute(sql)
+                cursor.execute(sql,())
                 products = cursor.fetchall()
     else:
         with connection.cursor() as cursor:
@@ -341,9 +341,9 @@ def store():
     products = random.sample(products,16)
     with connection.cursor() as cursor:
         sql = """SELECT * FROM `category`"""
-        cursor.execute(sql)
+        cursor.execute(sql,())
         categories = cursor.fetchall()
-    print(is_logged_in())
+    print(())
     return render_template("store-page.html",products=split_list_into_4(products),categories=categories,logged=(is_logged_in()))
 
 
@@ -361,8 +361,9 @@ def product(productid):
             exists = 0
             for product in cart_products:
                 if int(productid) == product["product_id"]:
-                    sql = """UPDATE `order_product` SET `quantity`=`quantity`+1 WHERE `id`=%s"""
-                    cursor.execute(sql,(product["id"]))
+                    sql = """UPDATE `order_product` SET `quantity`=`quantity`+%s WHERE `id`=%s"""
+                    number = request.form.get("number")
+                    cursor.execute(sql,(number,product["id"]))
                     connection.commit()
                     exists = 1
                     break
@@ -446,7 +447,6 @@ def user():
                 height = request.form.get("height")
                 weight = request.form.get("weight")
                 if uploadedfile:
-                    print("uploaded")
                     filename = upload_safe(uploadedfile)
                     sql = """UPDATE `user` SET `firstname`=%s, `lastname`=%s, `email`=%s, `age`=%s, `height`=%s, `weight`=%s, `image_url`=%s WHERE `id`=%s """
                     cursor.execute(sql,(firstname,lastname,email,age,height,weight,"https://flask-zenfit.s3.amazonaws.com/"+filename,session["user_id"]))
@@ -454,6 +454,14 @@ def user():
                     sql = """UPDATE `user` SET `firstname`=%s, `lastname`=%s, `email`=%s, `age`=%s, `height`=%s, `weight`=%s WHERE `id`=%s """
                     cursor.execute(sql,(firstname,lastname,email,age,height,weight,session["user_id"]))
                 connection.commit()
+            else:
+                password1 = request.form.get("password")
+                confirm = request.form.get("confirm")
+
+                hash = generate_password_hash(password1)
+                sql = """UPDATE `user` SET `password`=%s WHERE `id`=%s """
+                cursor.execute(sql,(hash,session["user_id"]))
+                                
                 
 
     rows = selectuserbyid()

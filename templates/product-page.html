@@ -183,23 +183,14 @@
                   <div class="free-shipping">₹ {{ product.product_price }}</div>
                 </div>
                 <div class="inputs-and-selects1">
-                  <div class="div24">1</div>
-                  <div class="inputs-and-selects-child"></div>
-                  <div class="pcs-parent">
-                    <div class="free-shipping">Pcs</div>
-                    <img
-                      class="ic-chevron-down-icon"
-                      alt=""
-                      src="{{ url_for('static', filename='public/icchevrondown6.svg') }}"
-                    />
-                  </div>
+                  <form action="/product/{{ product.id }}" method="post">
+                  <select class="div24" name="number">
+                    <option value="1">1 Pc</option>
+                    <option value="2">2 Pcs</option>
+                    <option value="3">3 Pcs</option>
+                  </select>
                 </div>
-                <div class="buttons1" id="buttonsContainer">
-                  <img
-                    class="ic-actions-add-simple-icon"
-                    alt=""
-                    src="{{ url_for('static', filename='public/icactionsaddsimple.svg') }}"
-                  /><b class="homepage"><form action="/product/{{ product.id }}" method="post"><button type="submit">Add to Cart</button></form></b>
+                <div class="buttons1" id="buttonsContainer"><b class="homepage"><button type="submit" class="button">Add to Cart</button></form></b>
                 </div>
               </div>
               <div class="buttons-parent">
