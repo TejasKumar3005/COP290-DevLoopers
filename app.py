@@ -185,6 +185,7 @@ def get_productsandnet_from_cart(cart_products):
     net_price = 0
 
     with connection.cursor() as cursor:
+        print(cart_products)
         for cart_product in cart_products:
             sql = """SELECT * FROM `product` WHERE `id`=%s"""
             cursor.execute(sql,(cart_product["product_id"]))
