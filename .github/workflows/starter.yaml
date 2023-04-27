@@ -32,7 +32,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install MySQL server and client
         run: |
-          mysql --host 127.0.0.1 --port 33306 -u root -p${MYSQL_ROOT_PASSWORD} -e "CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';"
+          mysql --host 127.0.0.1 --port 33306 -u root -p password -e "CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';"
           mysql --host 127.0.0.1 --port 33306 -u root -p${MYSQL_ROOT_PASSWORD} -e "GRANT ALL ON zenfit.* TO 'newuser'@'localhost';"
       - name: Install dependencies
         run: |
