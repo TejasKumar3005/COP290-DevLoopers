@@ -189,6 +189,7 @@ def get4randomproducts():
 
 @app.route('/')
 def index():
+    connection.ping()
     return render_template('index.html', logged=(is_logged_in()),products=get4randomproducts())
 
 @app.route("/login", methods=["GET", "POST"])
@@ -508,8 +509,13 @@ def history():
 
 @app.route("/post/<postid>",methods=["GET","POST"])
 def detailpost(postid):
-
-    return render_template("post-page.html")
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `post` WHERE `id`=%s"""
+        cursor.execute(sql,(postid))
+        post = cursor.fetchone()
+    author = selectuserbyid(post["user_id"])
+    post["author"] = author
+    return render_template("post-page.html",post=post)
 
 @app.route("/community",methods=["GET","POST"])
 @login_required
