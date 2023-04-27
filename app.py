@@ -346,7 +346,6 @@ def store():
         sql = """SELECT * FROM `category`"""
         cursor.execute(sql,())
         categories = cursor.fetchall()
-    print(())
     return render_template("store-page.html",products=split_list_into_4(products),categories=categories,logged=(is_logged_in()))
 
 
@@ -507,8 +506,9 @@ def history():
 
     return render_template("order-history-page.html",orders=orders)
 
-@app.route("/post",methods=["GET","POST"])
-def detailpost():
+@app.route("/post/<postid>",methods=["GET","POST"])
+def detailpost(postid):
+
     return render_template("post-page.html")
 
 @app.route("/community",methods=["GET","POST"])
