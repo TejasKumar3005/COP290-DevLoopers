@@ -24,6 +24,8 @@ jobs:
           sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password alpha'
           sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password alpha'
           sudo apt-get install -y mysql-server mysql-client
+      - name: Start MySQL server
+        run: sudo service mysql start
       - name: Create database and user
         env:
           MYSQL_ROOT_PASSWORD: alpha
