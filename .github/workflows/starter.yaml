@@ -12,6 +12,18 @@ jobs:
       matrix:
         python-version: ["3.11"]
 
+      services:
+            mysql:
+              # https://hub.docker.com/_/mysql
+              image: mysql:5.7
+              env:
+                MYSQL_ROOT_PASSWORD: password
+                MYSQL_DATABASE: zenfit
+              ports:
+                - 33306:3306
+              options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
@@ -20,14 +32,8 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install MySQL server and client
         run: |
-          sudo apt-get update
-          sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password alpha'
-          sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password alpha'
-          sudo apt-get install -y mysql-server mysql-client
-          sudo service mysql start
-          mysql -u root -p${MYSQL_ROOT_PASSWORD} -e "CREATE DATABASE zenfit;"
-          mysql -u root -p${MYSQL_ROOT_PASSWORD} -e "CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';"
-          mysql -u root -p${MYSQL_ROOT_PASSWORD} -e "GRANT ALL ON zenfit.* TO 'newuser'@'localhost';"
+          mysql --host 127.0.0.1 --port 33306 -u root -p${MYSQL_ROOT_PASSWORD} -e "CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';"
+          mysql --host 127.0.0.1 --port 33306 -u root -p${MYSQL_ROOT_PASSWORD} -e "GRANT ALL ON zenfit.* TO 'newuser'@'localhost';"
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
