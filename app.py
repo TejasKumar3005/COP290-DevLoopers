@@ -127,6 +127,30 @@ def setup():
 
 setup()
 
+def get_trending_posts(num):
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `post` LIMIT %s"""
+        cursor.execute(sql,(num))
+        trending = cursor.fetchall()
+
+    for post in trending:
+        author = selectuserbyid(post["user_id"])
+        post["author"] = author
+    
+    return trending
+
+def get_remaining_posts():
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `post` LIMIT 3, 10000"""
+        cursor.execute(sql,())
+        posts = cursor.fetchall()
+
+    for post in posts:
+        author = selectuserbyid(post["user_id"])
+        post["author"] = author
+
+    return posts
+
 def selectuserbyusername(username):
     with connection.cursor() as cursor:
         sql = """SELECT * FROM `user` WHERE `username`=%s"""
@@ -190,7 +214,9 @@ def get4randomproducts():
 @app.route('/')
 def index():
     connection.ping()
-    return render_template('index.html', logged=(is_logged_in()),products=get4randomproducts())
+    posts = get_remaining_posts()
+    trending = get_trending_posts(5)
+    return render_template('index.html', logged=(is_logged_in()),products=get4randomproducts(),trending=trending)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -520,23 +546,8 @@ def detailpost(postid):
 @app.route("/community",methods=["GET","POST"])
 @login_required
 def comm():
-    with connection.cursor() as cursor:
-        sql = """SELECT * FROM `post`"""
-        cursor.execute(sql,())
-        posts = cursor.fetchall()
-
-    for post in posts:
-        author = selectuserbyid(post["user_id"])
-        post["author"] = author
-
-    with connection.cursor() as cursor:
-        sql = """SELECT * FROM `post` LIMIT 3"""
-        cursor.execute(sql,())
-        trending = cursor.fetchall()
-
-    for post in trending:
-        author = selectuserbyid(post["user_id"])
-        post["author"] = author
+    posts = get_remaining_posts()
+    trending = get_trending_posts(3)
 
     return render_template("community-page.html",posts=split_list_into_4(posts),trending=trending)
 
