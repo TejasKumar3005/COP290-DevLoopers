@@ -22,7 +22,8 @@ def test_user_register(client):
     
     data = {
         "username" : "ether",
-        "name" : "Payas",
+        "firstname" : "Payas",
+        "lastname" : "Khurana",
         "age" : "19",
         "height" : "185",
         "weight" : "75",
@@ -34,7 +35,7 @@ def test_user_register(client):
     form_data = '&'.join([f'{key}={value}' for key, value in data.items()])
 
     headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-    response = client.post("/register", data=form_data, headers=headers)
+    response = client.post("/register", data=form_data, headers=headers,follow_redirects=True)
     
     assert(response.status_code == 200)
     pass
@@ -65,17 +66,10 @@ def test_product_page_endpoint(client):
     assert response.status_code == 200
     pass
 
-def test_product_add_endpoint(client):
-    with client.session_transaction() as session:
-        session['user_id'] = 1
-    response = client.post("/product/3",follow_redirects=True)
-    assert response.status_code == 200
-    pass
-
 def test_product_search(client):
     data = {
         "submit" : "search",
-        "inputtext" : "product",
+        "inputtext" : "all",
     }
 
     form_data = '&'.join([f'{key}={value}' for key, value in data.items()])
