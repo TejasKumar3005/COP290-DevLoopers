@@ -24,7 +24,7 @@ jobs:
         run: sudo service mysql start
       - name: Create database and user
         env:
-          MYSQL_ROOT_PASSWORD: password
+          MYSQL_ROOT_PASSWORD:
         run: |
           mysql -uroot -p${MYSQL_ROOT_PASSWORD} -e "CREATE DATABASE zenfit;"
           mysql -uroot -p${MYSQL_ROOT_PASSWORD} -e "CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';"
