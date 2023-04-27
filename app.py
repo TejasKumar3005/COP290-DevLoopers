@@ -389,10 +389,10 @@ def product(productid):
             cursor.execute(sql,(cartid))
             cart_products = cursor.fetchall()
             exists = 0
+            number = request.form.get("number")
             for product in cart_products:
                 if int(productid) == product["product_id"]:
                     sql = """UPDATE `order_product` SET `quantity`=`quantity`+%s WHERE `id`=%s"""
-                    number = request.form.get("number")
                     cursor.execute(sql,(number,product["id"]))
                     connection.commit()
                     exists = 1
@@ -400,7 +400,7 @@ def product(productid):
             
             if exists == 0:
                 sql = f"INSERT INTO `order_product` (order_id,product_id,quantity) VALUES (%s,%s,%s)"
-                cursor.execute(sql, (cartid,productid,1))
+                cursor.execute(sql, (cartid,productid,number))
                 connection.commit()
         return redirect("/checkout")
     else:
@@ -449,7 +449,7 @@ def checkout():
         
         (products_list,net_price) = get_productsandnet_from_cart(get_cart_from_cartid(cartid))
         addresses = get_addresses()
-
+        print(products_list)
         return render_template("check-out-page.html",products=products_list,net=net_price,addresses=addresses)
 
 @app.route("/AI",methods=["GET","POST"])

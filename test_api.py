@@ -107,3 +107,31 @@ def test_product_reset(client):
     
     assert(response.status_code == 200)
     pass
+
+def test_user_page(client) : 
+    with client.session_transaction() as session:
+        session['user_id'] = 1
+    response = client.get("/user")
+    assert response.status_code == 200
+    pass
+
+def test_profile_page(client) : 
+    with client.session_transaction() as session:
+        session['user_id'] = 1
+    response = client.get("/profile")
+    assert response.status_code == 200
+    pass
+
+def test_order_history_page(client) : 
+    with client.session_transaction() as session:
+        session['user_id'] = 1
+    response = client.get("/order-history")
+    assert response.status_code == 200
+    pass
+
+def test_community_page(client) : 
+    with client.session_transaction() as session:
+        session['user_id'] = 1
+    response = client.get("/community")
+    assert response.status_code == 200
+    pass
