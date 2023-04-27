@@ -21,6 +21,19 @@ jobs:
           python -m pip install --upgrade pip
           pip install ruff pytest
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Install MySQL client
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y mysql-client
+      - name: Connect to MySQL and run queries
+        env:
+          MYSQL_HOST: localhost
+          MYSQL_USER: newuser
+          MYSQL_PASSWORD: password
+        run: |
+          mysql -h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASSWORD -e "CREATE DATABASE zenfit;"
+          mysql -h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASSWORD -e "CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';"
+          mysql -h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASSWORD -e "GRANT ALL ON zenfit.* TO 'newuser'@'localhost';"
       - name: Test with pytest
         run: |
           pytest
