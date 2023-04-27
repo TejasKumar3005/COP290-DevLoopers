@@ -25,10 +25,13 @@ jobs:
       - name: Start MySQL server
         run: sudo service mysql start
       - name: Create database and user
+        env:
+          MYSQL_ROOT_PASSWORD: alpha
         run: |
-          mysql -uroot -e "CREATE DATABASE zenfit;"
-          mysql -uroot -e "CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';"
-          mysql -uroot -e "GRANT ALL ON zenfit.* TO 'newuser'@'localhost';"
+          mysqladmin -u root password alpha
+          mysql -uroot -p${MYSQL_ROOT_PASSWORD} -e "CREATE DATABASE zenfit;"
+          mysql -uroot -p${MYSQL_ROOT_PASSWORD} -e "CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';"
+          mysql -uroot -p${MYSQL_ROOT_PASSWORD} -e "GRANT ALL ON zenfit.* TO 'newuser'@'localhost';"
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
