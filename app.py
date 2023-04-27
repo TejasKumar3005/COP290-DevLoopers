@@ -324,7 +324,8 @@ def store():
                     word = "%"+word+"%"
                     sql = f"SELECT * FROM `product` WHERE product_name LIKE %s"
                     cursor.execute(sql,(word))
-                    products = products + cursor.fetchall()
+                    ans = cursor.fetchall()
+                    products = products + ans
         elif request.form.get("submit") == "apply":
             if "category" in request.form:
                 with connection.cursor() as cursor:
