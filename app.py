@@ -4,6 +4,7 @@ from help import login_required,is_logged_in,upload_safe
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_session import Session
 import random
+import datetime
 
 app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -133,11 +134,11 @@ def selectuserbyusername(username):
         rows = cursor.fetchall()
     return rows
 
-def selectuserbyid():
+def selectuserbyid(userid):
     with connection.cursor() as cursor:
         sql = """SELECT * FROM `user` WHERE `id`=%s"""
-        cursor.execute(sql,session["user_id"])
-        rows = cursor.fetchall()
+        cursor.execute(sql,userid)
+        rows = cursor.fetchone()
     return rows
 
 def retrieve_cart_id():
@@ -339,7 +340,8 @@ def store():
             sql = """SELECT * FROM `product`"""
             cursor.execute(sql,())
             products = cursor.fetchall()
-    products = random.sample(products,16)
+    if (len(products) > 16):
+        products = random.sample(products,16)
     with connection.cursor() as cursor:
         sql = """SELECT * FROM `category`"""
         cursor.execute(sql,())
@@ -465,8 +467,8 @@ def user():
                                 
                 
 
-    rows = selectuserbyid()
-    return render_template("user-page.html",user=rows[0])
+    user = selectuserbyid(session["user_id"])
+    return render_template("user-page.html",user=user)
 
 def get_orders():
     with connection.cursor() as cursor:
@@ -512,7 +514,37 @@ def detailpost():
 @app.route("/community",methods=["GET","POST"])
 @login_required
 def comm():
-    return render_template("community-page.html")
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `post`"""
+        cursor.execute(sql,())
+        posts = cursor.fetchall()
+
+    for post in posts:
+        author = selectuserbyid(post["user_id"])
+        post["author"] = author
+
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `post` LIMIT 3"""
+        cursor.execute(sql,())
+        trending = cursor.fetchall()
+
+    for post in trending:
+        author = selectuserbyid(post["user_id"])
+        post["author"] = author
+
+    return render_template("community-page.html",posts=split_list_into_4(posts),trending=trending)
 
 
-
+@app.route("/post/add",methods=["GET","POST"])
+def addpost():
+    if request.method == "POST":
+        post_title = request.form.get("post_title")
+        image_url = request.form.get("image_url")
+        post_time = datetime.datetime.now()
+        post_text = request.form.get("post_text")
+        user_id = session["user_id"]
+        with connection.cursor() as cursor:
+            sql = f"INSERT INTO `post` (post_title,image_url,post_time,post_text,user_id) VALUES (%s,%s,%s,%s,%s)"
+            cursor.execute(sql, (post_title,image_url,post_time,post_text,user_id))
+            connection.commit()
+    return render_template("post_add.html")
