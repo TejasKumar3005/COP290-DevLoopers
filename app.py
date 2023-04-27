@@ -350,6 +350,8 @@ def store():
                     sql = f"SELECT * FROM `product` WHERE product_name LIKE %s"
                     cursor.execute(sql,(word))
                     ans = cursor.fetchall()
+                    if ans == tuple():
+                        ans = []
                     products = products + ans
         elif request.form.get("submit") == "apply":
             if "category" in request.form:
@@ -462,7 +464,7 @@ def checkout():
                 addressid = cursor.lastrowid
             
             sql = """UPDATE `order` SET `order_status`=1, `address_id`=%s, `order_time`=%s WHERE `id`=%s """
-            cursor.execute(sql,(addressid,cartid,datetime.datetime.now()))
+            cursor.execute(sql,(addressid,datetime.datetime.now(),cartid))
             connection.commit()
 
             sql = f"INSERT INTO `order` (order_status,user_id) VALUES (%s,%s)"
@@ -523,7 +525,7 @@ def user():
 
 def get_orders():
     with connection.cursor() as cursor:
-        sql = """SELECT * FROM `order` WHERE `order_status`=1 AND `user_id`=%s"""
+        sql = """SELECT * FROM `order` WHERE `order_status`=1 AND `user_id`=%s ORDER BY order_time"""
         cursor.execute(sql,(session["user_id"]))
         orders = cursor.fetchall()
     return orders
@@ -554,6 +556,7 @@ def history():
     for order in orders:
         order_products =  get_products_of_order(order)
         products = get_products_from_order_products(order_products)
+        print(order)
         order["products"] = products
 
     return render_template("order-history-page.html",orders=orders)
