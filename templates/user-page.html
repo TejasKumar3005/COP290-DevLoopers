@@ -134,12 +134,19 @@
               <img class="image-icon" alt="" src="{{ url_for('static', filename= 'public1/image@2x.png') }}" />
 
               <div class="upload-photo1">
+                {% if user.image_url %}
                 <img
                   class="avatar-icon1"
                   alt=""
                   src="{{ user.image_url }}"
                 />
-
+                {% else %}
+                <img
+                  class="avatar-icon1"
+                  alt=""
+                  src="{{ url_for('static', filename= 'public/avatar@2x.png') }}"
+                />  
+                {% endif %}
                 <div class="deta">
                   <div class="tejas-kumar-parent">
                     <div class="tejas-kumar">{{ user.name }}</div>
@@ -148,7 +155,7 @@
                         <div class="op4">F</div>
                       </div>
                       <div class="typography4">
-                        <div class="pro-zen-member">Pro Zen Member</div>
+                        <div class="pro-zen-member">Zen Member</div>
                       </div>
                       <img
                         class="cancel-icon4"
@@ -175,7 +182,7 @@
                           src="{{ url_for('static', filename= 'public1/calendartoday.svg') }}"
                         />
 
-                        <div class="mumbai">Joined April 2021</div>
+                        <div class="mumbai">Joined {{ user.join_time.strftime('%m.%Y') }}</div>
                       </div>
                     </div>
                   </div>
@@ -798,7 +805,19 @@
       <div class="change-details">
         <form class="body" action="/user" method="post" enctype="multipart/form-data">
           <div class="upload-photo">
-            <img class="avatar-icon" alt="" src="{{ user.image_url }}" />
+            {% if user.image_url %}
+            <img
+              class="avatar-icon"
+              alt=""
+              src="{{ user.image_url }}"
+            />
+            {% else %}
+            <img
+              class="avatar-icon"
+              alt=""
+              src="{{ url_for('static', filename= 'public/avatar@2x.png') }}"
+            />  
+            {% endif %}
 
             <div class="actions">
               <div class="buttons9">

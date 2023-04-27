@@ -180,7 +180,7 @@ body {
 }
 .floating-chat .chat .messages li.self:before {
   left: -45px;
-  background-image: url(https://github.com/ortichon.png);
+  background-image: url(/static/public/logo-zenfit-1@2x.png);
 }
 .floating-chat .chat .messages li.self:after {
   border-left: 10px solid transparent;

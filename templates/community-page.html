@@ -112,11 +112,19 @@
               <div class="frame-wrapper9">
                 <div class="frame-parent49">
                   <div class="avatars-group">
+                    {% if post.author.image_url %}
                     <img
                       class="avatars-icon1"
                       alt=""
-                      src="{{ url_for('static', filename= 'public1/avatars1.svg') }}"
+                      src="{{ post.author.image_url }}"
                     />
+                    {% else %}
+                    <img
+                      class="avatars-icon1"
+                      alt=""
+                      src="{{ url_for('static', filename= 'public/avatar@2x.png') }}"
+                    />
+                    {% endif %}
 
                     <div class="author7">{{ post.author.firstname }}</div>
                   </div>

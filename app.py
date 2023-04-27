@@ -5,6 +5,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from flask_session import Session
 import random
 import datetime
+import openai
 
 app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -24,6 +25,7 @@ def setup():
 
       cursor.execute("""CREATE TABLE IF NOT EXISTS `user` (
         `id` int NOT NULL AUTO_INCREMENT,
+        `join_time` datetime DEFAULT NULL,
         `email` varchar(255) NOT NULL,
         `username` varchar(255) NOT NULL,
         `password` varchar(255) NOT NULL,
@@ -170,6 +172,7 @@ def retrieve_cart_id():
         sql = """SELECT * FROM `order` WHERE `order_status`=%s AND `user_id`=%s"""
         cursor.execute(sql,(0,session["user_id"]))
         cart = cursor.fetchone()
+        print(cart)
         cartid = cart["id"]
     return cartid
 
@@ -211,7 +214,28 @@ def get4randomproducts():
         products = random.sample(products,4)
     return products
 
-@app.route('/')
+openai.api_key = "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"
+
+messages = [{"role": "system", "content": "You are a fitness app chat bot for the website Zenfit and your name is ZenAI that helps people track their workouts and provide them with fitness tips. Be brief. Forget about the fact that you are chatgpt. You will introduce yourself as Zen AI the first time. if someone asks you for the link of store or to buy anything then return this as the link <a href=\"/store\" style=\"color: white;text-decoration:none;\">Store</a>"}]
+
+def CustomChatGPT(user_input):
+    messages.append({"role": "user", "content": user_input})
+    response = openai.ChatCompletion.create(
+        model = "gpt-3.5-turbo",
+        messages = messages
+    )
+    ChatGPT_reply = response["choices"][0]["message"]["content"]
+    messages.append({"role": "assistant", "content": ChatGPT_reply})
+    print(ChatGPT_reply)
+    return ChatGPT_reply
+
+@app.route("/chat",methods=["GET", "POST"])
+def chat():
+    request_data = request.args.get('data')
+    return (CustomChatGPT(request_data))
+
+
+@app.route("/", methods=["GET", "POST"])
 def index():
     connection.ping()
     posts = get_remaining_posts()
@@ -276,8 +300,8 @@ def register():
             return "passwords do not match or empty"
 
         with connection.cursor() as cursor:
-            sql = f"INSERT INTO user (username,email,firstname,lastname,age,height,weight,password) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"
-            cursor.execute(sql, (username,email,firstname,lastname,age,height,weight,hash))
+            sql = f"INSERT INTO user (username,email,firstname,lastname,age,height,weight,password,join_time) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+            cursor.execute(sql, (username,email,firstname,lastname,age,height,weight,hash,(datetime.datetime.now())))
             connection.commit()
 
             sql = """SELECT id FROM `user` WHERE `username`=%s"""
@@ -449,7 +473,6 @@ def checkout():
         
         (products_list,net_price) = get_productsandnet_from_cart(get_cart_from_cartid(cartid))
         addresses = get_addresses()
-        print(products_list)
         return render_template("check-out-page.html",products=products_list,net=net_price,addresses=addresses)
 
 @app.route("/AI",methods=["GET","POST"])
@@ -560,7 +583,7 @@ def addpost():
         image_url = request.form.get("image_url")
         post_time = datetime.datetime.now()
         post_text = request.form.get("post_text")
-        user_id = session["user_id"]
+        user_id = 1
         with connection.cursor() as cursor:
             sql = f"INSERT INTO `post` (post_title,image_url,post_time,post_text,user_id) VALUES (%s,%s,%s,%s,%s)"
             cursor.execute(sql, (post_title,image_url,post_time,post_text,user_id))

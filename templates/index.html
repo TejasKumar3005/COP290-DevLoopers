@@ -1,7 +1,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scfale=1, width=device-width" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/global.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/index.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/float.css') }}">
@@ -460,7 +460,7 @@
         <div class="chat">
             <div class="header">
                 <span class="title">
-                    what's on your mind?
+                    Zen AI
                 </span>
                 <button>
                     <i class="fa fa-times" aria-hidden="true"></i>
@@ -470,15 +470,6 @@
                             
             </div>
             <ul class="messages">
-                <li class="other">asdasdasasdasdasasdasdasasdasdasasdasdasasdasdasasdasdas</li>
-                <li class="other">Are we dogs??? 🐶</li>
-                <li class="self">no... we're human</li>
-                <li class="other">are you sure???</li>
-                <li class="self">yes.... -___-</li>
-                <li class="other">if we're not dogs.... we might be monkeys 🐵</li>
-                <li class="self">i hate you</li>
-                <li class="other">don't be so negative! here's a banana 🍌</li>
-                <li class="self">......... -___-</li>
             </ul>
             <div class="footer">
                 <div class="text-box" contenteditable="true" disabled="true"></div>
@@ -602,7 +593,8 @@
         </form>
       </div>
     </div>
-    <script>
+
+<script>
 
 var element = $('.floating-chat'); 
 var myStorage = localStorage;
@@ -669,11 +661,35 @@ function sendNewMessage() {
 
     var messagesContainer = $('.messages');
 
+    console.log('sad life');
+
     messagesContainer.append([
         '<li class="other">',
         newMessage,
         '</li>'
     ].join(''));
+
+    fetch(`/chat?data=${newMessage}`, {
+    method: "GET",
+    })
+    .then(response => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.text();
+    })
+    .then(data => {
+      console.log(data);
+      messagesContainer.append([
+        '<li class="self">',
+          (data.replace(/\n/g, '<br>')),
+        '</li>'
+    ].join(''));
+    })
+    .catch(error => {
+    console.error("Error:", error);
+    });
+
 
     // clean out old message
     userInput.html('');

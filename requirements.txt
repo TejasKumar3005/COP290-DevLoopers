@@ -4,3 +4,4 @@ flask_session
 boto3
 requests
 cryptography
+openai
