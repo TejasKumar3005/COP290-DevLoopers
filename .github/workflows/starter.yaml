@@ -30,9 +30,9 @@ jobs:
         env:
           MYSQL_ROOT_PASSWORD: your_password_here
         run: |
-          mysql -uroot -p${MYSQL_ROOT_PASSWORD} -e "CREATE DATABASE pets;"
+          mysql -uroot -p${MYSQL_ROOT_PASSWORD} -e "CREATE DATABASE zenfit;"
           mysql -uroot -p${MYSQL_ROOT_PASSWORD} -e "CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';"
-          mysql -uroot -p${MYSQL_ROOT_PASSWORD} -e "GRANT ALL ON pets.* TO 'newuser'@'localhost';"
+          mysql -uroot -p${MYSQL_ROOT_PASSWORD} -e "GRANT ALL ON zenfit.* TO 'newuser'@'localhost';"
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
