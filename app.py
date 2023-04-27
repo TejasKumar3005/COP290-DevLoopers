@@ -4,6 +4,7 @@ from help import login_required,is_logged_in,upload_safe
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_session import Session
 import random
+import datetime
 
 app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -126,6 +127,30 @@ def setup():
 
 setup()
 
+def get_trending_posts(num):
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `post` LIMIT %s"""
+        cursor.execute(sql,(num))
+        trending = cursor.fetchall()
+
+    for post in trending:
+        author = selectuserbyid(post["user_id"])
+        post["author"] = author
+    
+    return trending
+
+def get_remaining_posts():
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `post` LIMIT 3, 10000"""
+        cursor.execute(sql,())
+        posts = cursor.fetchall()
+
+    for post in posts:
+        author = selectuserbyid(post["user_id"])
+        post["author"] = author
+
+    return posts
+
 def selectuserbyusername(username):
     with connection.cursor() as cursor:
         sql = """SELECT * FROM `user` WHERE `username`=%s"""
@@ -133,11 +158,11 @@ def selectuserbyusername(username):
         rows = cursor.fetchall()
     return rows
 
-def selectuserbyid():
+def selectuserbyid(userid):
     with connection.cursor() as cursor:
         sql = """SELECT * FROM `user` WHERE `id`=%s"""
-        cursor.execute(sql,session["user_id"])
-        rows = cursor.fetchall()
+        cursor.execute(sql,userid)
+        rows = cursor.fetchone()
     return rows
 
 def retrieve_cart_id():
@@ -180,7 +205,7 @@ def get_addresses():
 def get4randomproducts():
     with connection.cursor() as cursor:
         sql = """SELECT * FROM `product`"""
-        cursor.execute(sql)
+        cursor.execute(sql,())
         products = cursor.fetchall()
     if len(products) >= 4:
         products = random.sample(products,4)
@@ -188,7 +213,10 @@ def get4randomproducts():
 
 @app.route('/')
 def index():
-    return render_template('index.html', logged=(is_logged_in()),products=get4randomproducts())
+    connection.ping()
+    posts = get_remaining_posts()
+    trending = get_trending_posts(5)
+    return render_template('index.html', logged=(is_logged_in()),products=get4randomproducts(),trending=trending)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -285,6 +313,7 @@ def split_list_into_4(lst):
 
 @app.route("/store",methods=["GET","POST"])
 def store():
+    connection.ping()
     if request.method == "POST":
         if request.form.get("submit") == "search":
             inputtext = request.form.get("inputtext")
@@ -311,7 +340,7 @@ def store():
             else:
                 with connection.cursor() as cursor:
                     sql = """SELECT * FROM `product`"""
-                    cursor.execute(sql)
+                    cursor.execute(sql,())
                     products = cursor.fetchall()
             
             if "rating" in request.form:
@@ -331,19 +360,19 @@ def store():
         elif request.form.get("submit") == "reset":
             with connection.cursor() as cursor:
                 sql = """SELECT * FROM `product`"""
-                cursor.execute(sql)
+                cursor.execute(sql,())
                 products = cursor.fetchall()
     else:
         with connection.cursor() as cursor:
             sql = """SELECT * FROM `product`"""
             cursor.execute(sql,())
             products = cursor.fetchall()
-    products = random.sample(products,16)
+    if (len(products) > 16):
+        products = random.sample(products,16)
     with connection.cursor() as cursor:
         sql = """SELECT * FROM `category`"""
-        cursor.execute(sql)
+        cursor.execute(sql,())
         categories = cursor.fetchall()
-    print(is_logged_in())
     return render_template("store-page.html",products=split_list_into_4(products),categories=categories,logged=(is_logged_in()))
 
 
@@ -361,8 +390,9 @@ def product(productid):
             exists = 0
             for product in cart_products:
                 if int(productid) == product["product_id"]:
-                    sql = """UPDATE `order_product` SET `quantity`=`quantity`+1 WHERE `id`=%s"""
-                    cursor.execute(sql,(product["id"]))
+                    sql = """UPDATE `order_product` SET `quantity`=`quantity`+%s WHERE `id`=%s"""
+                    number = request.form.get("number")
+                    cursor.execute(sql,(number,product["id"]))
                     connection.commit()
                     exists = 1
                     break
@@ -446,7 +476,6 @@ def user():
                 height = request.form.get("height")
                 weight = request.form.get("weight")
                 if uploadedfile:
-                    print("uploaded")
                     filename = upload_safe(uploadedfile)
                     sql = """UPDATE `user` SET `firstname`=%s, `lastname`=%s, `email`=%s, `age`=%s, `height`=%s, `weight`=%s, `image_url`=%s WHERE `id`=%s """
                     cursor.execute(sql,(firstname,lastname,email,age,height,weight,"https://flask-zenfit.s3.amazonaws.com/"+filename,session["user_id"]))
@@ -454,24 +483,85 @@ def user():
                     sql = """UPDATE `user` SET `firstname`=%s, `lastname`=%s, `email`=%s, `age`=%s, `height`=%s, `weight`=%s WHERE `id`=%s """
                     cursor.execute(sql,(firstname,lastname,email,age,height,weight,session["user_id"]))
                 connection.commit()
+            else:
+                password1 = request.form.get("password")
+                confirm = request.form.get("confirm")
+
+                hash = generate_password_hash(password1)
+                sql = """UPDATE `user` SET `password`=%s WHERE `id`=%s """
+                cursor.execute(sql,(hash,session["user_id"]))
+                                
                 
 
-    rows = selectuserbyid()
-    return render_template("user-page.html",user=rows[0])
+    user = selectuserbyid(session["user_id"])
+    return render_template("user-page.html",user=user)
+
+def get_orders():
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `order` WHERE `order_status`=1 AND `user_id`=%s"""
+        cursor.execute(sql,(session["user_id"]))
+        orders = cursor.fetchall()
+    return orders
+
+def get_products_of_order(order):
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `order_product` WHERE `order_id`=%s"""
+        cursor.execute(sql,(order["id"]))
+        products = cursor.fetchall()
+    return products
+
+def get_products_from_order_products(order_products):
+    products = []
+    for order_product in order_products:
+        with connection.cursor() as cursor:
+            sql = """SELECT * FROM `product` WHERE `id`=%s"""
+            cursor.execute(sql,(order_product["product_id"]))
+            product = cursor.fetchone()
+            product["num"] = order_product["quantity"]
+            products.append(product)
+    return products
+
 
 @app.route("/order-history",methods=["GET","POST"])
 @login_required
 def history():
-    return render_template("order-history-page.html")
+    orders = get_orders()
+    for order in orders:
+        order_products =  get_products_of_order(order)
+        products = get_products_from_order_products(order_products)
+        order["products"] = products
 
-@app.route("/post",methods=["GET","POST"])
-def detailpost():
-    return render_template("post-page.html")
+    return render_template("order-history-page.html",orders=orders)
+
+@app.route("/post/<postid>",methods=["GET","POST"])
+def detailpost(postid):
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `post` WHERE `id`=%s"""
+        cursor.execute(sql,(postid))
+        post = cursor.fetchone()
+    author = selectuserbyid(post["user_id"])
+    post["author"] = author
+    return render_template("post-page.html",post=post)
 
 @app.route("/community",methods=["GET","POST"])
 @login_required
 def comm():
-    return render_template("community-page.html")
+    posts = get_remaining_posts()
+    trending = get_trending_posts(3)
+
+    return render_template("community-page.html",posts=split_list_into_4(posts),trending=trending)
 
 
-
+@app.route("/post/add",methods=["GET","POST"])
+def addpost():
+    if request.method == "POST":
+        post_title = request.form.get("post_title")
+        image_url = request.form.get("image_url")
+        post_time = datetime.datetime.now()
+        post_text = request.form.get("post_text")
+        user_id = session["user_id"]
+        with connection.cursor() as cursor:
+            sql = f"INSERT INTO `post` (post_title,image_url,post_time,post_text,user_id) VALUES (%s,%s,%s,%s,%s)"
+            cursor.execute(sql, (post_title,image_url,post_time,post_text,user_id))
+            connection.commit()
+    return render_template("post_add.html")

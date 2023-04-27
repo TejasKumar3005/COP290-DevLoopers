@@ -59,23 +59,24 @@
           </div>
         </a>
         <div class="frame-parent15">
-          <a class="store-container" href="./store" id="frameLink1">
+          <a class="store-container" href="/store" id="frameLink1">
             <div class="comunity">Store</div>
           </a>
-          <a class="store-container" href="./AI" id="frameLink2">
+          <a class="store-container" href="/AI" id="frameLink2">
             <div class="comunity">Zen AI</div>
           </a>
           <a class="about-container">
             <div class="comunity">About</div>
           </a>
+          <a href="/community" style="color: inherit;text-decoration: none;">
           <button class="prozen-group">
-            <div class="prozen1">ProZen</div>
-            <img class="vector-icon7" alt="" src="{{ url_for('static', filename= 'public1/vector10.svg') }}" />
+            <div class="prozen1">Community</div>
           </button>
+          </a>
         </div>
         <div class="navigation-a-inner">
           <div class="icons-parent">
-            <a class="icons4" href="./profile" id="icons">
+            <a class="icons4" href="/profile" id="icons">
               <img class="vector-icon8" alt="" src="{{ url_for('static', filename= 'public1/vector13.svg') }}" />
 
               <img class="vector-icon9" alt="" src="{{ url_for('static', filename= 'public1/vector14.svg') }}" />
@@ -87,35 +88,19 @@
         </div>
       </div>
       <div class="navigationsheading-layout">
-        <div class="fruit-and-vegetables">Fruit and vegetables</div>
+        <div class="fruit-and-vegetables">{{ post.post_title }}</div>
       </div>
       <div class="blogimage-heading">
         <div class="blogimage-heading-inner">
           <div class="basics-group">
-            <div class="basics7">
-              <div class="rectangle-div"></div>
-            </div>
+            <img src="{{ post.image_url }}" alt="" class="basics7">
             <img class="group-item" alt="" src="{{ url_for('static', filename= 'public1/rectangle-341.svg') }}" />
 
             <div class="frame-parent16">
               <div class="leave-a-reply-parent">
                 <div class="date-parent">
-                  <div class="date">Date:</div>
-                  <div class="div18">22. 6. 2020</div>
-                </div>
-                <div class="date-parent">
-                  <div class="date">Category:</div>
-                  <div class="dinner">Dinner</div>
-                </div>
-                <div class="author-parent2">
-                  <div class="author5">Author:</div>
-                  <div class="admin">Admin</div>
-                </div>
-              </div>
-              <div class="space-for-your-heading-can-be-wrapper">
-                <div class="space-for-your">
-                  Space for your heading, can be larger so don’t worry - large
-                  heading looks better
+                  <div class="date">{{ post.author.firstname }}</div>
+                  <div class="div18">{{ post.post_time.strftime('%d.%m.%Y') }}</div>
                 </div>
               </div>
             </div>
@@ -126,7 +111,7 @@
         <div class="frame-parent18">
           <div class="frame-parent19">
             <div class="frame-wrapper3">
-              <a class="buttons-wrapper" href="./community">
+              <a class="buttons-wrapper" href="/community">
                 <div class="buttons3">
                   <img
                     class="ic-chevron-left-icon1"
@@ -141,88 +126,7 @@
           </div>
           <div class="theres-nothing-like-a-warm-cu-parent">
             <div class="theres-nothing-like">
-              There’s nothing like a warm cup of tea to start your morning—or
-              maybe you’re all about an iced hibiscus on a sunny Saturday
-              afternoon. Whether you’re just craving chamomile or are looking to
-              ditch your coffee dependency, here’s our go-to guide on
-              incorporating a few new teas into your daily routine!
-            </div>
-            <div class="morning-ritual">Morning Ritual // 9:00 AM</div>
-            <div class="want-that-extra-container">
-              Want that extra morning energy without the caffeine jitters?
-              Switch out your morning mug of coffee for a warm, energizing cup
-              of <span class="earl-grey">earl grey</span>. Serve as is or stir
-              in some milk and honey for extra coziness. If you want to spice
-              things up, try chai tea instead! The combination of
-              <span class="earl-grey">cinnamon</span>,
-              <span class="earl-grey">cardamom</span>, and
-              <span class="earl-grey">ginger</span> smells amazing and gives you
-              that nice little flavor kick to start your day off right.
-            </div>
-            <div class="morning-ritual">Mid-day Boost // 2:00 PM</div>
-            <div class="if-youre-feeling-container">
-              If you’re feeling a little sluggish post-lunch, beat the afternoon
-              slump with some lemon ginger green tea.
-              <span class="earl-grey">Green tea</span> can be a great
-              alternative to coffee in the afternoon when you want that little
-              boost of energy. An added benefit: lemon and ginger work together
-              to aid digestion which is especially helpful after lunch.
-            </div>
-            <div class="if-youre-not">
-              If you’re not into hot drinks, opt-in for a fruity iced green tea
-              instead. Steep some honeydew or peach green tea in hot water for a
-              few minutes and then pour over ice until it’s nice and cool. Enjoy
-              with a slice of lemon, and you’ll feel refreshed and ready to
-              tackle any task.
-            </div>
-            <div class="morning-ritual">Evening Calm // 8:00 PM</div>
-            <div class="if-youre-not">
-              Slip on some fuzzy socks, light your favorite candles, and fire up
-              the kettle—it’s time to wind down after a long day. Grab yourself
-              a soothing cup of lavender
-              <span class="earl-grey">chamomile tea</span> and indulge in some
-              well-deserved self-love.
-            </div>
-            <div class="share-parent">
-              <div class="fruit-and-vegetables">Share</div>
-              <div class="buttons-group">
-                <button class="buttons4">
-                  <img
-                    class="ic-chevron-left-icon1"
-                    alt=""
-                    src="{{ url_for('static', filename= 'public1/icchevronleft2.svg') }}"
-                  />
-
-                  <b class="facebook">Facebook</b>
-                </button>
-                <button class="buttons4">
-                  <img
-                    class="ic-chevron-left-icon1"
-                    alt=""
-                    src="{{ url_for('static', filename= 'public1/icchevronleft2.svg') }}"
-                  />
-
-                  <b class="facebook">Pinterest</b>
-                </button>
-                <button class="buttons4">
-                  <img
-                    class="ic-chevron-left-icon1"
-                    alt=""
-                    src="{{ url_for('static', filename= 'public1/icchevronleft2.svg') }}"
-                  />
-
-                  <b class="facebook">Twitter</b>
-                </button>
-                <button class="buttons4">
-                  <img
-                    class="ic-chevron-left-icon1"
-                    alt=""
-                    src="{{ url_for('static', filename= 'public1/icchevronleft2.svg') }}"
-                  />
-
-                  <b class="facebook">LinkedIn</b>
-                </button>
-              </div>
+              {{ post.post_text }}
             </div>
           </div>
         </div>
@@ -648,14 +552,14 @@ Space for your comments</textarea
       var popupbuttons = document.getElementById("popupbuttons");
       if (popupbuttons) {
         popupbuttons.addEventListener("click", function (e) {
-          window.location.href = "./store";
+          window.location.href = "/store";
         });
       }
       
       var popupbuttons1 = document.getElementById("popupbuttons1");
       if (popupbuttons1) {
         popupbuttons1.addEventListener("click", function (e) {
-          window.location.href = "./checkout";
+          window.location.href = "/checkout";
         });
       }
       var scrollAnimElements = document.querySelectorAll("[data-animate-on-scroll]");
@@ -688,21 +592,21 @@ Space for your comments</textarea
       var frameLink1 = document.getElementById("frameLink1");
       if (frameLink1) {
         frameLink1.addEventListener("click", function (e) {
-          window.location.href = "./store";
+          window.location.href = "/store";
         });
       }
       
       var frameLink2 = document.getElementById("frameLink2");
       if (frameLink2) {
         frameLink2.addEventListener("click", function (e) {
-          window.location.href = "./AI";
+          window.location.href = "/AI";
         });
       }
       
       var icons = document.getElementById("icons");
       if (icons) {
         icons.addEventListener("click", function (e) {
-          window.location.href = "./profile";
+          window.location.href = "/profile";
         });
       }
       

@@ -68,10 +68,11 @@
           <div class="about-wrapper2">
             <div class="store4">About</div>
           </div>
+          <a href="/community" style="color: inherit;text-decoration: none;">
           <button class="frame-button">
-            <div class="prozen4">ProZen</div>
-            <img class="vector-icon16" alt="" src="{{ url_for('static', filename= 'public1/vector10.svg') }}" />
+            <div class="prozen4">Community</div>
           </button>
+          </a>
         </div>
         <div class="navigation-a-inner2">
           <div class="icons-parent1">
@@ -91,14 +92,13 @@
       </div>
       <div class="blogfeatured-posts">
         <div class="blogpostlarge-parent">
-          <a class="blogpostlarge" href="./post">
-            <div class="basics13">
+          {% for post in trending %}
+          <a class="blogpostlarge" href="./post/{{ post.id }}">
               <img
-                class="basics-child9"
+                class="basics13"
                 alt=""
-                src="{{ url_for('static', filename= 'public1/rectangle-262@2x.png') }}"
+                src="{{ post.image_url }}"
               />
-            </div>
             <img
               class="blogpostlarge-child"
               alt=""
@@ -107,8 +107,7 @@
 
             <div class="this-is-a-space-for-your-blog-parent">
               <div class="this-is-a">
-                This is a space for your blog headline, it can be long don’t
-                worry about that
+                {{ post.post_title }}
               </div>
               <div class="frame-wrapper9">
                 <div class="frame-parent49">
@@ -119,173 +118,47 @@
                       src="{{ url_for('static', filename= 'public1/avatars1.svg') }}"
                     />
 
-                    <div class="author7">Author</div>
+                    <div class="author7">{{ post.author.firstname }}</div>
                   </div>
-                  <div class="author7">17. 6. 2020</div>
+                  <div class="author7">{{ post.post_time.strftime('%d.%m.%Y') }}</div>
                 </div>
               </div>
             </div>
-            <div class="tags11">
-              <div class="tag">Tag</div>
-            </div>
           </a>
-          <a class="blogpostlarge1" href="./post">
-            <div class="basics13">
-              <img
-                class="basics-child9"
-                alt=""
-                src="{{ url_for('static', filename= 'public1/rectangle-263@2x.png') }}"
-              />
-            </div>
-            <img
-              class="blogpostlarge-child"
-              alt=""
-              src="{{ url_for('static', filename= 'public1/rectangle-343.svg') }}"
-            />
-
-            <div class="this-is-a-space-for-your-blog-parent">
-              <div class="this-is-a">
-                This is a space for your blog headline, it can be long don’t
-                worry about that
-              </div>
-              <div class="frame-wrapper9">
-                <div class="frame-parent49">
-                  <div class="avatars-group">
-                    <img
-                      class="avatars-icon1"
-                      alt=""
-                      src="{{ url_for('static', filename= 'public1/avatars2.svg') }}"
-                    />
-
-                    <div class="author7">Author</div>
-                  </div>
-                  <div class="author7">17. 6. 2020</div>
-                </div>
-              </div>
-            </div>
-            <div class="tags11">
-              <div class="tag">Tag</div>
-            </div>
-          </a>
-          <a class="blogpostlarge2" href="./post">
-            <div class="basics13">
-              <img
-                class="basics-child9"
-                alt=""
-                src="{{ url_for('static', filename= 'public1/rectangle-264@2x.png') }}"
-              />
-            </div>
-            <img
-              class="blogpostlarge-child"
-              alt=""
-              src="{{ url_for('static', filename= 'public1/rectangle-344.svg') }}"
-            />
-
-            <div class="this-is-a-space-for-your-blog-parent">
-              <div class="this-is-a">
-                This is a space for your blog headline, it can be long don’t
-                worry about that
-              </div>
-              <div class="frame-wrapper9">
-                <div class="frame-parent49">
-                  <div class="avatars-group">
-                    <img
-                      class="avatars-icon1"
-                      alt=""
-                      src="{{ url_for('static', filename= 'public1/avatars3.svg') }}"
-                    />
-
-                    <div class="author7">Author</div>
-                  </div>
-                  <div class="author7">17. 6. 2020</div>
-                </div>
-              </div>
-            </div>
-            <div class="tags11">
-              <div class="tag">Tag</div>
-            </div>
-          </a>
+          {% endfor %}
         </div>
       </div>
       <div class="bloglist-widgets">
+        {% for fourposts in posts %}
         <div class="blogpostmedium-parent">
-          <a class="blogpostmedium" href="./post">
+          {% for post in fourposts %}
+          <a class="blogpostmedium" href="./post/{{ post.id }}">
             <div class="basics16">
-              <div class="basics-child12"></div>
+              <img src="{{ post.image_url }}" alt="" class="basics-child12">
             </div>
             <div class="tags-parent3">
-              <div class="tags14">
-                <div class="tag">Tag</div>
-              </div>
               <div class="space-for-your-heding-is-here-parent">
                 <div class="space-for-your2">
-                  Space for your heding is here, write what you need
+                  {{ post.post_title }}
                 </div>
                 <div class="author-parent4">
-                  <div class="author7">Author</div>
-                  <div class="author7">15. 6. 2020</div>
+                  <div class="avatars-group">
+                    <img
+                      class="avatars-icon1"
+                      alt=""
+                      src="{{ url_for('static', filename= 'public1/avatars1.svg') }}"
+                    />
+
+                    <div class="author7">{{ post.author.firstname }}</div>
+                  </div>
+                  <div class="author7">{{ post.post_time.strftime('%H:%M %d.%m.%Y') }}</div>
                 </div>
               </div>
             </div>
           </a>
-          <a class="blogpostmedium" href="./post">
-            <div class="basics16">
-              <div class="basics-child12"></div>
-            </div>
-            <div class="tags-parent3">
-              <div class="tags14">
-                <div class="tag">Tag</div>
-              </div>
-              <div class="space-for-your-heding-is-here-parent">
-                <div class="space-for-your2">
-                  Space for your heding is here, write what you need
-                </div>
-                <div class="author-parent4">
-                  <div class="author7">Author</div>
-                  <div class="author7">15. 6. 2020</div>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a class="blogpostmedium" href="./post">
-            <div class="basics16">
-              <div class="basics-child12"></div>
-            </div>
-            <div class="tags-parent3">
-              <div class="tags14">
-                <div class="tag">Tag</div>
-              </div>
-              <div class="space-for-your-heding-is-here-parent">
-                <div class="space-for-your2">
-                  Space for your heding is here, write what you need
-                </div>
-                <div class="author-parent4">
-                  <div class="author7">Author</div>
-                  <div class="author7">15. 6. 2020</div>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a class="blogpostmedium3" href="./post">
-            <div class="basics16">
-              <div class="basics-child12"></div>
-            </div>
-            <div class="tags-parent3">
-              <div class="tags14">
-                <div class="tag">Tag</div>
-              </div>
-              <div class="space-for-your-heding-is-here-parent">
-                <div class="space-for-your2">
-                  Space for your heding is here, write what you need
-                </div>
-                <div class="author-parent4">
-                  <div class="author7">Author</div>
-                  <div class="author7">15. 6. 2020</div>
-                </div>
-              </div>
-            </div>
-          </a>
+          {% endfor %}
         </div>
+        {% endfor %}
       </div>
       <div class="footer-a4">
         <div class="logo-parent3">

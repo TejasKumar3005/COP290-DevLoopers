@@ -68,9 +68,11 @@
           <div class="about-wrapper1">
             <div class="store3">About</div>
           </div>
+          <a href="/community" style="color: inherit;text-decoration: none;">
           <div class="prozen-parent1">
-            <div class="store3">ProZen</div>
+            <div class="store3">Community</div>
           </div>
+          </a>
         </div>
         <div class="navigation-a-inner1">
           <div class="icons-container">
@@ -100,30 +102,6 @@
                 <div class="fitness-board1">Fitness Board</div>
               </div>
             </div>
-            <div class="listitem7" id="listItemContainer1">
-              <div class="container42">
-                <img
-                  class="bx-calendar-alt-icon1"
-                  alt=""
-                  src="{{ url_for('static', filename= 'public1/bxuser.svg') }}"
-                />
-              </div>
-              <div class="text-container6">
-                <div class="fitness-board1">User</div>
-              </div>
-            </div>
-            <div class="listitem8">
-              <div class="container42">
-                <img
-                  class="bx-calendar-alt-icon1"
-                  alt=""
-                  src="{{ url_for('static', filename= 'public1/bxchat.svg') }}"
-                />
-              </div>
-              <div class="text-container6">
-                <div class="fitness-board1">Chat</div>
-              </div>
-            </div>
             <div class="listitem9">
               <div class="container42">
                 <img
@@ -136,108 +114,68 @@
                 <div class="fitness-board1">Order History</div>
               </div>
             </div>
-            <div class="listitem8">
+            <div class="listitem7" id="listItemContainer1">
               <div class="container42">
                 <img
                   class="bx-calendar-alt-icon1"
                   alt=""
-                  src="{{ url_for('static', filename= 'public1/bxlock.svg') }}"
+                  src="{{ url_for('static', filename= 'public1/bxuser.svg') }}"
                 />
               </div>
               <div class="text-container6">
-                <div class="subscription1">Subscription</div>
-              </div>
-            </div>
-            <div class="listitem8">
-              <div class="container42">
-                <img
-                  class="bx-calendar-alt-icon1"
-                  alt=""
-                  src="{{ url_for('static', filename= 'public1/bxfileblank.svg') }}"
-                />
-              </div>
-              <div class="text-container6">
-                <div class="fitness-board1">Your Posts</div>
+                <div class="fitness-board1">User</div>
               </div>
             </div>
           </div>
         </div>
         <div class="navigationsbreadcrumbs-parent">
-          <div class="navigationsbreadcrumbs1">
-          </div>
+          {% for order in orders %}
+          {% for product in order.products %}
           <div class="frame-parent31" id="frameContainer50">
             <div class="basics-frame">
               <div class="basics8">
                 <img
                   class="basics-child4"
                   alt=""
-                  src="{{ url_for('static', filename= 'public1/rectangle-261@2x.png') }}"
+                  src="{{ product.image_url }}"
                 />
               </div>
             </div>
             <div class="frame-parent32">
               <div class="frame-parent33">
                 <div class="product-title-container">
-                  <div class="product-title2">Product title</div>
+                  <div class="product-title2">{{ product.product_name }}</div>
                   <div class="space-for-a">
-                    Space for a small product description
+                    {{ product.product_description }}
                   </div>
                 </div>
                 <div class="ic-actions-star-container">
+                  {% for i in range(product.rating) %}
                   <img
                     class="ic-actions-star-icon10"
                     alt=""
                     src="{{ url_for('static', filename= 'public1/icactionsstar.svg') }}"
                   />
-
-                  <img
-                    class="ic-actions-star-icon10"
-                    alt=""
-                    src="{{ url_for('static', filename= 'public1/icactionsstar.svg') }}"
-                  />
-
-                  <img
-                    class="ic-actions-star-icon10"
-                    alt=""
-                    src="{{ url_for('static', filename= 'public1/icactionsstar.svg') }}"
-                  />
-
-                  <img
-                    class="ic-actions-star-icon10"
-                    alt=""
-                    src="{{ url_for('static', filename= 'public1/icactionsstar.svg') }}"
-                  />
-
+                  {% endfor %}
+                  {% for i in range(5-product.rating) %}
                   <img
                     class="ic-actions-star-icon10"
                     alt=""
                     src="{{ url_for('static', filename= 'public1/icactionsstar1.svg') }}"
                   />
+                  {% endfor %}
                 </div>
               </div>
               <div class="group-parent1">
-                <div class="brand-container">
-                  <div class="delivery">Brand</div>
-                  <div class="nike2">Nike</div>
-                </div>
-                <div class="size-container">
-                  <div class="delivery">Size</div>
-                  <div class="nike2">9</div>
-                </div>
-                <div class="delivery-parent">
-                  <div class="delivery">Delivery</div>
-                  <div class="nike2">Mumbai</div>
-                </div>
                 <div class="number-parent">
                   <div class="delivery">Number</div>
-                  <div class="nike2">1 pcs</div>
+                  <div class="nike2">{{ product.num }}</div>
                 </div>
               </div>
             </div>
             <div class="group-parent2">
               <div class="usd-parent">
-                <div class="usd5">36.99 USD</div>
-                <div class="div27">48.56</div>
+                <div class="usd5">₹{{ product.product_price }}</div>
               </div>
               <div class="free-shipping-parent">
                 <div class="free-shipping">Free Shipping</div>
@@ -262,114 +200,8 @@
               </div>
             </div>
           </div>
-          <div class="frame-parent31" id="frameContainer60">
-            <div class="basics-frame">
-              <div class="basics8">
-                <img
-                  class="basics-child4"
-                  alt=""
-                  src="{{ url_for('static', filename= 'public1/rectangle-261@2x.png') }}"
-                />
-              </div>
-            </div>
-            <div class="frame-parent32">
-              <div class="frame-parent33">
-                <div class="product-title-container">
-                  <div class="product-title2">Product title</div>
-                  <div class="space-for-a">
-                    Space for a small product description
-                  </div>
-                </div>
-                <div class="ic-actions-star-container">
-                  <img
-                    class="ic-actions-star-icon10"
-                    alt=""
-                    src="{{ url_for('static', filename= 'public1/icactionsstar.svg') }}"
-                  />
-
-                  <img
-                    class="ic-actions-star-icon10"
-                    alt=""
-                    src="{{ url_for('static', filename= 'public1/icactionsstar.svg') }}"
-                  />
-
-                  <img
-                    class="ic-actions-star-icon10"
-                    alt=""
-                    src="{{ url_for('static', filename= 'public1/icactionsstar.svg') }}"
-                  />
-
-                  <img
-                    class="ic-actions-star-icon10"
-                    alt=""
-                    src="{{ url_for('static', filename= 'public1/icactionsstar.svg') }}"
-                  />
-
-                  <img
-                    class="ic-actions-star-icon10"
-                    alt=""
-                    src="{{ url_for('static', filename= 'public1/icactionsstar1.svg') }}"
-                  />
-                </div>
-              </div>
-              <div class="group-parent1">
-                <div class="brand-container">
-                  <div class="delivery">Brand</div>
-                  <div class="nike2">Nike</div>
-                </div>
-                <div class="size-container">
-                  <div class="delivery">Size</div>
-                  <div class="nike2">9</div>
-                </div>
-                <div class="delivery-parent">
-                  <div class="delivery">Delivery</div>
-                  <div class="nike2">Mumbai</div>
-                </div>
-                <div class="number-parent">
-                  <div class="delivery">Number</div>
-                  <div class="nike2">1 pcs</div>
-                </div>
-              </div>
-            </div>
-            <div class="group-parent2">
-              <div class="usd-parent">
-                <div class="usd5">36.99 USD</div>
-                <div class="div27">48.56</div>
-              </div>
-              <div class="free-shipping-parent">
-                <div class="free-shipping">Free Shipping</div>
-                <div class="delivery-in-1">Delivery in 1 day</div>
-              </div>
-              <div class="frame-wrapper4">
-                <div class="buttons-container">
-                  <div class="buttons11" id="buttonsContainer8">
-                    <b class="men">Buy Again</b>
-                    <img
-                      class="ic-actions-heart-icon"
-                      alt=""
-                      src="{{ url_for('static', filename= 'public1/icchevronright1.svg') }}"
-                    />
-                  </div>
-                  <div class="buttons12">
-                    <img class="ic-actions-heart-icon" alt="" />
-
-                    <b class="men">Order Details</b>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="navigationspaginations">
-            <div class="frame-parent46">
-              <div class="page-parent">
-                <div class="men">Page:</div>
-                <div class="men">1</div>
-                <div class="men">2</div>
-                <div class="shoes">3</div>
-                <div class="men">4</div>
-              </div>
-            </div>
-          </div>
+          {% endfor %}
+          {% endfor %}
         </div>
       </div>
       <div class="footer-a3">

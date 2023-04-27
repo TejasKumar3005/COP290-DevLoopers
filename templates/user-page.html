@@ -68,9 +68,11 @@
           <a class="about-frame">
             <div class="store2">About</div>
           </a>
+          <a href="/community" style="color: inherit;text-decoration: none;">
           <div class="prozen-container">
-            <div class="store2">ProZen</div>
+            <div class="store2">Community</div>
           </div>
+          </a>
         </div>
         <div class="navigation-a-child">
           <div class="icons-group">
@@ -100,30 +102,6 @@
                 <div class="fitness-board">Fitness Board</div>
               </div>
             </div>
-            <div class="listitem1">
-              <div class="container4">
-                <img
-                  class="bx-calendar-alt-icon"
-                  alt=""
-                  src="{{ url_for('static', filename= 'public1/bxuser.svg') }}"
-                />
-              </div>
-              <div class="text-container">
-                <div class="fitness-board">User</div>
-              </div>
-            </div>
-            <div class="listitem2">
-              <div class="container4">
-                <img
-                  class="bx-calendar-alt-icon"
-                  alt=""
-                  src="{{ url_for('static', filename= 'public1/bxchat.svg') }}"
-                />
-              </div>
-              <div class="text-container">
-                <div class="fitness-board">Chat</div>
-              </div>
-            </div>
             <div class="listitem3" id="listItemContainer3">
               <div class="container4">
                 <img
@@ -136,28 +114,16 @@
                 <div class="fitness-board">Order History</div>
               </div>
             </div>
-            <div class="listitem2">
+            <div class="listitem1">
               <div class="container4">
                 <img
                   class="bx-calendar-alt-icon"
                   alt=""
-                  src="{{ url_for('static', filename= 'public1/bxlock.svg') }}"
+                  src="{{ url_for('static', filename= 'public1/bxuser.svg') }}"
                 />
               </div>
               <div class="text-container">
-                <div class="subscription">Subscription</div>
-              </div>
-            </div>
-            <div class="listitem2">
-              <div class="container4">
-                <img
-                  class="bx-calendar-alt-icon"
-                  alt=""
-                  src="{{ url_for('static', filename= 'public1/bxfileblank.svg') }}"
-                />
-              </div>
-              <div class="text-container">
-                <div class="fitness-board">Your Posts</div>
+                <div class="fitness-board">User</div>
               </div>
             </div>
           </div>
@@ -957,7 +923,7 @@
                   <div class="label9">24</div>
                 </div>
                 <div class="active9">
-                  <input class="value2" type="password" />
+                  <input class="value2" type="password" name="password" />
 
                   <div class="adornment-end">
                     <img
@@ -975,7 +941,7 @@
                   <div class="label9">24</div>
                 </div>
                 <div class="active9">
-                  <input class="value2" type="password" />
+                  <input class="value2" type="password" name="confirm" />
 
                   <div class="adornment-end">
                     <img
