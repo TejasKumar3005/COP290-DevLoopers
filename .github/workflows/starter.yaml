@@ -17,7 +17,7 @@ jobs:
             # https://hub.docker.com/_/mysql
             image: mysql:5.7
             env:
-              MYSQL_ROOT_PASSWORD: password
+              MYSQL_ROOT_PASSWORD: super
               MYSQL_DATABASE: zenfit
             ports:
               - 33306:3306
@@ -32,8 +32,8 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install MySQL server and client
         run: |
-          mysql --host 127.0.0.1 --port 33306 -u root -p password -e "CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';"
-          mysql --host 127.0.0.1 --port 33306 -u root -p${MYSQL_ROOT_PASSWORD} -e "GRANT ALL ON zenfit.* TO 'newuser'@'localhost';"
+          mysql --host 127.0.0.1 --port 33306 -u root -p super -e "CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';"
+          mysql --host 127.0.0.1 --port 33306 -u root -p super -e "GRANT ALL ON zenfit.* TO 'newuser'@'localhost';"
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
