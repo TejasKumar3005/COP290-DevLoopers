@@ -285,6 +285,7 @@ def split_list_into_4(lst):
 
 @app.route("/store",methods=["GET","POST"])
 def store():
+    connection.ping()
     if request.method == "POST":
         if request.form.get("submit") == "search":
             inputtext = request.form.get("inputtext")

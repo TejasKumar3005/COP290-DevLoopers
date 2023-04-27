@@ -66,10 +66,12 @@
             <div class="store" >ZenAI</div></button
           ></a><a href="/#" style="text-decoration:none"><button class="store-wrapper" id="frameButton">
             <div class="store" >About</div></button
-          ></a><button class="prozen-parent">
-            <div class="prozen">ProZen</div>
-            <img class="vector-icon" alt="" src="{{ url_for('static', filename='public/vector10.svg') }}" />
+          ></a>
+          <a href="/community" style="color: inherit;text-decoration: none;">
+          <button class="prozen-parent">
+            <div class="prozen">Community</div>
           </button>
+          </a>
         </div>
         {% if logged == 0 %}
         <div class="solid-button-parent">
