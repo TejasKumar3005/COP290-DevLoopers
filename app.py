@@ -107,6 +107,7 @@ def setup():
         `order_status` int DEFAULT NULL,
         `user_id` int DEFAULT NULL,
         `address_id` int DEFAULT NULL,
+        `order_time` datetime DEFAULT NULL,
         PRIMARY KEY (`id`),
         FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
       )""")
@@ -460,8 +461,8 @@ def checkout():
                 connection.commit()   
                 addressid = cursor.lastrowid
             
-            sql = """UPDATE `order` SET `order_status`=1, `address_id`=%s WHERE `id`=%s """
-            cursor.execute(sql,(addressid,cartid))
+            sql = """UPDATE `order` SET `order_status`=1, `address_id`=%s, `order_time`=%s WHERE `id`=%s """
+            cursor.execute(sql,(addressid,cartid,datetime.datetime.now()))
             connection.commit()
 
             sql = f"INSERT INTO `order` (order_status,user_id) VALUES (%s,%s)"

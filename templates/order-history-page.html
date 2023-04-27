@@ -168,8 +168,7 @@
               </div>
               <div class="group-parent1">
                 <div class="number-parent">
-                  <div class="delivery">Number</div>
-                  <div class="nike2">{{ product.num }}</div>
+                  <div class="delivery">{{ order.order_time.strftime('%d.%m.%Y') }}</div>
                 </div>
               </div>
             </div>
@@ -178,8 +177,7 @@
                 <div class="usd5">₹{{ product.product_price }}</div>
               </div>
               <div class="free-shipping-parent">
-                <div class="free-shipping">Free Shipping</div>
-                <div class="delivery-in-1">Delivery in 1 day</div>
+                <div class="free-shipping">{{ product.num }} pcs</div>
               </div>
               <div class="frame-wrapper4">
                 <div class="buttons-container">
@@ -190,11 +188,6 @@
                       alt=""
                       src="{{ url_for('static', filename= 'public1/icchevronright1.svg') }}"
                     />
-                  </div>
-                  <div class="buttons12">
-                    <img class="ic-actions-heart-icon" alt="" />
-
-                    <b class="men">Order Details</b>
                   </div>
                 </div>
               </div>
@@ -515,70 +508,64 @@
       var buttonsContainer = document.getElementById("buttonsContainer");
       if (buttonsContainer) {
         buttonsContainer.addEventListener("click", function (e) {
-          window.location.href = "./product";
+          window.location.href = "/store";
         });
       }
       
       var frameContainer20 = document.getElementById("frameContainer20");
       if (frameContainer20) {
         frameContainer20.addEventListener("click", function (e) {
-          window.location.href = "./product";
+          window.location.href = "/store";
         });
       }
       
       var buttonsContainer2 = document.getElementById("buttonsContainer2");
       if (buttonsContainer2) {
         buttonsContainer2.addEventListener("click", function (e) {
-          window.location.href = "./product";
+          window.location.href = "/store";
         });
       }
       
       var frameContainer30 = document.getElementById("frameContainer30");
       if (frameContainer30) {
         frameContainer30.addEventListener("click", function (e) {
-          window.location.href = "./product";
+          window.location.href = "/store";
         });
       }
       
       var buttonsContainer4 = document.getElementById("buttonsContainer4");
       if (buttonsContainer4) {
         buttonsContainer4.addEventListener("click", function (e) {
-          window.location.href = "./product";
+          window.location.href = "/store";
         });
       }
       
       var frameContainer40 = document.getElementById("frameContainer40");
       if (frameContainer40) {
         frameContainer40.addEventListener("click", function (e) {
-          window.location.href = "./product";
+          window.location.href = "/store";
         });
       }
       
       var buttonsContainer6 = document.getElementById("buttonsContainer6");
       if (buttonsContainer6) {
         buttonsContainer6.addEventListener("click", function (e) {
-          window.location.href = "./product";
+          window.location.href = "/store";
         });
       }
       
-      var frameContainer50 = document.getElementById("frameContainer50");
-      if (frameContainer50) {
-        frameContainer50.addEventListener("click", function (e) {
-          window.location.href = "./product";
-        });
-      }
       
       var buttonsContainer8 = document.getElementById("buttonsContainer8");
       if (buttonsContainer8) {
         buttonsContainer8.addEventListener("click", function (e) {
-          window.location.href = "./product";
+          window.location.href = "/store";
         });
       }
       
       var frameContainer60 = document.getElementById("frameContainer60");
       if (frameContainer60) {
         frameContainer60.addEventListener("click", function (e) {
-          window.location.href = "./product";
+          window.location.href = "/store";
         });
       }
       </script>

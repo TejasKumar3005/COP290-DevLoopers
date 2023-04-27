@@ -140,13 +140,10 @@
                 </div>
                 <div class="lorem-ipsum-dolor-container">
                   <p class="lorem-ipsum-dolor">
-                    Lorem ipsum dolor sit amet consectetur. Sed tincidunt eget
-                    morbi congue nunc enim. Venenatis sapien sit eget urna.
-                    Egestas
+                    Athletic wear is a popular choice for anyone looking to get in shape, and for good reason!
                   </p>
                   <p class="lorem-ipsum-dolor">
-                    volutpat purus scelerisque at. Quis in quis consectetur leo
-                    scelerisque quis viverra sagittis.
+                    Not only is it designed to be comfortable and functional, but it's also stylish and can make you feel confident and motivated during your workout.
                   </p>
                 </div>
                 <a href="/store" style="color: inherit;text-decoration: none;">
@@ -320,15 +317,13 @@
                 </div>
                 <div class="lorem-ipsum-dolor-container1">
                   <p class="lorem-ipsum-dolor">
-                    Lorem ipsum dolor sit amet consectetur. Massa quis natoque
-                    sit quam.
+                    If you're looking to take your fitness routine to the next level, upgrading your workout wardrobe is a great place to start.
                   </p>
                   <p class="lorem-ipsum-dolor">
-                    Eros non pellentesque elit tortor id euismod habitant cras
-                    neque. Sed
+                    workout clothes make you feel more motivated during your workout, 
                   </p>
                   <p class="lorem-ipsum-dolor">
-                    suspendisse id in ultrices adipiscing id adipiscing.
+                    they also help you reach your fitness goals faster.
                   </p>
                 </div>
               </div>
@@ -621,6 +616,7 @@ function openElement() {
     element.find('.header button').click(closeElement);
     element.find('#sendMessage').click(sendNewMessage);
     messages.scrollTop(messages.prop("scrollHeight"));
+    sendNewMessage("hi");
 }
 
 
@@ -653,9 +649,14 @@ function createUUID() {
     return uuid;
 }
 
-function sendNewMessage() {
+function sendNewMessage(alpha) {
     var userInput = $('.text-box');
-    var newMessage = userInput.html().replace(/\<div\>|\<br.*?\>/ig, '\n').replace(/\<\/div\>/g, '').trim().replace(/\n/g, '<br>');
+    if (alpha){
+      var newMessage = alpha;
+    }
+    else{
+      var newMessage = userInput.html().replace(/\<div\>|\<br.*?\>/ig, '\n').replace(/\<\/div\>/g, '').trim().replace(/\n/g, '<br>');
+    }
 
     if (!newMessage) return;
 
@@ -663,11 +664,13 @@ function sendNewMessage() {
 
     console.log('sad life');
 
+    if (!alpha){
     messagesContainer.append([
         '<li class="other">',
         newMessage,
         '</li>'
     ].join(''));
+        }
 
     fetch(`/chat?data=${newMessage}`, {
     method: "GET",
@@ -700,6 +703,7 @@ function sendNewMessage() {
         scrollTop: messagesContainer.prop("scrollHeight")
     }, 250);
 }
+
 
 function onMetaAndEnter(event) {
     if ((event.metaKey || event.ctrlKey) && event.keyCode == 13) {
