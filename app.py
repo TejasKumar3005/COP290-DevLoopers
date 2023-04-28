@@ -524,6 +524,15 @@ def checkout():
 def ai():
     return render_template("zen-ai-page.html")
 
+def getevents():
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `event`"""
+        cursor.execute(sql,())
+        rows = cursor.fetchall()
+    return rows
+
+
+
 @app.route("/user",methods=["GET","POST"])
 @login_required
 def user():
@@ -552,13 +561,15 @@ def user():
                 hash = generate_password_hash(password1)
                 sql = """UPDATE `user` SET `password`=%s WHERE `id`=%s """
                 cursor.execute(sql,(hash,session["user_id"]))
+                return redirect("/logout")
 
     userid = session["user_id"]
     yourposts = selectpostsbyuserid(userid)
     user = selectuserbyid(userid)
     (products_list,net_price) = get_productsandnet_from_cart(get_cart_from_cartid(retrieve_cart_id()))
     print(products_list)
-    return render_template("user-page.html",user=user,posts=yourposts,products=products_list,net=net_price)
+    events = getevents()
+    return render_template("user-page.html",user=user,posts=yourposts,products=products_list,net=net_price,events=events)
 
 @app.route("/order-history",methods=["GET","POST"])
 @login_required

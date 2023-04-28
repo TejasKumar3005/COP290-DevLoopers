@@ -268,6 +268,7 @@
                     <div class="upcoming-events">Upcoming Events</div>
                   </div>
                   <div class="timeline">
+                    {% for event in events %}
                     <div class="heading">
                       <div class="timelineitem">
                         <div class="dot-container">
@@ -278,60 +279,13 @@
                           />
 
                           <div class="main">
-                            <div class="main1">Mumbai Marathon</div>
+                            <div class="main1">{{ event.event_title }}</div>
                           </div>
                         </div>
                       </div>
-                      <div class="paypal">Wednesday</div>
+                      <div class="paypal">{{ event.event_start.strftime('%d.%m.%Y') }}</div>
                     </div>
-                    <div class="heading">
-                      <div class="timelineitem">
-                        <div class="dot-container">
-                          <img
-                            class="timelinedot-icon"
-                            alt=""
-                            src="{{ url_for('static', filename= 'public1/timelinedot1.svg') }}"
-                          />
-
-                          <div class="main">
-                            <div class="main1">Fitness Meet</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="paypal">April, 18</div>
-                    </div>
-                    <div class="heading">
-                      <div class="timelineitem">
-                        <div class="dot-container">
-                          <img
-                            class="timelinedot-icon"
-                            alt=""
-                            src="{{ url_for('static', filename= 'public1/timelinedot2.svg') }}"
-                          />
-
-                          <div class="main">
-                            <div class="main1">Body Building Competetion</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="paypal">January, 10</div>
-                    </div>
-                    <div class="heading">
-                      <div class="timelineitem">
-                        <div class="dot-container">
-                          <img
-                            class="timelinedot-icon"
-                            alt=""
-                            src="{{ url_for('static', filename= 'public1/timelinedot3.svg') }}"
-                          />
-
-                          <div class="main">
-                            <div class="main1">Yoga Festival</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="paypal">September, 30</div>
-                    </div>
+                    {% endfor %}
                   </div>
                 </div>
               </div>
