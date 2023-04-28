@@ -59,13 +59,13 @@
           </div>
         </a>
         <div class="frame-parent28">
-          <a class="store-frame" href="./store" id="frameLink1">
+          <a class="store-frame" href="/store" id="frameLink1">
             <div class="store2">Store</div>
           </a>
-          <a class="store-frame" href="./AI" id="frameLink2">
+          <a class="store-frame" href="/AI" id="frameLink2">
             <div class="store2">Zen AI</div>
           </a>
-          <a class="about-frame">
+          <a class="about-frame" href="https://hhhddkks.my.canva.site/about-page">
             <div class="store2">About</div>
           </a>
           <a href="/community" style="color: inherit;text-decoration: none;">
@@ -76,7 +76,7 @@
         </div>
         <div class="navigation-a-child">
           <div class="icons-group">
-            <a class="icons6" href="./profile" id="icons">
+            <a class="icons6" href="/user" id="icons">
               <img class="vector-icon11" alt="" src="{{ url_for('static', filename= 'public1/vector6.svg') }}" />
 
               <img class="vector-icon12" alt="" src="{{ url_for('static', filename= 'public1/vector7.svg') }}" />
@@ -90,18 +90,6 @@
       <div class="menu-drawer-parent">
         <div class="menu-drawer">
           <div class="apps-pages">
-            <div class="listitem" id="listItemContainer">
-              <div class="container4">
-                <img
-                  class="bx-calendar-alt-icon"
-                  alt=""
-                  src="{{ url_for('static', filename= 'public1/bxcalendaralt.svg') }}"
-                />
-              </div>
-              <div class="text-container">
-                <div class="fitness-board">Fitness Board</div>
-              </div>
-            </div>
             <div class="listitem3" id="listItemContainer3">
               <div class="container4">
                 <img
@@ -365,17 +353,17 @@
                   <div class="datagridheader">
                     <div class="datagridcell">
                       <div class="navigation-a-child">
-                        <div class="typography-body1">Community</div>
+                        <div class="typography-body1">Post Time</div>
                       </div>
                     </div>
                     <div class="separator-container">
                       <div class="icon-separator"></div>
-                    </dv>
+                    </div>
                   </div>
                   <div class="datagridheader">
                     <div class="datagridcell">
                       <div class="navigation-a-child">
-                        <div class="typography-body1">Likes</div>
+                        <div class="typography-body1">Number of Replies</div>
                       </div>
                     </div>
                     <div class="separator-container">
@@ -383,6 +371,7 @@
                     </div>
                   </div>
                 </div>
+                {% for post in posts %}
                 <div class="row5">
                   <div class="datagridcell">
                     <div class="container14">
@@ -395,7 +384,7 @@
                       <div class="navigation-a-child">
                         <div class="navigation-a-child">
                           <div class="typography-body13">
-                            My Fitness Routine
+                            {{ post.post_title }}
                           </div>
                         </div>
                         <div class="typography9">
@@ -406,15 +395,10 @@
                   </div>
                   <div class="datagridcell">
                     <div class="container14">
-                      <img
-                        class="avatar-icon3"
-                        alt=""
-                        src="{{ url_for('static', filename= 'public1/avatar3@2x.png') }}"
-                      />
 
                       <div class="navigation-a-child">
                         <div class="navigation-a-child">
-                          <div class="typography-body15">Fitness</div>
+                          <div class="typography-body15">{{ post.post_time.strftime('%H:%M %d.%m.%Y') }}</div>
                         </div>
                         <div class="typography11">
                           <div class="typography-body16">Cell</div>
@@ -425,10 +409,8 @@
                   <div class="datagridcell">
                     <div class="container16">
                       <div class="typography12">
-                        <div class="typography-body17">92%</div>
+                        <div class="typography-body17">{{ post.num }}</div>
                       </div>
-                      <div class="bar"></div>
-                      <div class="bar11"></div>
                     </div>
                   </div>
                   <div class="datagridcell3">
@@ -453,78 +435,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="row11">
-                  <div class="datagridcell">
-                    <div class="container14">
-                      <img
-                        class="avatar-icon2"
-                        alt=""
-                        src="{{ url_for('static', filename= 'public1/avatar9@2x.png') }}"
-                      />
-
-                      <div class="navigation-a-child">
-                        <div class="navigation-a-child">
-                          <div class="typography-body13">
-                            My Fitness Routine
-                          </div>
-                        </div>
-                        <div class="typography9">
-                          <div class="typography-body14">HTML Project</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="datagridcell">
-                    <div class="container14">
-                      <img
-                        class="avatar-icon3"
-                        alt=""
-                        src="{{ url_for('static', filename= 'public1/avatar3@2x.png') }}"
-                      />
-
-                      <div class="navigation-a-child">
-                        <div class="navigation-a-child">
-                          <div class="typography-body15">Fitness</div>
-                        </div>
-                        <div class="typography11">
-                          <div class="typography-body16">Cell</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="datagridcell">
-                    <div class="container16">
-                      <div class="typography12">
-                        <div class="typography-body17">88%</div>
-                      </div>
-                      <div class="bar"></div>
-                      <div class="bar13"></div>
-                    </div>
-                  </div>
-                  <div class="datagridcell3">
-                    <div class="container17">
-                      <img
-                        class="deleteoutline-icon"
-                        alt=""
-                        src="{{ url_for('static', filename= 'public1/deleteoutline.svg') }}"
-                      />
-
-                      <img
-                        class="deleteoutline-icon"
-                        alt=""
-                        src="{{ url_for('static', filename= 'public1/removeredeye.svg') }}"
-                      />
-
-                      <img
-                        class="bx-calendar-alt-icon"
-                        alt=""
-                        src="{{ url_for('static', filename= 'public1/morevert.svg') }}"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card11">
+                {% endfor %}
               </div>
             </div>
           </div>
@@ -599,13 +510,24 @@
               <div class="shopping-cart">Shopping cart</div>
               <button class="close-parent" id="popupframeButton">
                 <div class="close">Close</div>
+                <img
+                  class="ic-actions-close-simple-icon"
+                  alt=""
+                  src="{{ url_for('static', filename='public/icactionsclosesimple.svg') }}"
+                />
               </button>
             </div>
             <article class="component-84-parent">
+              {% for product in products %}
               <article class="component-84">
                 <div class="frame-parent9">
                   <div class="basics-wrapper">
                     <div class="basics5">
+                      <img
+                        class="basics-child2"
+                        alt=""
+                        src="{{ product.image_url }}"
+                      />
                     </div>
                   </div>
                   <div class="content-button">
@@ -613,19 +535,23 @@
                       <div class="frame-wrapper1">
                         <div class="frame-parent10">
                           <div class="product-title-parent">
-                            <div class="product-title">Product title</div>
-                            <div class="frame-parent11">
-                              <div class="brand-parent">
-                                <div class="brand">Brand</div>
-                                <div class="nike">Nike</div>
-                              </div>
-                              <div class="size-parent">
-                                <div class="brand">Size</div>
-                                <div class="div14">9</div>
-                              </div>
-                            </div>
+                            <div class="product-title">{{ product.product_name }}</div>
                           </div>
                           <div class="ic-actions-star-parent">
+                          {% for i in range(product.rating) %}
+                          <img
+                            class="ic-actions-star-icon"
+                            alt=""
+                            src="{{ url_for('static', filename='public/icactionsstar2.svg') }}"
+                          />
+                          {% endfor %}
+                          {% for i in range(5-product.rating) %}
+                            <img
+                              class="ic-actions-star-icon"
+                              alt=""
+                              src="{{ url_for('static', filename='public/icactionsstar9.svg') }}"
+                            />
+                          {% endfor %}
                           </div>
                         </div>
                       </div>
@@ -633,14 +559,17 @@
                     <div class="price-button">
                       <div class="price-button-child"></div>
                       <div class="price-discount-price">
-                        <div class="usd">36.99 USD</div>
-                        <div class="usd1">48.56 USD</div>
+                        <div class="usd">{{ product.product_price }} USD</div>
                       </div>
                       <div class="inputs-and-selects">
-                        <div class="pcs">1 pcs</div>
+                        <div class="pcs">{{ product.quantity }} pcs</div>
                         <div class="inputs-and-selects-child"></div>
                         <div class="pcs-parent">
-                          <div class="pcs1">Pcs</div>
+                          <img
+                            class="ic-chevron-down-icon"
+                            alt=""
+                            src="{{ url_for('static', filename='public1/icchevrondown7.svg') }}"
+                          />
                         </div>
                       </div>
                     </div>
@@ -648,57 +577,18 @@
                 </div>
                 <div class="component-84-child"></div>
               </article>
-              <article class="component-84">
-                <div class="frame-parent9">
-                  <div class="basics-wrapper">
-                    <div class="basics5">
-                    </div>
-                  </div>
-                  <div class="content-button">
-                    <div class="content-button-inner">
-                      <div class="frame-wrapper1">
-                        <div class="frame-parent10">
-                          <div class="product-title-parent">
-                            <div class="product-title">Product title</div>
-                            <div class="frame-parent11">
-                              <div class="brand-parent">
-                                <div class="brand">Brand</div>
-                                <div class="nike">Nike</div>
-                              </div>
-                              <div class="size-parent">
-                                <div class="brand">Size</div>
-                                <div class="div14">9</div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="ic-actions-star-parent">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="price-button">
-                      <div class="price-button-child"></div>
-                      <div class="price-discount-price">
-                        <div class="usd">36.99 USD</div>
-                        <div class="usd1">48.56 USD</div>
-                      </div>
-                      <div class="inputs-and-selects">
-                        <div class="pcs">1 pcs</div>
-                        <div class="inputs-and-selects-child"></div>
-                        <div class="pcs-parent">
-                          <div class="pcs1">Pcs</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="component-84-child"></div>
-              </article>
+              {% endfor %}
             </article>
           </div>
           <div class="group-container">
             <div class="buttons-parent">
               <button class="buttons1" id="popupbuttons">
+                <img
+                  class="ic-chevron-left-icon"
+                  alt=""
+                  src="{{ url_for('static', filename='public1/icchevronleft.svg') }}"
+                />
+
                 <b class="button6">Continue shopping</b>
               </button>
               <button class="buttons2" id="popupbuttons1">
@@ -707,7 +597,7 @@
             </div>
             <div class="subtotal-parent">
               <div class="subtotal">Subtotal</div>
-              <div class="usd4">73.98 USD</div>
+              <div class="usd4">₹{{ net }}</div>
             </div>
             <div class="group-child"></div>
           </div>
@@ -927,7 +817,7 @@
       var popupbuttons1 = document.getElementById("popupbuttons1");
       if (popupbuttons1) {
         popupbuttons1.addEventListener("click", function (e) {
-          window.location.href = "./check-out-page.html";
+          window.location.href = "./checkout";
         });
       }
       
@@ -961,21 +851,21 @@
       var frameLink1 = document.getElementById("frameLink1");
       if (frameLink1) {
         frameLink1.addEventListener("click", function (e) {
-          window.location.href = "./store";
+          window.location.href = "/store";
         });
       }
       
       var frameLink2 = document.getElementById("frameLink2");
       if (frameLink2) {
         frameLink2.addEventListener("click", function (e) {
-          window.location.href = "./AI";
+          window.location.href = "/AI";
         });
       }
       
       var icons = document.getElementById("icons");
       if (icons) {
         icons.addEventListener("click", function (e) {
-          window.location.href = "./profile";
+          window.location.href = "/user";
         });
       }
       
@@ -1008,14 +898,14 @@
       var listItemContainer = document.getElementById("listItemContainer");
       if (listItemContainer) {
         listItemContainer.addEventListener("click", function (e) {
-          window.location.href = "./profile";
+          window.location.href = "/user";
         });
       }
       
       var listItemContainer3 = document.getElementById("listItemContainer3");
       if (listItemContainer3) {
         listItemContainer3.addEventListener("click", function (e) {
-          window.location.href = "./order-history";
+          window.location.href = "/order-history";
         });
       }
       

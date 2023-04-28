@@ -65,7 +65,7 @@
           <a class="store-container" href="/AI" id="frameLink2">
             <div class="comunity">Zen AI</div>
           </a>
-          <a class="about-container">
+          <a href="https://hhhddkks.my.canva.site/about-page" class="about-container">
             <div class="comunity">About</div>
           </a>
           <a href="/community" style="color: inherit;text-decoration: none;">
@@ -76,7 +76,7 @@
         </div>
         <div class="navigation-a-inner">
           <div class="icons-parent">
-            <a class="icons4" href="/profile" id="icons">
+            <a class="icons4" href="/user" id="icons">
               <img class="vector-icon8" alt="" src="{{ url_for('static', filename= 'public1/vector13.svg') }}" />
 
               <img class="vector-icon9" alt="" src="{{ url_for('static', filename= 'public1/vector14.svg') }}" />
@@ -183,8 +183,8 @@
                       <textarea
                         class="space-for-your1"
                         placeholder="Type your Comments"
-                      >
-Space for your comments</textarea
+                        name="reply"
+                      ></textarea
                       >
                     </div>
                   </div>
@@ -197,58 +197,31 @@ Space for your comments</textarea
             <div class="comments-parent">
               <div class="comments">Comments</div>
               <div class="blogcomments-specific-parent">
+                {% for reply in replies %}
                 <div class="blogcomments-specific">
                   <div class="ellipse-parent">
                     <img
                       class="frame-item"
                       alt=""
-                      src="{{ url_for('static', filename= 'public1/ellipse-7.svg') }}"
+                      src="{{ reply.author.image_url }}"
                     />
 
                     <div class="frame-parent24">
                       <div class="user-parent">
-                        <div class="fruit-and-vegetables">Author</div>
                         <div class="tags8">
-                          <div class="fruit-and-vegetables">Author</div>
+                          <div class="fruit-and-vegetables">{{ reply.author.firstname }}</div>
                         </div>
                       </div>
-                      <div class="div20">22. 6. 2020</div>
+                      <div class="div20">{{ reply.reply_time.strftime('%H:%M %d.%m.%Y') }}</div>
                     </div>
                   </div>
                   <div class="hi-everyone-we-container">
-                    <p class="hi-everyone">Hi everyone,</p>
                     <p class="hi-everyone">
-                      we have been working hard with the team bringing a new
-                      articles. It has passed a few months till we released it
-                      in case of traveling and shooting, hopefully you’ll love
-                      it.
+                      {{ reply.reply_text }}
                     </p>
                   </div>
                 </div>
-                <div class="frame-parent25">
-                  <div class="ellipse-parent">
-                    <img
-                      class="frame-item"
-                      alt=""
-                      src="{{ url_for('static', filename= 'public1/ellipse-7.svg') }}"
-                    />
-
-                    <div class="frame-parent24">
-                      <div class="user-parent">
-                        <div class="fruit-and-vegetables">User</div>
-                        <div class="tags9">
-                          <div class="fruit-and-vegetables">Admin</div>
-                        </div>
-                      </div>
-                      <div class="div20">22. 6. 2020</div>
-                    </div>
-                  </div>
-                  <div class="hi-everyone-we-container">
-                    Don’t worry about that, we are happy to read a new stories.
-                    The time we had to wait was crazy, but the results are
-                    awesome! You did an epic job. Now I just need to a buy one.
-                  </div>
-                </div>
+                {% endfor %}
               </div>
             </div>
           </div>
@@ -606,7 +579,7 @@ Space for your comments</textarea
       var icons = document.getElementById("icons");
       if (icons) {
         icons.addEventListener("click", function (e) {
-          window.location.href = "/profile";
+          window.location.href = "/user";
         });
       }
       

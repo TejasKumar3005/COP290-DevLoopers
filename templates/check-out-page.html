@@ -65,7 +65,7 @@
           <a href="/AI" style="text-decoration: none;color: #18a0fb;"><div class="store-wrapper3" id="frameContainer3">
             <div class="store5">ZenAI</div>
           </div></a>
-          <div class="about-wrapper3"><div class="store5">About</div></div>
+          <a href="https://hhhddkks.my.canva.site/about-page" style="text-decoration: none;color: #18a0fb;"><div class="about-wrapper3"><div class="store5">About</div></div></a>
           <a href="/community" style="color: inherit;text-decoration: none;">
             <button class="prozen-parent3">
               <div class="prozen5">Community</div>
@@ -74,7 +74,7 @@
         </div>
         <div class="navigation-a-inner3">
           <div class="icons-parent2">
-            <a href="/profile">
+            <a href="/user">
               <img
               class="icons16"
               alt=""
@@ -292,10 +292,10 @@
       </div>
     </div>
 
-    <div id="cartContainer" class="popup-overlay" style="display: none">
-      <div class="cart1">
+    <div id="cartPopup" class="popup-overlay" style="display: none">
+      <div class="cart" data-animate-on-scroll>
         <div class="modalsshoping-cart">
-          <div class="group-parent6">
+          <div class="group-parent">
             <div class="shopping-cart-parent">
               <div class="shopping-cart">Shopping cart</div>
               <button class="close-parent" id="popupframeButton">
@@ -307,180 +307,89 @@
                 />
               </button>
             </div>
-            <article class="component-84-group">
-              <article class="component-841">
-                <div class="frame-parent45">
-                  <div class="basics-wrapper1">
-                    <div class="basics11">
+            <article class="component-84-parent">
+              {% for product in products %}
+              <article class="component-84">
+                <div class="frame-parent9">
+                  <div class="basics-wrapper">
+                    <div class="basics5">
                       <img
-                        class="basics-child8"
+                        class="basics-child2"
                         alt=""
-                        src="{{ url_for('static', filename='public/rectangle-261@2x.png') }}"
+                        src="{{ product.image_url }}"
                       />
                     </div>
                   </div>
-                  <div class="content-button2">
-                    <div class="content-button-inner1">
-                      <div class="frame-wrapper12">
-                        <div class="frame-parent46">
-                          <div class="product-title-container">
-                            <div class="product-title2">Product title</div>
-                            <div class="frame-parent47">
-                              <div class="brand-container">
-                                <div class="brand2">Brand</div>
-                                <div class="nike6">Nike</div>
-                              </div>
-                              <div class="size-container">
-                                <div class="brand2">Size</div>
-                                <div class="div59">9</div>
-                              </div>
-                            </div>
+                  <div class="content-button">
+                    <div class="content-button-inner">
+                      <div class="frame-wrapper1">
+                        <div class="frame-parent10">
+                          <div class="product-title-parent">
+                            <div class="product-title">{{ product.product_name }}</div>
                           </div>
-                          <div class="ic-actions-star-parent1">
+                          <div class="ic-actions-star-parent">
+                          {% for i in range(product.rating) %}
+                          <img
+                            class="ic-actions-star-icon"
+                            alt=""
+                            src="{{ url_for('static', filename='public/icactionsstar2.svg') }}"
+                          />
+                          {% endfor %}
+                          {% for i in range(5-product.rating) %}
                             <img
-                              class="ic-actions-star-icon14"
+                              class="ic-actions-star-icon"
                               alt=""
-                              src="{{ url_for('static', filename='public/icactionsstar2.svg') }}"
-                            /><img
-                              class="ic-actions-star-icon14"
-                              alt=""
-                              src="{{ url_for('static', filename='public/icactionsstar2.svg') }}"
-                            /><img
-                              class="ic-actions-star-icon14"
-                              alt=""
-                              src="{{ url_for('static', filename='public/icactionsstar2.svg') }}"
-                            /><img
-                              class="ic-actions-star-icon14"
-                              alt=""
-                              src="{{ url_for('static', filename='public/icactionsstar2.svg') }}"
-                            /><img
-                              class="ic-actions-star-icon14"
-                              alt=""
-                              src="{{ url_for('static', filename='public/icactionsstar11.svg') }}"
+                              src="{{ url_for('static', filename='public/icactionsstar9.svg') }}"
                             />
+                          {% endfor %}
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="price-button2">
-                      <div class="price-button-inner"></div>
-                      <div class="price-discount-price2">
-                        <div class="usd10">36.99 USD</div>
-                        <div class="usd11">48.56 USD</div>
+                    <div class="price-button">
+                      <div class="price-button-child"></div>
+                      <div class="price-discount-price">
+                        <div class="usd">{{ product.product_price }} USD</div>
                       </div>
-                      <div class="inputs-and-selects16">
-                        <div class="pcs5">1 pcs</div>
-                        <div class="line-div"></div>
-                        <div class="pcs-parent1">
-                          <div class="pcs6">Pcs</div>
+                      <div class="inputs-and-selects">
+                        <div class="pcs">{{ product.quantity }} pcs</div>
+                        <div class="inputs-and-selects-child"></div>
+                        <div class="pcs-parent">
                           <img
-                            class="ic-chevron-down-icon15"
+                            class="ic-chevron-down-icon"
                             alt=""
-                            src="{{ url_for('static', filename='public/icchevrondown.svg') }}"
+                            src="{{ url_for('static', filename='public1/icchevrondown7.svg') }}"
                           />
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="component-84-item"></div>
+                <div class="component-84-child"></div>
               </article>
-              <article class="component-841">
-                <div class="frame-parent45">
-                  <div class="basics-wrapper1">
-                    <div class="basics11">
-                      <img
-                        class="basics-child8"
-                        alt=""
-                        src="{{ url_for('static', filename='public/rectangle-261@2x.png') }}"
-                      />
-                    </div>
-                  </div>
-                  <div class="content-button2">
-                    <div class="content-button-inner1">
-                      <div class="frame-wrapper12">
-                        <div class="frame-parent46">
-                          <div class="product-title-container">
-                            <div class="product-title2">Product title</div>
-                            <div class="frame-parent47">
-                              <div class="brand-container">
-                                <div class="brand2">Brand</div>
-                                <div class="nike6">Nike</div>
-                              </div>
-                              <div class="size-container">
-                                <div class="brand2">Size</div>
-                                <div class="div59">9</div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="ic-actions-star-parent1">
-                            <img
-                              class="ic-actions-star-icon14"
-                              alt=""
-                              src="{{ url_for('static', filename='public/icactionsstar3.svg') }}"
-                            /><img
-                              class="ic-actions-star-icon14"
-                              alt=""
-                              src="{{ url_for('static', filename='public/icactionsstar3.svg') }}"
-                            /><img
-                              class="ic-actions-star-icon14"
-                              alt=""
-                              src="{{ url_for('static', filename='public/icactionsstar3.svg') }}"
-                            /><img
-                              class="ic-actions-star-icon14"
-                              alt=""
-                              src="{{ url_for('static', filename='public/icactionsstar3.svg') }}"
-                            /><img
-                              class="ic-actions-star-icon14"
-                              alt=""
-                              src="{{ url_for('static', filename='public/icactionsstar31.svg') }}"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="price-button2">
-                      <div class="price-button-inner"></div>
-                      <div class="price-discount-price2">
-                        <div class="usd10">36.99 USD</div>
-                        <div class="usd11">48.56 USD</div>
-                      </div>
-                      <div class="inputs-and-selects16">
-                        <div class="pcs5">1 pcs</div>
-                        <div class="line-div"></div>
-                        <div class="pcs-parent1">
-                          <div class="pcs6">Pcs</div>
-                          <img
-                            class="ic-chevron-down-icon15"
-                            alt=""
-                            src="{{ url_for('static', filename='public/icchevrondown1.svg') }}"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="component-84-item"></div>
-              </article>
+              {% endfor %}
             </article>
           </div>
-          <div class="group-parent7">
-            <div class="buttons-group">
-              <button class="buttons6" id="popupbuttons">
+          <div class="group-container">
+            <div class="buttons-parent">
+              <button class="buttons1" id="popupbuttons">
                 <img
                   class="ic-chevron-left-icon"
                   alt=""
-                  src="{{ url_for('static', filename='public/icchevronleft.svg') }}"
-                /><b class="button10">Continue shopping</b></button
-              ><button class="buttons7" id="popupbuttons1">
+                  src="{{ url_for('static', filename='public1/icchevronleft.svg') }}"
+                />
+
+                <b class="button6">Continue shopping</b>
+              </button>
+              <button class="buttons2" id="popupbuttons1">
                 <b class="go-to-checkout">Go to Checkout</b>
               </button>
             </div>
-            <div class="subtotal-group">
-              <div class="subtotal1">Subtotal</div>
-              <div class="usd14">73.98 USD</div>
+            <div class="subtotal-parent">
+              <div class="subtotal">Subtotal</div>
+              <div class="usd4">₹{{ net }}</div>
             </div>
-            <div class="group-child12"></div>
+            <div class="group-child"></div>
           </div>
         </div>
       </div>
@@ -507,6 +416,13 @@
         });
       }
       
+      var popupbuttons = document.getElementById("popupbuttons");
+      if (popupbuttons) {
+        popupbuttons.addEventListener("click", function (e) {
+          window.location.href = "./store";
+        });
+      }
+      
       var popupbuttons1 = document.getElementById("popupbuttons1");
       if (popupbuttons1) {
         popupbuttons1.addEventListener("click", function (e) {
@@ -526,7 +442,7 @@
       var icons = document.getElementById("icons");
       if (icons) {
         icons.addEventListener("click", function (e) {
-          window.location.href = "./profile-page.html";
+          window.location.href = "./user";
         });
       }
       

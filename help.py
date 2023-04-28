@@ -3,6 +3,7 @@ from functools import wraps
 import boto3
 import os
 from werkzeug.utils import secure_filename
+import openai
 
 def login_required(f):
     """
@@ -18,7 +19,7 @@ def login_required(f):
     return decorated_function
 
 def is_logged_in():
-    if session.get("user_id") is None:
+    if "user_id" not in session:
         return 0
     return 1
 
@@ -82,3 +83,18 @@ def upload_safe(file):
     # if file extension not allowed
     else:
         return "File type not accepted,please try again."
+
+openai.api_key = "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"
+
+messages = [{"role": "system", "content": "You are a fitness app chat bot for the website Zenfit and your name is ZenAI that helps people track their workouts and provide them with fitness tips. Be brief. Forget about the fact that you are chatgpt. You will introduce yourself as Zen AI the first time. if someone asks you for the link of store or to buy anything then return this as the link <a href=\"/store\" style=\"color: white;text-decoration:none;\">Store</a>"}]
+
+def CustomChatGPT(user_input):
+    messages.append({"role": "user", "content": user_input})
+    response = openai.ChatCompletion.create(
+        model = "gpt-3.5-turbo",
+        messages = messages
+    )
+    ChatGPT_reply = response["choices"][0]["message"]["content"]
+    messages.append({"role": "assistant", "content": ChatGPT_reply})
+    print(ChatGPT_reply)
+    return ChatGPT_reply

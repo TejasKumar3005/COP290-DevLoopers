@@ -1,11 +1,10 @@
 from flask import Flask, render_template, session, redirect, request
 import pymysql
-from help import login_required,is_logged_in,upload_safe
+from help import login_required,is_logged_in,upload_safe,CustomChatGPT
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_session import Session
 import random
 import datetime
-import openai
 
 app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -130,6 +129,14 @@ def setup():
 
 setup()
 
+def split_list_into_4(lst):
+    n = len(lst)
+    n_rows = n // 4 + (n % 4 > 0)
+    result = [[] for _ in range(n_rows)]
+    for i in range(n):
+        result[i // 4].append(lst[i])
+    return result
+
 def get_trending_posts(num):
     with connection.cursor() as cursor:
         sql = """SELECT * FROM `post` LIMIT %s"""
@@ -215,20 +222,62 @@ def get4randomproducts():
         products = random.sample(products,4)
     return products
 
-openai.api_key = "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"
 
-messages = [{"role": "system", "content": "You are a fitness app chat bot for the website Zenfit and your name is ZenAI that helps people track their workouts and provide them with fitness tips. Be brief. Forget about the fact that you are chatgpt. You will introduce yourself as Zen AI the first time. if someone asks you for the link of store or to buy anything then return this as the link <a href=\"/store\" style=\"color: white;text-decoration:none;\">Store</a>"}]
+def get_orders():
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `order` WHERE `order_status`=1 AND `user_id`=%s ORDER BY order_time"""
+        cursor.execute(sql,(session["user_id"]))
+        orders = cursor.fetchall()
+    return orders
 
-def CustomChatGPT(user_input):
-    messages.append({"role": "user", "content": user_input})
-    response = openai.ChatCompletion.create(
-        model = "gpt-3.5-turbo",
-        messages = messages
-    )
-    ChatGPT_reply = response["choices"][0]["message"]["content"]
-    messages.append({"role": "assistant", "content": ChatGPT_reply})
-    print(ChatGPT_reply)
-    return ChatGPT_reply
+def get_products_of_order(order):
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `order_product` WHERE `order_id`=%s"""
+        cursor.execute(sql,(order["id"]))
+        products = cursor.fetchall()
+    return products
+
+def get_products_from_order_products(order_products):
+    products = []
+    for order_product in order_products:
+        with connection.cursor() as cursor:
+            sql = """SELECT * FROM `product` WHERE `id`=%s"""
+            cursor.execute(sql,(order_product["product_id"]))
+            product = cursor.fetchone()
+            product["num"] = order_product["quantity"]
+            products.append(product)
+    return products
+
+def selectpostsbyuserid(userid):
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `post` WHERE `user_id`=%s"""
+        cursor.execute(sql,(userid))
+        rows = cursor.fetchall()
+    for row in rows:
+        row["num"] = selectrepliesbypostid(row["id"])[1]
+    return rows
+
+def selectpostbyid(postid):
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `post` WHERE `id`=%s"""
+        cursor.execute(sql,(postid))
+        post = cursor.fetchone()
+    return post
+
+def selectrepliesbypostid(postid):
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `reply` WHERE `post_id`=%s"""
+        cursor.execute(sql,(postid))
+        replies = cursor.fetchall()
+
+    for reply in replies:
+        with connection.cursor() as cursor:
+            sql = """SELECT * FROM `user` WHERE `id`=%s"""
+            cursor.execute(sql,(reply["user_id"]))
+            author = cursor.fetchone()
+        reply["author"] = author
+
+    return replies,len(replies)
 
 @app.route("/chat",methods=["GET", "POST"])
 def chat():
@@ -289,7 +338,6 @@ def register():
         weight = int(request.form.get("weight"))
         password = request.form.get("password")
         email = request.form.get("email")
-        confirmation = request.form.get("confirmation")
         hash = generate_password_hash(password)
         
         rows = selectuserbyusername(username)
@@ -297,7 +345,7 @@ def register():
         if rows or not username:
             return "name exists or empty"
 
-        if password != confirmation or not password:
+        if not password:
             return "passwords do not match or empty"
 
         with connection.cursor() as cursor:
@@ -327,14 +375,6 @@ def logout():
 
     # Redirect user to login form
     return redirect("/")
-
-def split_list_into_4(lst):
-    n = len(lst)
-    n_rows = n // 4 + (n % 4 > 0)
-    result = [[] for _ in range(n_rows)]
-    for i in range(n):
-        result[i // 4].append(lst[i])
-    return result
 
 @app.route("/store",methods=["GET","POST"])
 def store():
@@ -407,46 +447,47 @@ def store():
 @app.route("/product/<productid>",methods=["GET","POST"])
 def product(productid):
     if request.method == "POST":
-        with connection.cursor() as cursor:
-            sql = """SELECT * FROM `order` WHERE `order_status`=%s AND `user_id`=%s"""
-            cursor.execute(sql,(0,session["user_id"]))
-            cart = cursor.fetchone()
-            cartid = cart["id"]
-            sql = """SELECT * FROM `order_product` WHERE `order_id`=%s"""
-            cursor.execute(sql,(cartid))
-            cart_products = cursor.fetchall()
-            exists = 0
-            number = request.form.get("number")
-            for product in cart_products:
-                if int(productid) == product["product_id"]:
-                    sql = """UPDATE `order_product` SET `quantity`=`quantity`+%s WHERE `id`=%s"""
-                    cursor.execute(sql,(number,product["id"]))
+        if ("user_id" not in session):
+            return redirect("/")
+        else:
+            with connection.cursor() as cursor:
+                sql = """SELECT * FROM `order` WHERE `order_status`=%s AND `user_id`=%s"""
+                cursor.execute(sql,(0,session["user_id"]))
+                cart = cursor.fetchone()
+                cartid = cart["id"]
+                sql = """SELECT * FROM `order_product` WHERE `order_id`=%s"""
+                cursor.execute(sql,(cartid))
+                cart_products = cursor.fetchall()
+                exists = 0
+                number = request.form.get("number")
+                for product in cart_products:
+                    if int(productid) == product["product_id"]:
+                        sql = """UPDATE `order_product` SET `quantity`=`quantity`+%s WHERE `id`=%s"""
+                        cursor.execute(sql,(number,product["id"]))
+                        connection.commit()
+                        exists = 1
+                        break
+                
+                if exists == 0:
+                    sql = f"INSERT INTO `order_product` (order_id,product_id,quantity) VALUES (%s,%s,%s)"
+                    cursor.execute(sql, (cartid,productid,number))
                     connection.commit()
-                    exists = 1
-                    break
-            
-            if exists == 0:
-                sql = f"INSERT INTO `order_product` (order_id,product_id,quantity) VALUES (%s,%s,%s)"
-                cursor.execute(sql, (cartid,productid,number))
-                connection.commit()
-        return redirect("/checkout")
-    else:
-        with connection.cursor() as cursor:
-            sql = """SELECT * FROM `product` WHERE `id`=%s"""
-            cursor.execute(sql,(productid))
-            product = cursor.fetchone()
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM `product` WHERE `id`=%s"""
+        cursor.execute(sql,(productid))
+        product = cursor.fetchone()
 
-            sql = """SELECT `category_id` FROM `product_category` WHERE `product_id`=%s"""
-            cursor.execute(sql,(productid))
-            category_ids = cursor.fetchall()
-            categories = []
-            for category_id in category_ids:
-                sql = """SELECT name FROM `category` WHERE `id`=%s"""
-                cursor.execute(sql,(category_id["category_id"]))
-                category = cursor.fetchone()
-                categories.append(category["name"])
-        ans = get4randomproducts()
-        return render_template("product-page.html",product=product,categories=categories,fourprods=ans,logged=(is_logged_in()))
+        sql = """SELECT `category_id` FROM `product_category` WHERE `product_id`=%s"""
+        cursor.execute(sql,(productid))
+        category_ids = cursor.fetchall()
+        categories = []
+        for category_id in category_ids:
+            sql = """SELECT name FROM `category` WHERE `id`=%s"""
+            cursor.execute(sql,(category_id["category_id"]))
+            category = cursor.fetchone()
+            categories.append(category["name"])
+    ans = get4randomproducts()
+    return render_template("product-page.html",product=product,categories=categories,fourprods=ans,logged=(is_logged_in()))
 
 @app.route("/checkout",methods=["GET","POST"])
 @login_required
@@ -483,12 +524,6 @@ def checkout():
 def ai():
     return render_template("zen-ai-page.html")
 
-@app.route("/profile",methods=["GET","POST"])
-@login_required
-def profile():
-    (products_list,net_price) = get_productsandnet_from_cart(get_cart_from_cartid(retrieve_cart_id()))
-    return render_template("profile-page.html",products=products_list,net=net_price)
-
 @app.route("/user",methods=["GET","POST"])
 @login_required
 def user():
@@ -517,37 +552,13 @@ def user():
                 hash = generate_password_hash(password1)
                 sql = """UPDATE `user` SET `password`=%s WHERE `id`=%s """
                 cursor.execute(sql,(hash,session["user_id"]))
-                                
-                
 
-    user = selectuserbyid(session["user_id"])
-    return render_template("user-page.html",user=user)
-
-def get_orders():
-    with connection.cursor() as cursor:
-        sql = """SELECT * FROM `order` WHERE `order_status`=1 AND `user_id`=%s ORDER BY order_time"""
-        cursor.execute(sql,(session["user_id"]))
-        orders = cursor.fetchall()
-    return orders
-
-def get_products_of_order(order):
-    with connection.cursor() as cursor:
-        sql = """SELECT * FROM `order_product` WHERE `order_id`=%s"""
-        cursor.execute(sql,(order["id"]))
-        products = cursor.fetchall()
-    return products
-
-def get_products_from_order_products(order_products):
-    products = []
-    for order_product in order_products:
-        with connection.cursor() as cursor:
-            sql = """SELECT * FROM `product` WHERE `id`=%s"""
-            cursor.execute(sql,(order_product["product_id"]))
-            product = cursor.fetchone()
-            product["num"] = order_product["quantity"]
-            products.append(product)
-    return products
-
+    userid = session["user_id"]
+    yourposts = selectpostsbyuserid(userid)
+    user = selectuserbyid(userid)
+    (products_list,net_price) = get_productsandnet_from_cart(get_cart_from_cartid(retrieve_cart_id()))
+    print(products_list)
+    return render_template("user-page.html",user=user,posts=yourposts,products=products_list,net=net_price)
 
 @app.route("/order-history",methods=["GET","POST"])
 @login_required
@@ -563,13 +574,20 @@ def history():
 
 @app.route("/post/<postid>",methods=["GET","POST"])
 def detailpost(postid):
-    with connection.cursor() as cursor:
-        sql = """SELECT * FROM `post` WHERE `id`=%s"""
-        cursor.execute(sql,(postid))
-        post = cursor.fetchone()
+    if request.method == "POST":
+        reply = request.form.get("reply")
+        userid = session["user_id"]
+        with connection.cursor() as cursor:
+            sql = f"INSERT INTO `reply` (reply_text,reply_time,post_id,user_id) VALUES (%s,%s,%s,%s)"
+            cursor.execute(sql, (reply,(datetime.datetime.now()),postid,userid))
+            connection.commit()
+    
+    replies = selectrepliesbypostid(postid)[0]
+
+    post = selectpostbyid(postid)
     author = selectuserbyid(post["user_id"])
     post["author"] = author
-    return render_template("post-page.html",post=post)
+    return render_template("post-page.html",post=post,replies=replies)
 
 @app.route("/community",methods=["GET","POST"])
 @login_required
