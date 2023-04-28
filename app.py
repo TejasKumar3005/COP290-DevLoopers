@@ -180,7 +180,6 @@ def retrieve_cart_id():
         sql = """SELECT * FROM `order` WHERE `order_status`=%s AND `user_id`=%s"""
         cursor.execute(sql,(0,session["user_id"]))
         cart = cursor.fetchone()
-        print(cart)
         cartid = cart["id"]
     return cartid
 
@@ -444,7 +443,7 @@ def store():
     return render_template("store-page.html",products=split_list_into_4(products),categories=categories,logged=(is_logged_in()))
 
 
-@app.route("/checkout",methods=["GET","POST"])
+@app.route("/product/<productid>",methods=["GET","POST"])
 def product(productid):
     if request.method == "POST":
         if ("user_id" not in session):
@@ -557,7 +556,8 @@ def user():
             else:
                 password1 = request.form.get("password")
                 confirm = request.form.get("confirm")
-
+                if (password1 != confirm):
+                    return "passwords do not match"
                 hash = generate_password_hash(password1)
                 sql = """UPDATE `user` SET `password`=%s WHERE `id`=%s """
                 cursor.execute(sql,(hash,session["user_id"]))
@@ -567,7 +567,6 @@ def user():
     yourposts = selectpostsbyuserid(userid)
     user = selectuserbyid(userid)
     (products_list,net_price) = get_productsandnet_from_cart(get_cart_from_cartid(retrieve_cart_id()))
-    print(products_list)
     events = getevents()
     return render_template("user-page.html",user=user,posts=yourposts,products=products_list,net=net_price,events=events)
 
@@ -578,7 +577,6 @@ def history():
     for order in orders:
         order_products =  get_products_of_order(order)
         products = get_products_from_order_products(order_products)
-        print(order)
         order["products"] = products
 
     return render_template("order-history-page.html",orders=orders)
