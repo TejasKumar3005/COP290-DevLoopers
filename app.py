@@ -444,7 +444,7 @@ def store():
     return render_template("store-page.html",products=split_list_into_4(products),categories=categories,logged=(is_logged_in()))
 
 
-@app.route("/product/<productid>",methods=["GET","POST"])
+@app.route("/checkout",methods=["GET","POST"])
 def product(productid):
     if request.method == "POST":
         if ("user_id" not in session):
