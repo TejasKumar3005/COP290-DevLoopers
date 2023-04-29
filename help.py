@@ -84,7 +84,7 @@ def upload_safe(file):
     else:
         return "File type not accepted,please try again."
 
-openai.api_key = "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"
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
 messages = [{"role": "system", "content": "You are a fitness app chat bot for the website Zenfit and your name is ZenAI that helps people track their workouts and provide them with fitness tips. Be brief. Forget about the fact that you are chatgpt. You will introduce yourself as Zen AI the first time. if someone asks you for the link of store or to buy anything then return this as the link <a href=\"/store\" style=\"color: white;text-decoration:none;\">Store</a>"}]
 
