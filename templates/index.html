@@ -465,6 +465,7 @@
                             
             </div>
             <ul class="messages">
+              <li class="self">Hello there! I am Zen AI, a fitness chat bot here to help you track your workouts and provide you with fitness tips. How can I assist you today?</li>
             </ul>
             <div class="footer">
                 <div class="text-box" contenteditable="true" disabled="true"></div>
@@ -567,6 +568,12 @@
 
 <script>
 
+{% if arg %}
+window.addEventListener('load', function() {
+			alert("{{arg}}");
+		});
+{% endif %}
+
 var element = $('.floating-chat'); 
 var myStorage = localStorage;
 
@@ -592,7 +599,6 @@ function openElement() {
     element.find('.header button').click(closeElement);
     element.find('#sendMessage').click(sendNewMessage);
     messages.scrollTop(messages.prop("scrollHeight"));
-    sendNewMessage("hi");
 }
 
 
@@ -625,14 +631,9 @@ function createUUID() {
     return uuid;
 }
 
-function sendNewMessage(alpha) {
+function sendNewMessage() {
     var userInput = $('.text-box');
-    if (alpha){
-      var newMessage = alpha;
-    }
-    else{
-      var newMessage = userInput.html().replace(/\<div\>|\<br.*?\>/ig, '\n').replace(/\<\/div\>/g, '').trim().replace(/\n/g, '<br>');
-    }
+    var newMessage = userInput.html().replace(/\<div\>|\<br.*?\>/ig, '\n').replace(/\<\/div\>/g, '').trim().replace(/\n/g, '<br>');
 
     if (!newMessage) return;
 
@@ -640,13 +641,11 @@ function sendNewMessage(alpha) {
 
     console.log('sad life');
 
-    if (!alpha){
     messagesContainer.append([
         '<li class="other">',
         newMessage,
         '</li>'
     ].join(''));
-        }
 
     fetch(`/chat?data=${newMessage}`, {
     method: "GET",
@@ -658,7 +657,6 @@ function sendNewMessage(alpha) {
     return response.text();
     })
     .then(data => {
-      console.log(data);
       messagesContainer.append([
         '<li class="self">',
           (data.replace(/\n/g, '<br>')),

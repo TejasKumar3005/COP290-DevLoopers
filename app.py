@@ -284,12 +284,14 @@ def chat():
     return (CustomChatGPT(request_data))
 
 
-@app.route("/", methods=["GET", "POST"])
-def index():
+@app.route('/', defaults={'arg': ""})
+@app.route('/arg=<arg>')
+def index(arg):
+    print(arg)
     connection.ping()
     posts = get_remaining_posts()
     trending = get_trending_posts(5)
-    return render_template('index.html', logged=(is_logged_in()),products=get4randomproducts(),trending=trending)
+    return render_template('index.html', logged=(is_logged_in()),products=get4randomproducts(),trending=trending,arg=arg)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -303,49 +305,53 @@ def login():
 
         # Ensure username was submitted
         if not request.form.get("username"):
-            return "username not submitted"
+            return redirect("/arg=username not submitted")
 
         # Ensure password was submitted
         elif not request.form.get("password"):
-            return "password not submitted"
+            return redirect("/arg=password not submitted")
         
         rows = selectuserbyusername(request.form.get("username"))
 
         # Ensure username exists and password is correct
         if len(rows) != 1 or not check_password_hash(rows[0]["password"], request.form.get("password")):
-            return "username does not exist or password is incorrect"
+            return (redirect("/arg=username does not exist or password is incorrect"))
 
         # Remember which user has logged in
         session["user_id"] = rows[0]["id"]
 
         # Redirect user to home page
-        return redirect("/")
+        return redirect("/arg=You have been logged in!")
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
-        return redirect("/")
+        return redirect("/arg=Do not access this path like that!")
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
     """Register user"""
     if request.method == 'POST':
-        username = request.form.get("username")
+        username = (request.form.get("username")).strip()
         firstname = request.form.get("firstname")
         lastname = request.form.get("lastname")
-        age = int(request.form.get("age"))
-        height = int(request.form.get("height"))
-        weight = int(request.form.get("weight"))
         password = request.form.get("password")
         email = request.form.get("email")
         hash = generate_password_hash(password)
         
         rows = selectuserbyusername(username)
 
+        if not (username and firstname and lastname and request.form.get("age") and request.form.get("height") and request.form.get("weight") and password and email and hash):
+            return redirect("/arg=you left a field empty")
+
+        age = int(request.form.get("age"))
+        height = int(request.form.get("height"))
+        weight = int(request.form.get("weight"))
+
         if rows or not username:
-            return "name exists or empty"
+            return redirect("/arg=name exists or empty")
 
         if not password:
-            return "passwords do not match or empty"
+            return redirect("/arg=passwords do not match or empty")
 
         with connection.cursor() as cursor:
             sql = f"INSERT INTO user (username,email,firstname,lastname,age,height,weight,password,join_time) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)"
@@ -360,10 +366,10 @@ def register():
             cursor.execute(sql, (0,userid))
             connection.commit()
 
-        return redirect("/")
+        return redirect("/arg=You have been registered! Please Login")
 
     else:
-        return redirect("/")
+        return redirect("/arg=Do not access this path like that!")
 
 @app.route("/logout")
 def logout():
@@ -373,7 +379,7 @@ def logout():
     session.clear()
 
     # Redirect user to login form
-    return redirect("/")
+    return redirect("/arg=You have been logged out! ")
 
 @app.route("/store",methods=["GET","POST"])
 def store():
@@ -447,7 +453,7 @@ def store():
 def product(productid):
     if request.method == "POST":
         if ("user_id" not in session):
-            return redirect("/")
+            return redirect("/arg=you are not logged in")
         else:
             with connection.cursor() as cursor:
                 sql = """SELECT * FROM `order` WHERE `order_status`=%s AND `user_id`=%s"""
@@ -511,7 +517,7 @@ def checkout():
             cursor.execute(sql, (0,session["user_id"]))
             connection.commit()
 
-        return redirect("/")
+        return redirect("/arg=Your order has been completed! Please check your items in order history!")
     else:
         
         (products_list,net_price) = get_productsandnet_from_cart(get_cart_from_cartid(cartid))
@@ -556,8 +562,8 @@ def user():
             else:
                 password1 = request.form.get("password")
                 confirm = request.form.get("confirm")
-                if (password1 != confirm):
-                    return "passwords do not match"
+                if (password1 != confirm or not password1):
+                    return redirect("/arg=passwords do not match or empty")
                 hash = generate_password_hash(password1)
                 sql = """UPDATE `user` SET `password`=%s WHERE `id`=%s """
                 cursor.execute(sql,(hash,session["user_id"]))
@@ -582,6 +588,7 @@ def history():
     return render_template("order-history-page.html",orders=orders)
 
 @app.route("/post/<postid>",methods=["GET","POST"])
+@login_required
 def detailpost(postid):
     if request.method == "POST":
         reply = request.form.get("reply")

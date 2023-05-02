@@ -84,11 +84,12 @@ def upload_safe(file):
     else:
         return "File type not accepted,please try again."
 
-openai.api_key = os.getenv('OPENAI_API_KEY')
+openai.api_key = "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"
 
 messages = [{"role": "system", "content": "You are a fitness app chat bot for the website Zenfit and your name is ZenAI that helps people track their workouts and provide them with fitness tips. Be brief. Forget about the fact that you are chatgpt. You will introduce yourself as Zen AI the first time. if someone asks you for the link of store or to buy anything then return this as the link <a href=\"/store\" style=\"color: white;text-decoration:none;\">Store</a>"}]
 
 def CustomChatGPT(user_input):
+    print("bye")
     messages.append({"role": "user", "content": user_input})
     response = openai.ChatCompletion.create(
         model = "gpt-3.5-turbo",
@@ -96,5 +97,6 @@ def CustomChatGPT(user_input):
     )
     ChatGPT_reply = response["choices"][0]["message"]["content"]
     messages.append({"role": "assistant", "content": ChatGPT_reply})
+    print("hi")
     print(ChatGPT_reply)
     return ChatGPT_reply
