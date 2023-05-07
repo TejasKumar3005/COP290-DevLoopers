@@ -224,7 +224,7 @@ def get4randomproducts():
 
 def get_orders():
     with connection.cursor() as cursor:
-        sql = """SELECT * FROM `order` WHERE `order_status`=1 AND `user_id`=%s ORDER BY order_time"""
+        sql = """SELECT * FROM `order` WHERE `order_status`=1 AND `user_id`=%s ORDER BY order_time DESC"""
         cursor.execute(sql,(session["user_id"]))
         orders = cursor.fetchall()
     return orders
@@ -477,6 +477,7 @@ def product(productid):
                     sql = f"INSERT INTO `order_product` (order_id,product_id,quantity) VALUES (%s,%s,%s)"
                     cursor.execute(sql, (cartid,productid,number))
                     connection.commit()
+            return redirect("/checkout")
     with connection.cursor() as cursor:
         sql = """SELECT * FROM `product` WHERE `id`=%s"""
         cursor.execute(sql,(productid))
@@ -498,17 +499,27 @@ def product(productid):
 @login_required
 def checkout():
     cartid = retrieve_cart_id()
-    
+    (products_list,net_price) = get_productsandnet_from_cart(get_cart_from_cartid(cartid))
     if request.method == "POST":
+        if (products_list == []):
+            return redirect("/arg=Your cart was empty!")
+
         with connection.cursor() as cursor:
+            street =request.form.get("street")
+            city = request.form.get("city")
+            state = request.form.get("state")
+            zip = request.form.get("zip")
             if ("address") in request.form:
+                if (street!="" or city!="" or state!="" or zip!=""):
+                    return redirect("/arg=please select an existing address or fill in a new one not both!")
                 addressid = request.form.get("address")
             else:
+                if (street=="" or city=="" or state=="" or zip==""):
+                    return redirect("/arg=please fill all the fields in the new address!")
                 sql = f"INSERT INTO `address` (street,city,state,zip,user_id) VALUES (%s,%s,%s,%s,%s)"
-                cursor.execute(sql, (request.form.get("street"),request.form.get("city"),request.form.get("state"),request.form.get("zip"),session["user_id"]))
-                connection.commit()   
+                cursor.execute(sql,(street,city,state,zip,session["user_id"]))
+                connection.commit()
                 addressid = cursor.lastrowid
-            
             sql = """UPDATE `order` SET `order_status`=1, `address_id`=%s, `order_time`=%s WHERE `id`=%s """
             cursor.execute(sql,(addressid,datetime.datetime.now(),cartid))
             connection.commit()
@@ -519,8 +530,6 @@ def checkout():
 
         return redirect("/arg=Your order has been completed! Please check your items in order history!")
     else:
-        
-        (products_list,net_price) = get_productsandnet_from_cart(get_cart_from_cartid(cartid))
         addresses = get_addresses()
         return render_template("check-out-page.html",products=products_list,net=net_price,addresses=addresses)
 
@@ -535,8 +544,6 @@ def getevents():
         cursor.execute(sql,())
         rows = cursor.fetchall()
     return rows
-
-
 
 @app.route("/user",methods=["GET","POST"])
 @login_required
@@ -612,7 +619,6 @@ def comm():
     trending = get_trending_posts(3)
 
     return render_template("community-page.html",posts=split_list_into_4(posts),trending=trending)
-
 
 @app.route("/post/add",methods=["GET","POST"])
 def addpost():

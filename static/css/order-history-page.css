@@ -570,7 +570,6 @@
   overflow: hidden;
   justify-content: center;
   gap: var(--gap-27xl);
-  cursor: pointer;
   width: 50%;
 }
 .buttons21,

@@ -185,6 +185,7 @@
               </div>
               <div class="frame-wrapper4">
                 <div class="buttons-container">
+                  <a style="text-decoration: none;color: inherit;" href="/product/{{ product.id }}">
                   <div class="buttons11" id="buttonsContainer6">
                     <b class="men">Buy Again</b>
                     <img
@@ -193,6 +194,7 @@
                       src="{{ url_for('static', filename= 'public1/icchevronright1.svg') }}"
                     />
                   </div>
+                  </a>
                 </div>
               </div>
             </div>
@@ -554,13 +556,6 @@
       var frameContainer40 = document.getElementById("frameContainer40");
       if (frameContainer40) {
         frameContainer40.addEventListener("click", function (e) {
-          window.location.href = "/store";
-        });
-      }
-      
-      var buttonsContainer6 = document.getElementById("buttonsContainer6");
-      if (buttonsContainer6) {
-        buttonsContainer6.addEventListener("click", function (e) {
           window.location.href = "/store";
         });
       }
