@@ -531,7 +531,7 @@ def ai():
 
 def getevents():
     with connection.cursor() as cursor:
-        sql = """SELECT * FROM `event`"""
+        sql = """SELECT * FROM `event` ORDER BY `event_start`"""
         cursor.execute(sql,())
         rows = cursor.fetchall()
     return rows

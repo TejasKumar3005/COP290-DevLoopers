@@ -114,6 +114,18 @@
                 <div class="fitness-board">User</div>
               </div>
             </div>
+            <div class="listitem3" id="listItemContainerout">
+              <div class="container4">
+                <img
+                  class="bx-calendar-alt-icon"
+                  alt=""
+                  src="{{ url_for('static', filename= 'public1/bxuser.svg') }}"
+                />
+              </div>
+              <div class="text-container">
+                <div class="fitness-board">Logout</div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="body1">
@@ -860,6 +872,13 @@
       if (listItemContainer3) {
         listItemContainer3.addEventListener("click", function (e) {
           window.location.href = "/order-history";
+        });
+      }
+
+      var listItemContainerout = document.getElementById("listItemContainerout");
+      if (listItemContainerout) {
+        listItemContainerout.addEventListener("click", function (e) {
+          window.location.href = "/logout";
         });
       }
       

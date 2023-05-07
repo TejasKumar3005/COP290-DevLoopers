@@ -83,9 +83,11 @@
 
               <img class="vector-icon15" alt="" src="{{ url_for('static', filename= 'public1/vector7.svg') }}" />
             </button>
+            <a style="text-decoration: none;color: inherit;" href="/checkout">
             <button class="icons9" id="icons1">
               <img class="icons-inner" alt="" src="{{ url_for('static', filename= 'public1/frame-2021.svg') }}" />
             </button>
+            </a>
           </div>
         </div>
       </div>
@@ -114,6 +116,18 @@
               </div>
               <div class="text-container6">
                 <div class="fitness-board1">User</div>
+              </div>
+            </div>
+            <div class="listitem7" id="listItemContainerout">
+              <div class="container42">
+                <img
+                  class="bx-calendar-alt-icon1"
+                  alt=""
+                  src="{{ url_for('static', filename= 'public1/bxuser.svg') }}"
+                />
+              </div>
+              <div class="text-container6">
+                <div class="fitness-board1">Logout</div>
               </div>
             </div>
           </div>
@@ -455,31 +469,31 @@
         });
       }
       
-      var icons1 = document.getElementById("icons1");
-      if (icons1) {
-        icons1.addEventListener("click", function () {
-          var popup = document.getElementById("cartPopup");
-          if (!popup) return;
-          var popupStyle = popup.style;
-          if (popupStyle) {
-            popupStyle.display = "flex";
-            popupStyle.zIndex = 100;
-            popupStyle.backgroundColor = "rgba(113, 113, 113, 0.3)";
-            popupStyle.alignItems = "center";
-            popupStyle.justifyContent = "center";
-          }
-          popup.setAttribute("closable", "");
+      // var icons1 = document.getElementById("icons1");
+      // if (icons1) {
+      //   icons1.addEventListener("click", function () {
+      //     var popup = document.getElementById("cartPopup");
+      //     if (!popup) return;
+      //     var popupStyle = popup.style;
+      //     if (popupStyle) {
+      //       popupStyle.display = "flex";
+      //       popupStyle.zIndex = 100;
+      //       popupStyle.backgroundColor = "rgba(113, 113, 113, 0.3)";
+      //       popupStyle.alignItems = "center";
+      //       popupStyle.justifyContent = "center";
+      //     }
+      //     popup.setAttribute("closable", "");
       
-          var onClick =
-            popup.onClick ||
-            function (e) {
-              if (e.target === popup && popup.hasAttribute("closable")) {
-                popupStyle.display = "none";
-              }
-            };
-          popup.addEventListener("click", onClick);
-        });
-      }
+      //     var onClick =
+      //       popup.onClick ||
+      //       function (e) {
+      //         if (e.target === popup && popup.hasAttribute("closable")) {
+      //           popupStyle.display = "none";
+      //         }
+      //       };
+      //     popup.addEventListener("click", onClick);
+      //   });
+      // }
       
       var listItemContainer = document.getElementById("listItemContainer");
       if (listItemContainer) {
@@ -492,6 +506,13 @@
       if (listItemContainer1) {
         listItemContainer1.addEventListener("click", function (e) {
           window.location.href = "/user";
+        });
+      }
+
+      var listItemContainerout = document.getElementById("listItemContainerout");
+      if (listItemContainerout) {
+        listItemContainerout.addEventListener("click", function (e) {
+          window.location.href = "/logout";
         });
       }
       
