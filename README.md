@@ -11,5 +11,8 @@ The team includes the following members:
 3. Payas Khurana
 4. Kartik Arora
 
-Cheers!
-[Demo](demo.gif)
+Cheers! 
+
+# Demo:
+
+![Demo](demo.gif)
