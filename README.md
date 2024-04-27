@@ -15,4 +15,4 @@ Cheers!
 
 # Demo:
 
-![Demo](demo.gif)
+![Demo](demo_vid.gif)
